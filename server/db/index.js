@@ -14,8 +14,8 @@ Message.belongsTo(User);
 Chat.hasMany(Message);
 Message.belongsTo(Chat);
 
-Chat.hasMany(User);//look into: belongs to many? create intermediate table with one to many relationships?
-User.hasMany(Chat);
+//Chat.hasMany(User);//look into: using belongsTo(many) or create intermediate table with one to many relationships
+//User.hasMany(Chat);
 
 module.exports = {
   db,
