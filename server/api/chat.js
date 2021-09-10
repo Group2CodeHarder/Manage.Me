@@ -49,7 +49,7 @@ router.get('/:chatId/messages', async(req, res, next) => {
         { model: Chat, attributes: ['name'] },
       ],
       order: [
-        ['createdAt', 'ASC'],
+        ['createdAt', 'ASCII'],
       ],
     });
     res.send(messages);
