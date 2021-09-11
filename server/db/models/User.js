@@ -3,20 +3,47 @@ const db = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
+const {
+  DataTypes: { STRING, UUID, UUIDV4, ENUM },
+} = Sequelize;
 
 const SALT_ROUNDS = 5;
 
 const User = db.define("user", {
+  id: {
+    type: UUID,
+    defaultValue: UUIDV4,
+    primaryKey: true,
+  },
   username: {
-    type: Sequelize.STRING,
+    type: STRING,
     unique: true,
     allowNull: false,
   },
   password: {
-    type: Sequelize.STRING,
+    type: STRING,
   },
+  firstName: {
+    type: STRING,
+  },
+  lastName: {
+    type: STRING,
+  },
+  email: {
+    type: STRING,
+    allowNull: true,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    },
+  },
+
+  phoneNumber: {
+    type: STRING,
+  },
+
   userType: {
-    type: Sequelize.ENUM("Freelancer", "Client"),
+    type: ENUM("Freelancer", "Client"),
   },
   jobTitle: {
     type: Sequelize.STRING,

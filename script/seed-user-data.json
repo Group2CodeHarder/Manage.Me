@@ -1,0 +1,24 @@
+[
+  {
+    "username": "cody",
+    "password": "123",
+    "firstName": "cody",
+    "lastName": "snyder",
+    "email": "snyder@gmail.com",
+    "phoneNumber": "1112223344",
+    "userType": "Freelancer",
+    "jobTitle": "Website Designer",
+    "company": "NA"
+  },
+  {
+    "username": "murphy",
+    "password": "123",
+    "firstName": "murphy",
+    "lastName": "duncan",
+    "email": "duncan@gmail.com",
+    "phoneNumber": "4443332211",
+    "userType": "Client",
+    "jobTitle": "NA",
+    "company": "Dunkin Donut"
+  }
+]
