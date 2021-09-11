@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const {
-  DataTypes: { STRING, UUID, UUIDV4, ENUM, DATE, DECIMAL },
+  DataTypes: { STRING, UUID, UUIDV4, ENUM, DATEONLY, DECIMAL },
 } = Sequelize;
 
 const Project = db.define("project", {
@@ -27,18 +27,31 @@ const Project = db.define("project", {
       "Complete"
     ),
     allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
   },
+
   startDate: {
-    type: DATE,
+    type: DATEONLY,
     allowNull: false,
+    validate: {
+      isDate: true,
+    },
   },
   endDate: {
-    type: DATE,
+    type: DATEONLY,
     allowNull: false,
+    validate: {
+      isDate: true,
+    },
   },
   deadline: {
-    type: DATE,
+    type: DATEONLY,
     allowNull: false,
+    validate: {
+      isDate: true,
+    },
   },
   revenue: {
     type: DECIMAL(10, 2),

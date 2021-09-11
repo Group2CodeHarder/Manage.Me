@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Build a new website",
+    "status": "Scheduled",
+    "startDate": "2017-08-26T16:31:02.349Z",
+    "endDate": "2017-08-26T16:31:02.349Z",
+    "deadline": "2017-08-26T16:31:02.349Z",
+    "revenue": "5000",
+    "expense": "3000"
+  },
+  {
+    "name": "Create new Marketing copy",
+    "status": "In Progress",
+    "startDate": "2017-08-26T16:31:02.349Z",
+    "endDate": "2017-08-26T16:31:02.349Z",
+    "deadline": "2017-08-26T16:31:02.349Z",
+    "revenue": "500",
+    "expense": "50"
+  }
+]
