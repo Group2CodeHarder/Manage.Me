@@ -2,10 +2,11 @@
 
 const {
   db,
-  models: { User },
+  models: { User, Project },
 } = require("../server/db");
 
 const seedUser = require("./seed-user-data.json");
+const seedProject = require("./seed-project-data.json");
 
 /**
  * seed - this function clears the database, updates tables to
@@ -17,6 +18,11 @@ async function seed() {
 
   // Creating Users
   const users = await Promise.all(seedUser.map((user) => User.create(user)));
+
+  //Creating Projects
+  const projects = await Promise.all(
+    seedProject.map((project) => Project.create(project))
+  );
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
