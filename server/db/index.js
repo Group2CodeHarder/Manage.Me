@@ -15,12 +15,21 @@ Message.belongsTo(User);
 Chat.hasMany(Message);
 Message.belongsTo(Chat);
 
+Chat.belongsToMany(User, {
+  as: "chats",
+  through: "user_is_in_chat",
+  foreignKey: "user_id",
+});
+User.belongsToMany(Chat, {
+  as: "users",
+  through: "user_is_in_chat",
+  foreignKey: "chat_id",
+});
+
 Project.belongsTo(User, { as: "FreelancerId" });
 Project.belongsTo(User, { as: "ClientId" });
 User.hasMany(Project);
 
-//Chat.hasMany(User);//look into creating intermediate table with one to many relationships
-//User.hasMany(Chat);
 
 module.exports = {
   db,
