@@ -2,13 +2,27 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
-module.exports = app
+const dotenv = require('dotenv')
+const passport = require('passport')
+const session = require('express-session')
+
+dotenv.config();
+require('./passport')(passport);
 
 // logging middleware
 app.use(morgan('dev'))
 
 // body parsing middleware
 app.use(express.json())
+
+app.use(session({
+  secret: 'keyboard-cat',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // auth and api routes
 app.use('/auth', require('./auth'))
@@ -41,3 +55,5 @@ app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
+
+module.exports = app
