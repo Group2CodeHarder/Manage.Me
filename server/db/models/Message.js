@@ -10,6 +10,13 @@ const Message = db.define("message", {
       notEmpty: true,
     },
   },
+  createdAt: {
+    type: Sequelize.DATE,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
 });
 
 module.exports = Message;

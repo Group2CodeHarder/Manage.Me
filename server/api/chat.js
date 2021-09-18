@@ -5,11 +5,12 @@ const { models: { User, Message, Chat }} = require('../db')
 module.exports = router;
 
 // GET all chats
-// filter by user id iwth include: { where } ?
+// filter by user id with where: { include } ?
 router.get('/', (req, res, next) => {
+  console.log('routin');
   Chat.findAll()
-  .then((foundChatrooms) => {
-    res.send(foundChatrooms);
+  .then((foundChats) => {
+    res.send(foundChats);
   })
   .catch(next);
 });
@@ -24,8 +25,8 @@ router.get('/messages/new', (req, res, next) => {
       },
     },
     include: [
-      { model: User, attributes: ['name'] }, // add a 'imageUrl' prop to User
-      { model: Chat, attributes: ['name'] },
+      { model: User, attributes: ['username'] }, // add a 'imageUrl' prop to User
+      { model: Chat, attributes: ['name'] }, // add 'imageUrl' prop to Chat
     ],
     order: [
       ['createdAt', 'ASC'],
@@ -61,7 +62,7 @@ router.get('/:chatId/messages', async(req, res, next) => {
 
 // POST message in chat
 //use JSON.stringify and its inverse?
-router.post('/:chatId/messages', (req, res, next) => {
+router.post('/:chatId/messages', async(req, res, next) => {
   try {
     const user = await User.findById(req.body.userId);
     //const message is await Message.create(req.body) in JSON 
