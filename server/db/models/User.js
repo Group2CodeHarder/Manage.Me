@@ -15,9 +15,13 @@ const User = db.define("user", {
     defaultValue: UUIDV4,
     primaryKey: true,
   },
+  googleId: {
+    type: STRING,
+    // allowNull: false,
+  },
   username: {
     type: STRING,
-    unique: true,
+    unique: false,
     allowNull: false,
   },
   password: {
@@ -31,13 +35,15 @@ const User = db.define("user", {
   },
   email: {
     type: STRING,
-    allowNull: true,
+    allowNull: false,
     validate: {
       notEmpty: true,
       isEmail: true,
     },
   },
-
+  googleImage: {
+    type: STRING
+  },
   phoneNumber: {
     type: STRING,
   },
