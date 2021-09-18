@@ -20,17 +20,25 @@
   "author": "Group 2 Code Harder",
   "license": "MIT",
   "dependencies": {
+    "@stripe/react-stripe-js": "github:stripe/react-stripe-js",
+    "@stripe/stripe-js": "^1.17.1",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.16.4",
     "history": "^4.9.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "stripe": "^8.176.0"
   },
   "devDependencies": {
+    "@stripe/react-stripe-js": "github:stripe/react-stripe-js",
+    "@stripe/stripe-js": "^1.17.1",
     "@babel/core": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
     "@babel/register": "^7.12.10",
