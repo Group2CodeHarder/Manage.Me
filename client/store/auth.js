@@ -1,8 +1,6 @@
 import axios from 'axios'
 import history from '../history'
 
-const TOKEN = 'token'
-
 /**
  * ACTION TYPES
  */
@@ -16,25 +14,24 @@ const setAuth = auth => ({type: SET_AUTH, auth})
 /**
  * THUNK CREATORS
  */
-export const me = () => async dispatch => {
-  const token = window.localStorage.getItem(TOKEN)
-  if (token) {
-    const res = await axios.get('/auth/me', {
-      headers: {
-        authorization: token
-      }
-    })
-    return dispatch(setAuth(res.data))
-  }
-}
+// export const me = () => async dispatch => {
+//   const token = window.localStorage.getItem(TOKEN)
+//   if (token) {
+//     const res = await axios.get('/auth/me', {
+//       headers: {
+//         authorization: token
+//       }
+//     })
+//     return dispatch(setAuth(res.data))
+//   }
+// }
 
-export const authenticate = (username, password, method) => async dispatch => {
+export const authenticate =  () => {
   try {
-    const res = await axios.post(`/auth/${method}`, {username, password})
-    window.localStorage.setItem(TOKEN, res.data.token)
-    dispatch(me())
-  } catch (authError) {
-    return dispatch(setAuth({error: authError}))
+    history.push('/auth/google/');
+    // dispatch(me())
+  } catch (err) {
+    console.log(err)
   }
 }
 

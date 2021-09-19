@@ -2,16 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
 
-/**
- * COMPONENT
- */
+
 const AuthForm = (props) => {
   return (
     <div>
-      <div>
-        <button className="google Signin">
-          <a href="/auth/google">Log in with Google</a>
-        </button>
+      <div> 
+          <button className="google Signin" onClick= { authenticate }>
+            <a href='/auth/google/'>Log in with Google</a>
+          </button>
+
       </div>
     </div>
   );

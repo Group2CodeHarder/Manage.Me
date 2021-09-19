@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login } from "./components/Login";
 import Home from "./components/Home";
-import { me } from "./store";
+
 
 /**
  * COMPONENT
@@ -49,7 +49,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(me());
+
     },
   };
 };
