@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const app = express();
 const dotenv = require("dotenv");
 
-const session = require("express-session");
 
 dotenv.config();
 
