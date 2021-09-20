@@ -10,6 +10,9 @@ export const Home = props => {
   return (
     <div>
       <h3>Welcome, {username}</h3>
+      <button className= 'google Signin'>
+        <a href='/auth/google/logout'>Logout</a>
+      </button>
     </div>
   )
 }
