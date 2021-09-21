@@ -39,7 +39,7 @@ export default function PaymentForm() {
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:8080/payment", {
           amount: 1000,
-          id: id,
+          id,
         });
 
         if (response.data.success) {
@@ -50,9 +50,10 @@ export default function PaymentForm() {
         console.log("Error", error);
       }
     } else {
-      console.log(error.messsage);
+      console.log(error.message);
     }
   };
+
   return (
     <>
       {!success ? (
@@ -66,7 +67,10 @@ export default function PaymentForm() {
         </form>
       ) : (
         <div>
-          <h2>You just bought a new project!</h2>
+          <h2>
+            You just bought a sweet spatula congrats this is the best decision
+            of you're life
+          </h2>
         </div>
       )}
     </>

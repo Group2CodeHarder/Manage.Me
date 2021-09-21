@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import StripeContainer from "./StripeContainer";
 
 class Checkout extends Component {
