@@ -1,15 +1,15 @@
-import axios from 'axios'
-import history from '../history'
+import axios from "axios";
+import history from "../history";
 
 /**
  * ACTION TYPES
  */
-const SET_AUTH = 'SET_AUTH'
+const SET_AUTH = "SET_AUTH";
 
 /**
  * ACTION CREATORS
  */
-const setAuth = auth => ({type: SET_AUTH, auth})
+const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
 /**
  * THUNK CREATORS
@@ -26,32 +26,30 @@ const setAuth = auth => ({type: SET_AUTH, auth})
 //   }
 // }
 
-export const authenticate =  () => {
+export const authenticate = () => {
   try {
-    history.push('/auth/google/');
+    history.push("/auth/google/");
     // dispatch(me())
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-}
+};
 
 export const logout = () => {
-  window.localStorage.removeItem(TOKEN)
-  history.push('/login')
-  return {
-    type: SET_AUTH,
-    auth: {}
-  }
-}
+  const auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log("User signed out.");
+  });
+};
 
 /**
  * REDUCER
  */
-export default function(state = {}, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth
+      return action.auth;
     default:
-      return state
+      return state;
   }
 }
