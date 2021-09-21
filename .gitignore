@@ -6,4 +6,4 @@ npm-debug.log
 yarn-error.log
 package-lock.json
 .env
-
+server/auth/oauth2.keys.json
