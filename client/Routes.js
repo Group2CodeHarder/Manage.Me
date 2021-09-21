@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login } from "./components/Login";
+import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
-
 
 /**
  * COMPONENT
@@ -21,6 +21,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route path="/calendar" component={CalendarComponent} exact />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -28,6 +29,7 @@ class Routes extends Component {
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
+            <Route path="/calendar" component={CalendarComponent} exact />
           </Switch>
         )}
       </div>
@@ -48,9 +50,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData() {
-
-    },
+    loadInitialData() {},
   };
 };
 
