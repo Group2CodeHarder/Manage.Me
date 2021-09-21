@@ -51,7 +51,8 @@ router.get('/callback', async (req, res) => {
     const {tokens} = await oauth2Client.getToken(qs.get('code'));
     oauth2Client.credentials = tokens;
     console.log('Success!!!!!');
-    getProfile(oauth2Client);
+    getProfile();
+    res.cookie('session-token', tokens.id_token)
     res.redirect('http://localhost:8080/home');
   }
   catch(err) {
@@ -60,18 +61,17 @@ router.get('/callback', async (req, res) => {
   }
 })
 
-
-// router.get("/google/logout", (req, res) => {
-//   req.logout();
-//   req.redirect("/");
-// });
+router.get("/logout", (req, res) => {
+  res.clearCookie('session-token');
+  res.redirect('/login');
+});
 
 
 async function getProfile() {
   const res = await people.people.get(
     {
     resourceName: 'people/me',
-    personFields: 'names,emailAddresses,coverPhotos,calendarUrls',
+    personFields: 'names,emailAddresses,coverPhotos',
     }
   );
   const profile = res.data;
@@ -94,6 +94,8 @@ async function getProfile() {
     console.error(err);
   };
 }
+
+
 
 module.exports =  router;
 
