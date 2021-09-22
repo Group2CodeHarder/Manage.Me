@@ -1,8 +1,9 @@
-const path = require("path");
-const express = require("express");
-const morgan = require("morgan");
+const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
 const app = express();
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 
 dotenv.config();
@@ -12,6 +13,7 @@ app.use(morgan("dev"));
 
 // body parsing middleware
 app.use(express.json());
+app.use(cookieParser());
 
 // auth and api routes
 app.use("/auth", require("./auth"));
