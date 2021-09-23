@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { authenticate } from "../store";
+// import { authenticate } from "../store";
 
 
-const AuthForm = (props) => {
+const Login = (props) => {
   return (
     <div>
       <div> 
-          <button className="google Signin" onClick= { authenticate }>
+          <button className='google Signin' /*</div>onClick= { authenticate }*/ >
             <a href='/auth/google/'>Log in with Google</a>
           </button>
 
@@ -34,4 +34,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm);
+export default connect(mapLogin, mapDispatch)(Login);

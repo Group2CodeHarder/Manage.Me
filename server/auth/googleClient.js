@@ -2,10 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const { google } = require("googleapis");
 
-// const people = google.people('v1');
-// const calendar = google.calendar('v3');
-// const drive = google.drive('v3');
-
 // const keyPath = path.join(__dirname, "oauth2.keys.json");
 
 // let keys = { redirect_uris: [""] };

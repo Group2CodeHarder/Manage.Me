@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import Checkout from "./components/Checkout";
-import { Login } from "./components/Login";
+import Login from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
 import { getEvents } from "./store/calendar";
@@ -13,12 +13,14 @@ import { getEvents } from "./store/calendar";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+    
     this.props.getEvents();
   }
 
   render() {
     const { isLoggedIn, events } = this.props;
     console.log(events.items);
+  
     return (
       <div>
         {isLoggedIn ? (
