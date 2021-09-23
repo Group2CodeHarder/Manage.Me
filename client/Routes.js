@@ -5,6 +5,7 @@ import Checkout from "./components/Checkout";
 import { Login } from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
+import { getEvents } from "./store/calendar";
 
 /**
  * COMPONENT
@@ -12,11 +13,12 @@ import Home from "./components/Home";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+    this.props.getEvents();
   }
 
   render() {
-    const { isLoggedIn } = this.props;
-
+    const { isLoggedIn, events } = this.props;
+    console.log(events.items);
     return (
       <div>
         {isLoggedIn ? (
@@ -48,12 +50,14 @@ const mapState = (state) => {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
+    events: state.events,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {},
+    getEvents: () => dispatch(getEvents()),
   };
 };
 

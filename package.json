@@ -35,13 +35,13 @@
     "history": "^4.9.0",
     "moment": "^2.29.1",
     "morgan": "^1.9.1",
-    "stripe": "^8.176.0",
     "open": "^8.2.1",
     "pg": "^8.7.1",
     "react-big-calendar": "^0.35.0",
     "react-datepicker": "^4.2.1",
     "sequelize": "^6.6.5",
-    "server-destroy": "^1.0.1"
+    "server-destroy": "^1.0.1",
+    "stripe": "^8.176.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
