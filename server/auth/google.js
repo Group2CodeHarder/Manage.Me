@@ -32,7 +32,7 @@ router.get('/callback', async (req, res) => {
     console.error(err);
     res.redirect('/login')
   }
-})
+});
 
 //logout of Manage.me
 router.get('/logout', (req, res, next) => {
@@ -48,9 +48,7 @@ router.get('/check', async (req, res, next) => {
   const tokens = oauth2Client.credentials;
   let status = 'failed';
   if (tokens.id_token === cookie) {
-    const user = await getProfile();
-    const googleId = user.googleId;
-    status = googleId;
+    status = 'passed';
   };
   res.send(status);
 });

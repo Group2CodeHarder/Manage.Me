@@ -26,21 +26,26 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
 //   }
 // }
 
-export const authenticate = () => {
-  try {
-    history.push("/auth/google/");
-    // dispatch(me())
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const checkAuthenticated = () => {
+//   try {
+//     const googleId = await axios.get('/auth/google/check');
+//     const user = await axios.get('/')
+//     // dispatch(me())
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
-export const logout = () => {
-  const auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
-    console.log("User signed out.");
-  });
-};
+// export const logout = () => {
+//   try {
+//     await axios.get('/auth/google/logout');
+//     dispatch(setAuth())
+//   } 
+//   catch (err) {
+//     console.log(err);
+//   }
+// };
+
 
 /**
  * REDUCER
