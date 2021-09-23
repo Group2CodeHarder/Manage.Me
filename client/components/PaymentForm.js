@@ -37,7 +37,7 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:8080/payment", {
+        const response = await axios.post("/api/stripe/payment", {
           amount: 1000,
           id,
         });
@@ -63,13 +63,13 @@ export default function PaymentForm() {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button>Pay</button>
+          <button className="StripeButton">Pay</button>
         </form>
       ) : (
         <div>
           <h2>
-            You just bought a sweet spatula congrats this is the best decision
-            of you're life
+            You just bought a sweet project congrats this is the best decision
+            of your life
           </h2>
         </div>
       )}

@@ -1,9 +1,12 @@
-const testKey =
-  "sk_test_51Jb57wGAp8Evh66unPisCJ2SJPmgKlNOyL2uXIgpO6NAVIYUyLESp7u5p8BNXdeTAGJbgIBGuXoMaSEaSLjPmxwD00T9vW7foY";
 const router = require("express").Router();
+const testKey = process.env.STRIPE_TEST_KEY;
 const stripe = require("stripe")(testKey);
+const bodyParser = require("body-parser");
 const cors = require("cors");
 module.exports = router;
+
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
 
 router.post("/payment", cors(), async (req, res) => {
   let { amount, id } = req.body;

@@ -3,7 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const dotenv = require("dotenv");
-
+const cors = require("cors");
 
 dotenv.config();
 
@@ -16,6 +16,9 @@ app.use(express.json());
 // auth and api routes
 app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
+
+//middleware needed for stripe
+app.use(cors());
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public/index.html"))
