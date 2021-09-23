@@ -1,12 +1,10 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
+const path = require("path");
+const express = require("express");
+const morgan = require("morgan");
 const app = express();
-const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser');
+require("dotenv").config();
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
-dotenv.config();
 
 // logging middleware
 app.use(morgan("dev"));
