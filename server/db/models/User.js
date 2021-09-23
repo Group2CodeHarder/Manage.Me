@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const axios = require("axios");
-const { DataTypes: { STRING, UUID, UUIDV4, ENUM } } = Sequelize;
+const { DataTypes: { STRING, UUID, UUIDV4, ENUM, TEXT } } = Sequelize;
 
 const User = db.define("user", {
   id: {
@@ -54,6 +54,9 @@ const User = db.define("user", {
   company: {
     type: Sequelize.STRING,
     defaultValue: "NA",
+  },
+  id_token: {
+    type: TEXT,
   },
 });
 

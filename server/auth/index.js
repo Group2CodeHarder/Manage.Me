@@ -1,7 +1,8 @@
-const router = require('express').Router()
-module.exports = router
+const router = require('express').Router();
+module.exports = router;
 
 router.use('/google', require('./google'))
+
 
 
 router.use((req, res, next) => {
