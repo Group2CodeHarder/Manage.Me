@@ -5,38 +5,39 @@ import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
+import ProtectedRoute from './components/ProtectedRoute';
 import { getEvents } from "./store/calendar";
+import { getUser } from "./store/auth";
 
-/**
- * COMPONENT
- */
+
 class Routes extends Component {
+
   componentDidMount() {
-    this.props.loadInitialData();
-    
-    this.props.getEvents();
+    this.props.getUser();
+    if (this.props.auth) {
+      this.props.getEvents();
+    }
   }
 
   render() {
-    const { isLoggedIn, events } = this.props;
-    console.log(events.items);
-  
+    const { isLoggedIn, userType, events, checked} = this.props;
+    // console.log(events.items);
     return (
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
+            {/* <Route path="/home" component={Home} />
             <Route path="/calendar" component={CalendarComponent} exact />
             <Route exact path="/checkout" component={Checkout} />
-            <Redirect to="/home" />
+            <Redirect to="/home" /> */}
           </Switch>
         ) : (
           <Switch>
-            <Route exact path="/checkout" component={Checkout} />
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
-            <Route path="/home" component={Home} />
-            <Route path="/calendar" component={CalendarComponent} exact />
+            <ProtectedRoute path ='/home' component={Home} isAuth={true}/>
+            <Route exact path="/checkout" component={Checkout} />
+            <ProtectedRoute exact path="/calendar" component={CalendarComponent} isAuth={true} />
           </Switch>
         )}
       </div>
@@ -44,22 +45,22 @@ class Routes extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
+
 const mapState = (state) => {
   return {
-    // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
-    // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id,
+    auth: state.auth,
+    checked: !!state.auth.id,
+    userType: state.auth.userType,
     events: state.events,
+
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData() {},
+    getUser: () => dispatch(getUser()),
     getEvents: () => dispatch(getEvents()),
+
   };
 };
 

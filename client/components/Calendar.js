@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
@@ -38,7 +40,7 @@ const events = [
   },
 ];
 
-export default function CalendarComponent() {
+function CalendarComponent() {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState(events);
 
@@ -85,3 +87,10 @@ export default function CalendarComponent() {
     </div>
   );
 }
+
+const mapState = (state) => {
+  return state
+}
+
+const CalendarComponentWithRouter = withRouter(CalendarComponent);
+export default connect(mapState)(CalendarComponentWithRouter);

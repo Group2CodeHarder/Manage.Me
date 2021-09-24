@@ -56,7 +56,8 @@ router.get('/check', async (req, res, next) => {
 //get a user
 router.get('/user', async (req, res, next) => {
   try {
-    const user = await getUser();
+    const id_token = req.headers.authorization;
+    const user = await getUser(id_token);
     res.send(user);
   } 
   catch (err) {
