@@ -1,29 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { withRouter } from 'react-router-dom';
 
-/**
- * COMPONENT
- */
 export const Home = props => {
   const {username} = props
 
   return (
     <div>
       <h3>Welcome, {username}</h3>
-      <button className= 'google Signin'>
-        <a href='/auth/google/logout'>Logout</a>
-      </button>
     </div>
   )
 }
 
-/**
- * CONTAINER
- */
+
 const mapState = state => {
   return {
     username: state.auth.username
   }
 }
 
-export default connect(mapState)(Home)
+const HomeWithRouter = withRouter(Home);
+export default connect(mapState)(HomeWithRouter);
