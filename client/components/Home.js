@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { withRouter } from 'react-router-dom';
 
 export const Home = props => {
   const {username} = props
@@ -19,5 +18,4 @@ const mapState = state => {
   }
 }
 
-const HomeWithRouter = withRouter(Home);
-export default connect(mapState)(HomeWithRouter);
+export default connect(mapState)(Home);
