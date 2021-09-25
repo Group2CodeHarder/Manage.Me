@@ -6,7 +6,6 @@ import Login from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
 
-
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
 
@@ -19,7 +18,6 @@ class Routes extends Component {
   }
 
   render() {
-
     const { isLoggedIn } = this.props;
 
     return (
@@ -27,17 +25,24 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/calendar" component={CalendarComponent} exact />
+            {/* <Route path="/calendar" component={CalendarComponent} exact /> */}
+            <Route
+              exact
+              path="/calendar"
+              isAuth={true}
+              render={() => (
+                <CalendarComponent calEvents={this.props.events.items} />
+              )}
+            />
             <Route exact path="/checkout" component={Checkout} />
-            <Redirect to='/home' />
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
 
-            <Redirect to='/' />
-
+            <Redirect to="/" />
           </Switch>
         )}
       </div>

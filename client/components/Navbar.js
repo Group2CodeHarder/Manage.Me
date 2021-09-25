@@ -11,20 +11,18 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>
           {/* The navbar will show these links after you log in */}
 
-          <Link to='/home'>Home</Link>
-          <Link to='/profile'>Profile</Link>
-          <Link to='/finance'>Finance</Link>
-          <Link to='/projects'>Projects</Link>
+          <Link to="/home">Home</Link>
+          <Link to="/calendar">Calendar</Link>
+          <Link to="/profile">Profile</Link>
+          <Link to="/finance">Finance</Link>
+          <Link to="/projects">Projects</Link>
           <Link to="/checkout">Payment(Test)</Link>
-          <a href='/auth/google/logout' onClick= {handleClick}>Logout</a>
-
+          <a href="/auth/google/logout" onClick={handleClick}>
+            Logout
+          </a>
         </div>
       ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-
-
-        </div>
+        <div>{/* The navbar will show these links before you log in */}</div>
       )}
     </nav>
     <hr />
