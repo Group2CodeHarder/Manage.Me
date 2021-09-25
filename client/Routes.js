@@ -5,12 +5,12 @@ import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
+
+
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
 
-
 class Routes extends Component {
-
   componentDidMount() {
     this.props.getUser();
     if (this.props.auth) {
@@ -19,7 +19,9 @@ class Routes extends Component {
   }
 
   render() {
+
     const { isLoggedIn } = this.props;
+
     return (
       <div>
         {isLoggedIn ? (
@@ -33,7 +35,9 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
+
             <Redirect to='/' />
+
           </Switch>
         )}
       </div>
@@ -46,7 +50,6 @@ const mapState = (state) => {
     auth: state.auth,
     isLoggedIn: !!state.auth.id,
     events: state.events,
-
   };
 };
 
@@ -54,7 +57,6 @@ const mapDispatch = (dispatch) => {
   return {
     getUser: () => dispatch(getUser()),
     getEvents: () => dispatch(getEvents()),
-
   };
 };
 

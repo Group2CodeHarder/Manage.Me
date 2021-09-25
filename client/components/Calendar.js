@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
@@ -8,6 +8,7 @@ import startOfWeek from "date-fns/startOfWeek";
 //import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
+import { addEvents } from "../store/calendar";
 
 //sets local time zone for calendar to use
 const locales = {
@@ -40,13 +41,29 @@ const events = [
   },
 ];
 
-function CalendarComponent() {
+function CalendarComponent(props) {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState(events);
+  console.log("this is from calendar", props);
 
   const handleAddEvent = () => {
     setAllEvents([...allEvents, newEvent]);
+    props.addEvents(newEvent);
   };
+
+  const formatEvent = (ev) => {
+    const res = {
+      title: ev.summary,
+      start: ev.start.dateTime.slice(0, 10),
+      end: ev.end.dateTime.slice(0, 10),
+    };
+
+    return res;
+  };
+
+  const test = props.calEvents.map((ev) => formatEvent(ev));
+  console.log("this is test", test);
+
   return (
     <div>
       <h1>Calendar</h1>
@@ -79,7 +96,7 @@ function CalendarComponent() {
       </div>
       <Calendar
         localizer={localizer}
-        events={allEvents}
+        events={test}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500, margin: "50px" }}
@@ -89,8 +106,16 @@ function CalendarComponent() {
 }
 
 const mapState = (state) => {
-  return state
-}
+  return {
+    events: state.events || [],
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    addEvents: (event) => dispatch(addEvents(event)),
+  };
+};
 
 const CalendarComponentWithRouter = withRouter(CalendarComponent);
-export default connect(mapState)(CalendarComponentWithRouter);
+export default connect(mapState, mapDispatch)(CalendarComponentWithRouter);
