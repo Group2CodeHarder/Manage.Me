@@ -5,13 +5,11 @@ import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from "./components/ProtectedRoute";
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
 
-
 class Routes extends Component {
-
   componentDidMount() {
     this.props.getUser();
     if (this.props.auth) {
@@ -20,8 +18,8 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn, userType, events, checked} = this.props;
-    // console.log(events.items);
+    const { isLoggedIn, userType, events, checked } = this.props;
+    //console.log(events.items);
     return (
       <div>
         {isLoggedIn ? (
@@ -35,9 +33,16 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
-            <ProtectedRoute path ='/home' component={Home} isAuth={true}/>
+            <ProtectedRoute path="/home" component={Home} isAuth={true} />
             <Route exact path="/checkout" component={Checkout} />
-            <ProtectedRoute exact path="/calendar" component={CalendarComponent} isAuth={true} />
+            <Route
+              exact
+              path="/calendar"
+              isAuth={true}
+              render={() => (
+                <CalendarComponent calEvents={this.props.events.items} />
+              )}
+            />
           </Switch>
         )}
       </div>
@@ -45,14 +50,12 @@ class Routes extends Component {
   }
 }
 
-
 const mapState = (state) => {
   return {
     auth: state.auth,
     checked: !!state.auth.id,
     userType: state.auth.userType,
     events: state.events,
-
   };
 };
 
@@ -60,7 +63,6 @@ const mapDispatch = (dispatch) => {
   return {
     getUser: () => dispatch(getUser()),
     getEvents: () => dispatch(getEvents()),
-
   };
 };
 

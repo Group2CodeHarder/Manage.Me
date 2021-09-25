@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { logout } from '../store/auth';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout } from "../store/auth";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
@@ -11,15 +11,17 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
-
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
 
           <Link to="/checkout">Payment(Test)</Link>
-          <button className= 'google Signin'>
-            <a href='/auth/google/logout' onClick= {handleClick}>Logout</a>
+          <Link to="/calendar">Calendar(Test)</Link>
+          <button className="google Signin">
+            <a href="/auth/google/logout" onClick={handleClick}>
+              Logout
+            </a>
           </button>
         </div>
       )}
@@ -39,8 +41,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-     handleClick() {
-       dispatch(logout());
+    handleClick() {
+      dispatch(logout());
     },
   };
 };
