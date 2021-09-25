@@ -1,30 +1,33 @@
 import axios from "axios";
 import history from "../history";
 
-/**
- * ACTION TYPES
- */
+// ACTION TYPES
+
 const SET_AUTH = "SET_AUTH";
 
-/**
- * ACTION CREATORS
- */
+// ACTION CREATORS
+
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
-/**
- * THUNK CREATORS
- */
-// export const me = () => async dispatch => {
-//   const token = window.localStorage.getItem(TOKEN)
-//   if (token) {
-//     const res = await axios.get('/auth/me', {
-//       headers: {
-//         authorization: token
-//       }
-//     })
-//     return dispatch(setAuth(res.data))
-//   }
-// }
+
+// THUNK CREATORS
+
+export const getUser = () => async dispatch => {
+  if (document.cookie) {
+    const id_token = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('session-token='))
+      .split('=')[1];
+    if (id_token) {
+      const res = await axios.get('/auth/google/user', {
+        headers: {
+          authorization: id_token
+        }
+      })
+      return dispatch(setAuth(res.data))
+    };
+  };
+}
 
 // export const checkAuthenticated = () => {
 //   try {
@@ -36,20 +39,20 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
 //   }
 // };
 
-// export const logout = () => {
-//   try {
-//     await axios.get('/auth/google/logout');
-//     dispatch(setAuth())
-//   } 
-//   catch (err) {
-//     console.log(err);
-//   }
-// };
+
+export const logout = () => dispatch => {
+  try {
+    axios.get('/auth/google/logout');
+    dispatch(setAuth({}))
+  } 
+  catch (err) {
+    console.log(err);
+  }
+};
 
 
-/**
- * REDUCER
- */
+// REDUCER
+
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
