@@ -9,10 +9,14 @@ export const Home = props => {
 
   return (
     <div>
+      <div>
       <h3>Welcome, {username}</h3>
       <button className= 'google Signin'>
         <a href='/auth/google/logout'>Logout</a>
-      </button>
+      </button></div>
+      <div><button className= 'trello Signin'>
+        <a href='/trello/login'>Login to Trello</a>
+      </button></div>
     </div>
   )
 }
