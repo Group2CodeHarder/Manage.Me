@@ -5,6 +5,10 @@ import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
+import Finance from "./components/Finance";
+import Projects from "./components/Projects";
+import Profile from "./components/Profile";
+
 
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
@@ -24,24 +28,23 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            {/* <Route path="/calendar" component={CalendarComponent} exact /> */}
+            <Route path= '/home' component={Home} />
             <Route
-              exact
-              path="/calendar"
-              isAuth={true}
+              path= '/calendar'
               render={() => (
                 <CalendarComponent calEvents={this.props.events.items} />
               )}
             />
-            <Route exact path="/checkout" component={Checkout} />
-            <Redirect to="/home" />
+            <Route path= '/profile' component={Profile} />
+            <Route path= '/projects' component={Projects} />
+            <Route path= '/finance' component={Finance} />
+            <Route exact path= '/checkout' component={Checkout} />
+            <Redirect to= '/home' />
           </Switch>
         ) : (
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
-
             <Redirect to="/" />
           </Switch>
         )}
