@@ -1,21 +1,37 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  padding: 1em;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: lightpink;
 }
 
-a {
-  text-decoration: none;
-}
-
-label {
-  display: block;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: honeydew;
+  border-bottom: 1px solid darkblue;
 }
 
 nav a {
   display: inline-block;
   margin: 1em;
+  text-decoration: none;
+  color: darkblue;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+nav a:hover {
+  color: lightpink;
 }
+
+#site-title {
+  font-family: 'Montserrat', sans-serif;
+  margin: 1rem;
+  padding: 0.5rem;
+  color: darkblue;
+}
+
+
