@@ -8,7 +8,8 @@ import startOfWeek from "date-fns/startOfWeek";
 //import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
-import { addEvents } from "../store/calendar";
+import { addEvents, deleteEvents } from "../store/calendar";
+import { CalEvents } from "./CalEvents";
 
 //sets local time zone for calendar to use
 const locales = {
@@ -63,9 +64,11 @@ function CalendarComponent(props) {
 
   const test = props.calEvents.map((ev) => formatEvent(ev));
   console.log("this is test", test);
-
+  const runCal = (ev) => {
+    return <CalEvents event={ev} />;
+  };
   return (
-    <div className= 'content-wrapper'>
+    <div className="content-wrapper">
       <h1>Calendar</h1>
       <h2> Add New Event </h2>
       <div>
@@ -99,6 +102,10 @@ function CalendarComponent(props) {
         events={test}
         startAccessor="start"
         endAccessor="end"
+        onSelectEvent={(ev) => {
+          props.deleteEvents(ev);
+        }}
+        views={["day", "agenda", "work_week", "month"]}
         style={{ height: 500, margin: "50px" }}
       />
     </div>
@@ -114,8 +121,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     addEvents: (event) => dispatch(addEvents(event)),
+    deleteEvents: (event) => dispatch(deleteEvents(event)),
   };
 };
 
-const CalendarComponentWithRouter = withRouter(CalendarComponent);
-export default connect(mapState, mapDispatch)(CalendarComponentWithRouter);
+export default connect(mapState, mapDispatch)(CalendarComponent);

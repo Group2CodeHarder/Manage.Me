@@ -9,7 +9,6 @@ import Finance from "./components/Finance";
 import Projects from "./components/Projects";
 import Profile from "./components/Profile";
 
-
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
 
@@ -28,18 +27,18 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path= '/home' component={Home} />
+            <Route path="/home" component={Home} />
             <Route
-              path= '/calendar'
+              path="/calendar"
               render={() => (
                 <CalendarComponent calEvents={this.props.events.items} />
               )}
             />
-            <Route path= '/profile' component={Profile} />
-            <Route path= '/projects' component={Projects} />
-            <Route path= '/finance' component={Finance} />
-            <Route exact path= '/checkout' component={Checkout} />
-            <Redirect to= '/home' />
+            <Route path="/profile" component={Profile} />
+            <Route path="/projects" component={Projects} />
+            <Route path="/finance" component={Finance} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>

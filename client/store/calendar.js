@@ -57,6 +57,12 @@ export const addEvents = (event) => {
   };
 };
 
+export const deleteEvents = (event) => {
+  return async (dispatch) => {
+    console.log("delete will work", event);
+  };
+};
+
 //Reducer
 
 export const calendarReducer = (state = {}, action) => {
