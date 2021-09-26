@@ -40,20 +40,22 @@ export const addEvents = (event) => {
       location: "325 Lafayette, Brooklyn, NY 11205",
       description: "",
       start: {
-        dateTime: event.startTime,
+        dateTime: event.start,
         timeZone: "America/New_York",
       },
       end: {
-        dateTime: event.endTime,
+        dateTime: event.end,
         timeZone: "America/New_York",
       },
       colorId: 1,
     };
 
-    console.log(event);
-    // const res = await axios.get("/api/calendar");
-    // const events = res.data;
-    // dispatch(_addEvents(events));
+    console.log("this is calendar store event", event);
+    console.log("this is calendar store add", add);
+    const post = await axios.post("/api/calendar", add);
+    const res = await axios.get("/api/calendar");
+    const events = res.data;
+    dispatch(_addEvents(events));
   };
 };
 

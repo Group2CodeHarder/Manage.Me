@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
@@ -8,7 +8,7 @@ import startOfWeek from "date-fns/startOfWeek";
 //import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
-import { addEvents } from "../store/calendar";
+import { addEvents, getEvents } from "../store/calendar";
 
 //sets local time zone for calendar to use
 const locales = {
@@ -44,6 +44,12 @@ const events = [
 function CalendarComponent(props) {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState(events);
+  useEffect(() => {
+    async function pleaseWork() {
+      await getEvents();
+    }
+    pleaseWork();
+  }, []);
   console.log("this is from calendar", props);
 
   const handleAddEvent = () => {
@@ -51,6 +57,14 @@ function CalendarComponent(props) {
     props.addEvents(newEvent);
   };
 
+  const evSelect = (ev) => {
+    console.log(ev);
+  };
+  const handleEventClick = () => {
+    const { event } = this.props;
+    this.props.onSelect(event);
+    console.log("event clicked!");
+  };
   const formatEvent = (ev) => {
     const res = {
       title: ev.summary,
@@ -99,6 +113,7 @@ function CalendarComponent(props) {
         events={test}
         startAccessor="start"
         endAccessor="end"
+        onSelectSlot={evSelect}
         style={{ height: 500, margin: "50px" }}
       />
     </div>
@@ -114,6 +129,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     addEvents: (event) => dispatch(addEvents(event)),
+    getEvents: () => dispatch(getEvents()),
   };
 };
 
