@@ -12,11 +12,6 @@ export const Home = props => {
         <Link to="/calendar">Calendar</Link>
 
       </div>
-      <div>
-        <button className= 'trello Signin'>
-          <a href='/trello/login'>Login to Trello</a>
-        </button>
-      </div>
     </div>
   )
 }

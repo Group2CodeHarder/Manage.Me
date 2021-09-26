@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import TaskBoard from './TaskBoard'
 
 export const Projects = props => {
 
@@ -9,6 +10,7 @@ export const Projects = props => {
         <h3>Projects</h3>
       
         <p>Let's get creative.</p>
+        <TaskBoard />
 
       </div>
 

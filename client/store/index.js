@@ -4,8 +4,9 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import { calendarReducer } from "./calendar";
+import { listsReducer } from "./tasks";
 
-const reducer = combineReducers({ auth, events: calendarReducer });
+const reducer = combineReducers({ auth, events: calendarReducer, lists: listsReducer });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
