@@ -6,6 +6,9 @@ const User = require("./models/User");
 const Message = require("./models/Message");
 const Chat = require("./models/Chat");
 const Project = require("./models/Project");
+const Board = require("./models/Board");
+const List = require("./models/List");
+const Card = require("./models/Card");
 
 //associations could go here!
 
@@ -30,6 +33,11 @@ Project.belongsTo(User, { as: "FreelancerId" });
 Project.belongsTo(User, { as: "ClientId" });
 User.hasMany(Project);
 
+Board.belongsTo(Project, { as: "projectId" });
+Board.hasMany(List);
+List.belongsTo(Board);
+List.hasMany(Card);
+Card.belongsTo(List);
 
 module.exports = {
   db,
@@ -38,5 +46,8 @@ module.exports = {
     Message,
     Chat,
     Project,
+    Board,
+    List, 
+    Card
   },
 };
