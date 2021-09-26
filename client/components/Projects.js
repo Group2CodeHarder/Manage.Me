@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 export const Projects = props => {
 
   return (
-    <div>
+    <div className= 'content-wrapper'>
       <div>
         <h3>Projects</h3>
       
