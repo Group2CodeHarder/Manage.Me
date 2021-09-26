@@ -5,11 +5,14 @@ import { connect } from "react-redux";
 
 const Login = (props) => {
   return (
-    <div>
-      <div> 
-          <button className='google Signin' /*</div>onClick= { authenticate }*/ >
-            <a href='/auth/google/'>Log in with Google</a>
-          </button>
+    <div className='content-wrapper'>
+      <div id= 'login-container'> 
+            <h3>Please sign in to access Manage.me</h3>
+            <div>
+            <a href='/auth/google/'>
+              <img src= '/google_signin.png' id='google-signin'/>
+            </a>
+            </div>
 
       </div>
     </div>

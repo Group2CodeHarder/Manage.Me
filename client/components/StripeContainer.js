@@ -10,8 +10,10 @@ const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
 export default function StripeContainer() {
   return (
-    <Elements stripe={stripeTestPromise}>
-      <PaymentForm />
-    </Elements>
+    <div className = 'content-wrapper'>
+      <Elements stripe={stripeTestPromise}>
+        <PaymentForm />
+      </Elements>
+    </div>
   );
 }

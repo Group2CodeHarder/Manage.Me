@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { logout } from "../store/auth";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Manage.me</h1>
+  <div id= 'header'>
+    <div>
+      <h1 id='site-title'>Manage.me</h1>
+    </div> 
     <nav>
       {isLoggedIn ? (
         <div>
@@ -23,7 +25,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>{/* The navbar will show these links before you log in */}</div>
       )}
     </nav>
-    <hr />
   </div>
 );
 

@@ -1,37 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 body {
   font-family: 'Open Sans', sans-serif;
   padding: 1em;
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-color: lightpink;
+  background-color: honeydew;
 }
 
+.content-wrapper {
+  padding-top: 10px;
+}  
+
+h1 {
+  font-size: 4em;
+  line-height: 1;
+}
+h1,
+h2,
+h3,
+p,
+a {
+  padding: 0;
+  margin: 0;
+}
+p,
+a,
+span {
+  line-height: 1.5;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+svg {
+  color: #b7926a;
+}
+span,
+label {
+  font-size: 0.85em;
+}
+input,
+select {
+  padding: 1em 2em;
+  border-radius: 10px;
+  border: 1px solid #e4e4e4;
+}
+.disabled {
+  color: #999;
+  text-decoration: line-through;
+}
+.clickable {
+  cursor: pointer;
+}
+button {
+  border: 0;
+  background: 0;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: normal;
+  box-shadow: 0;
+}
+button:hover {
+  background-color: #fff;
+  color:#222;
+  box-shadow: 0 0 0 1px darkblue;
+}
+
+/* .hyperlink {
+  text-decoration: underline;
+} */
+/* .cta {
+  background-color: #222;
+  color: #fff;
+  padding: 1em 2em;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+} */
+
+/* .ctadisabled {
+  background-color: #ddd;
+  color: #fff;
+  padding: 1em 2em;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  cursor: default;
+}
+.brandblock {
+  width:80px;
+  height: 5px;
+  margin: 20px 5px;
+  background-color:#b7926a;
+}
+.hrtxt {
+  margin: -1.2em auto;
+  padding: 0 2em 2em 2em;
+  background-color:#fff;
+  display: block;
+  width: fit-content;
+} */
+
+a {
+  text-decoration: none;
+  color: darkblue;
+  cursor: pointer;
+}
+
+a:hover {
+  color: lightpink;
+}
+
+#header {
+  background-color: lightskyblue;
+  border-bottom: 1px solid darkblue;
+}
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  background-color: honeydew;
-  border-bottom: 1px solid darkblue;
+  margin-top: 0rem;
+  padding-top: 0rem;
 }
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   text-decoration: none;
-  color: darkblue;
+  color: honeydew;
 }
 
 nav a:hover {
-  color: lightpink;
+  color: darkblue;
 }
 
 #site-title {
   font-family: 'Montserrat', sans-serif;
-  margin: 1rem;
   padding: 0.5rem;
-  color: darkblue;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: lightskyblue;
 }
 
+#login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border: 1px solid darkblue;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 3rem;
+  height: 8rem;
+}
+
+#google-signin:hover {
+  box-shadow: 0 0 0 1px darkblue;
+}
 

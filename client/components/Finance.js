@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 export const Finance = props => {
 
   return (
-    <div>
+    <div className= 'content-wrapper'>
       <div>
         <h3>Finance Dashboard</h3>
       

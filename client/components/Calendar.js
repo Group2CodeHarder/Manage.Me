@@ -65,7 +65,7 @@ function CalendarComponent(props) {
   console.log("this is test", test);
 
   return (
-    <div>
+    <div className= 'content-wrapper'>
       <h1>Calendar</h1>
       <h2> Add New Event </h2>
       <div>
