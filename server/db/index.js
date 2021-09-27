@@ -29,9 +29,8 @@ User.belongsToMany(Chat, {
   foreignKey: "chat_id",
 });
 
-Project.belongsTo(User, { as: "FreelancerId" });
-Project.belongsTo(User, { as: "ClientId" });
-User.hasMany(Project);
+// Project.belongsTo(User);
+// User.hasMany(Project);
 
 Board.belongsTo(Project, { as: "projectId" });
 Board.hasMany(List);
