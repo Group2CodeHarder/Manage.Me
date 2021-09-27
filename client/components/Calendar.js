@@ -8,7 +8,7 @@ import startOfWeek from "date-fns/startOfWeek";
 //import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
-import { addEvents } from "../store/calendar";
+import { addEvents, deleteEvents } from "../store/calendar";
 
 //sets local time zone for calendar to use
 const locales = {
@@ -56,6 +56,7 @@ function CalendarComponent(props) {
       title: ev.summary,
       start: ev.start.dateTime.slice(0, 10),
       end: ev.end.dateTime.slice(0, 10),
+      id: ev.id,
     };
 
     return res;
@@ -65,17 +66,11 @@ function CalendarComponent(props) {
   console.log("this is test", test);
 
   return (
-    <div className= 'content-wrapper'>
-      <h3>Calendar</h3>
-      
-      <Calendar
-        localizer={localizer}
-        events={test}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500, margin: "50px" }}
-      />
-      <h4> Add New Event </h4>
+
+    <div className="content-wrapper">
+      <h1>Calendar</h1>
+      <h2> Add New Event </h2>
+
       <div>
         <input
           type="text"
@@ -102,6 +97,18 @@ function CalendarComponent(props) {
           Add Event
         </button>
       </div>
+
+      <Calendar
+        localizer={localizer}
+        events={test}
+        startAccessor="start"
+        endAccessor="end"
+        onSelectEvent={(ev) => {
+          props.deleteEvents(ev);
+        }}
+        style={{ height: 500, margin: "50px" }}
+      />
+
     </div>
   );
 }
@@ -115,6 +122,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     addEvents: (event) => dispatch(addEvents(event)),
+    deleteEvents: (event) => dispatch(deleteEvents(event)),
   };
 };
 
