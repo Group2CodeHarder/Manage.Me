@@ -1,14 +1,16 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const axios = require("axios");
-const { DataTypes: { STRING, UUID, UUIDV4, ENUM, TEXT } } = Sequelize;
+const {
+  DataTypes: { STRING, UUID, UUIDV4, ENUM, TEXT },
+} = Sequelize;
 
 const User = db.define("user", {
-  id: {
-    type: UUID,
-    defaultValue: UUIDV4,
-    primaryKey: true,
-  },
+  // id: {
+  // type: UUID,
+  // defaultValue: UUIDV4,
+  //   primaryKey: true,
+  // },
   googleId: {
     type: STRING,
     // allowNull: false,
@@ -38,7 +40,7 @@ const User = db.define("user", {
     },
   },
   googleImage: {
-    type: STRING
+    type: STRING,
   },
   phoneNumber: {
     type: STRING,
@@ -65,8 +67,6 @@ module.exports = User;
 /**
  * instanceMethods
  */
-
-
 
 /**
  * classMethods
@@ -99,6 +99,5 @@ module.exports = User;
 /**
  * hooks
  */
-
 
 // User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));
