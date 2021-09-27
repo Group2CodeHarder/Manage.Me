@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 1em;
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-color: honeydew;
+  background-color: white;
 }
 
 .content-wrapper {
-  padding-top: 10px;
+  padding: 10px;
 }  
 
 h1 {
@@ -21,6 +21,7 @@ h1 {
 h1,
 h2,
 h3,
+h4,
 p,
 a {
   padding: 0;
@@ -65,7 +66,7 @@ button {
 }
 button:hover {
   background-color: #fff;
-  color:#222;
+  color: #222;
   box-shadow: 0 0 0 1px darkblue;
 }
 
@@ -133,7 +134,7 @@ nav a {
   margin-left: 2rem;
   margin-right: 2rem;
   text-decoration: none;
-  color: honeydew;
+  color: white;
 }
 
 nav a:hover {
@@ -141,7 +142,7 @@ nav a:hover {
 }
 
 #site-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding: 0.5rem;
   margin-bottom: 1rem;
   color: white;
@@ -158,10 +159,11 @@ nav a:hover {
   border-radius: 15px;
   padding: 1rem;
   margin: 3rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
   height: 8rem;
 }
 
 #google-signin:hover {
   box-shadow: 0 0 0 1px darkblue;
 }
-

@@ -66,9 +66,11 @@ function CalendarComponent(props) {
   console.log("this is test", test);
 
   return (
+
     <div className="content-wrapper">
       <h1>Calendar</h1>
       <h2> Add New Event </h2>
+
       <div>
         <input
           type="text"
@@ -95,6 +97,7 @@ function CalendarComponent(props) {
           Add Event
         </button>
       </div>
+
       <Calendar
         localizer={localizer}
         events={test}
@@ -105,6 +108,7 @@ function CalendarComponent(props) {
         }}
         style={{ height: 500, margin: "50px" }}
       />
+
     </div>
   );
 }

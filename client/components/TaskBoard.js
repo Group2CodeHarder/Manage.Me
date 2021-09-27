@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import TaskList from "./TaskList";
+import TaskActionButton from "./TaskActionButton";
 
 class TaskBoard extends React.Component {
   render() {
-      const allLists = this.props.lists;
+    const { lists } = this.props;
+
     return (
       <div>
         <div
@@ -15,9 +17,15 @@ class TaskBoard extends React.Component {
             padding: "8px",
           }}
         >
-          {allLists.map((list) => (
-            <TaskList title="List" cards="{props.tasks.cards}" />
+          {lists.map((list) => (
+            <TaskList
+              listID={list.id}
+              key={list.id}
+              title={list.title}
+              cards={list.cards}
+            />
           ))}
+          <TaskActionButton list />
         </div>
       </div>
     );
@@ -25,8 +33,7 @@ class TaskBoard extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    lists: state.lists || [],
-
+  lists: state.lists || [],
 });
 
 export default connect(mapStateToProps)(TaskBoard);
