@@ -51,11 +51,11 @@ const User = db.define("user", {
   },
   jobTitle: {
     type: Sequelize.STRING,
-    defaultValue: "NA",
+    defaultValue: "N/A",
   },
   company: {
     type: Sequelize.STRING,
-    defaultValue: "NA",
+    defaultValue: "N/A",
   },
   id_token: {
     type: TEXT,
