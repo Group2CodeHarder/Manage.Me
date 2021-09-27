@@ -1,16 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import TaskBoard from './TaskBoard'
+import ProjectListItem from './ProjectListItem';
 
-export const Projects = props => {
-
+export const Projects = (props) => {
+  const { projects } = props;
   return (
     <div className= 'content-wrapper'>
+      <h3>Projects</h3>
       <div>
-        <h3>Projects</h3>
+      <p>{projects[0].name}</p>
+      <ProjectListItem />
       
-        <p>Let's get creative.</p>
-        <TaskBoard />
+      
+        
 
       </div>
 
@@ -21,8 +23,9 @@ export const Projects = props => {
 
 const mapState = state => {
   return {
-    state
+    projects: state.projects,
   }
 }
+
 
 export default connect(mapState)(Projects);
