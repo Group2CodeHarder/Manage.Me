@@ -5,7 +5,7 @@ import TaskActionButton from "./TaskActionButton";
 
 class TaskBoard extends React.Component {
   render() {
-      const { lists } = this.props;
+    const { lists } = this.props;
 
     return (
       <div>
@@ -17,7 +17,14 @@ class TaskBoard extends React.Component {
             padding: "8px",
           }}
         >
-            { lists.map(list => <TaskList listID={list.id} key={list.id} title={list.title} cards={list.cards} />)}
+          {lists.map((list) => (
+            <TaskList
+              listID={list.id}
+              key={list.id}
+              title={list.title}
+              cards={list.cards}
+            />
+          ))}
           <TaskActionButton list />
         </div>
       </div>
@@ -25,9 +32,8 @@ class TaskBoard extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-    lists: state.lists || [],
-
+const mapStateToProps = (state) => ({
+  lists: state.lists || [],
 });
 
 export default connect(mapStateToProps)(TaskBoard);
