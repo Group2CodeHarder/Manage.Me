@@ -2,14 +2,12 @@
 
 const {
   db,
-  models: { User, Project, Message, Chat },
+  models: { Project, Message, Chat },
 } = require("../server/db");
 
-const seedUser = require("./seed-user-data.json");
 const seedProject = require("./seed-project-data.json");
 const seedMessage = require("./seed-message-data.json");
 const seedChat = require("./seed-chat-data.json");
-
 
 /**
  * seed - this function clears the database, updates tables to
@@ -19,27 +17,23 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
 
-  // Creating Users
-  const users = await Promise.all(seedUser.map((user) => User.create(user)));
-
   //Creating Projects
   const projects = await Promise.all(
     seedProject.map((project) => Project.create(project))
   );
 
   // Creating Messages
-  const messages = await Promise.all(seedMessage.map((msg) => Message.create(msg)));
+  const messages = await Promise.all(
+    seedMessage.map((msg) => Message.create(msg))
+  );
 
   // Creating Chats
   const chats = await Promise.all(seedChat.map((chat) => Chat.create(chat)));
 
-
-  console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
   return {
-    users,
     chats,
-    messages
+    messages,
   };
 }
 

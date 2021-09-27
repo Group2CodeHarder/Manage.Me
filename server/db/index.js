@@ -47,7 +47,7 @@ module.exports = {
     Chat,
     Project,
     Board,
-    List, 
-    Card
+    List,
+    Card,
   },
 };
