@@ -3,7 +3,7 @@ import axios from "axios";
 //Action Types
 
 const ADD_EVENTS = "ADD_EVENTS";
-const DELETE_EVENT = "DELETE_EVENT";
+const DELETE_EVENTS = "DELETE_EVENTS";
 const GET_EVENTS = "GET_EVENTS";
 const UPDATE_EVENT = "UPDATE_EVENT";
 
@@ -19,6 +19,13 @@ const _getEvents = (events) => {
 const _addEvents = (events) => {
   return {
     type: ADD_EVENTS,
+    events,
+  };
+};
+
+const _deleteEvents = (events) => {
+  return {
+    type: DELETE_EVENTS,
     events,
   };
 };
@@ -40,31 +47,42 @@ export const addEvents = (event) => {
       location: "325 Lafayette, Brooklyn, NY 11205",
       description: "",
       start: {
-        dateTime: event.startTime,
+        dateTime: event.start,
         timeZone: "America/New_York",
       },
       end: {
-        dateTime: event.endTime,
+        dateTime: event.end,
         timeZone: "America/New_York",
       },
       colorId: 1,
     };
 
+    console.log("this is calendar store event", event);
+    console.log("this is calendar store add", add);
+    const post = await axios.post("/api/calendar", add);
+    const res = await axios.get("/api/calendar");
+    const events = res.data;
+    dispatch(_getEvents(events));
+  };
+};
+
+export const deleteEvents = (event) => {
+  return async (dispatch) => {
     console.log(event);
-    // const res = await axios.get("/api/calendar");
-    // const events = res.data;
-    // dispatch(_addEvents(events));
+    const del = await axios.delete(`/api/calendar/${event.id}`, event);
+    const res = await axios.get("/api/calendar");
+    const events = res.data;
+    dispatch(_getEvents(events));
   };
 };
 
 //Reducer
 
-export const calendarReducer = (state = {}, action) => {
+export const calendarReducer = (state = [], action) => {
   switch (action.type) {
     case GET_EVENTS:
       return action.events;
-    case ADD_EVENTS:
-      return action.events;
+
     default:
       return state;
   }
