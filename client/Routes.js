@@ -39,7 +39,7 @@ class Routes extends Component {
             <Route path= '/projects' component={Projects} />
             <Route path= '/finance' component={Finance} />
             <Route exact path= '/checkout' component={Checkout} />
-            <Redirect to= '/home' />
+            {/* <Redirect to= '/home' /> */}
           </Switch>
         ) : (
           <Switch>
