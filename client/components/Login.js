@@ -7,7 +7,7 @@ const Login = (props) => {
   return (
     <div className='content-wrapper'>
       <div id= 'login-container'> 
-            <h3>Please sign in to access Manage.me</h3>
+            <h4>Use Google to access Manage.me</h4>
             <div>
             <a href='/auth/google/'>
               <img src= '/google_signin.png' id='google-signin'/>

@@ -1,28 +1,25 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import TaskBoard from './TaskBoard'
+import React from "react";
+import { connect } from "react-redux";
+import ProjectListItem from "./ProjectListItem";
 
-export const Projects = props => {
-
+export const Projects = (props) => {
+  const { projects } = props;
   return (
-    <div className= 'content-wrapper'>
+    <div className="content-wrapper">
+      <h3>Projects</h3>
       <div>
-        <h3>Projects</h3>
-      
-        <p>Let's get creative.</p>
-        <TaskBoard />
-
+        <p>{projects[0].name}</p>
+        <p>{projects[1].name}</p>
+        <ProjectListItem />
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-
-const mapState = state => {
+const mapState = (state) => {
   return {
-    state
-  }
-}
+    projects: state.projects,
+  };
+};
 
 export default connect(mapState)(Projects);
