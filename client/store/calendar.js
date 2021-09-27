@@ -70,9 +70,9 @@ export const deleteEvents = (event) => {
   return async (dispatch) => {
     console.log(event);
     const del = await axios.delete(`/api/calendar/${event.id}`, event);
-    const res = await axios.get("/api/calendar");
-    const events = res.data;
-    dispatch(_getEvents(events));
+    //const res = await axios.get("/api/calendar");
+    //const events = res.data;
+    dispatch(_deleteEvents(event));
   };
 };
 
@@ -82,6 +82,8 @@ export const calendarReducer = (state = [], action) => {
   switch (action.type) {
     case GET_EVENTS:
       return action.events;
+    case DELETE_EVENTS:
+      return state.filter((ev) => ev.id !== action.events.id);
 
     default:
       return state;

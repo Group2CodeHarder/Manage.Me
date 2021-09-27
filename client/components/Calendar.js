@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
@@ -8,7 +8,7 @@ import startOfWeek from "date-fns/startOfWeek";
 //import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
-import { addEvents, deleteEvents } from "../store/calendar";
+import { addEvents, deleteEvents, getEvents } from "../store/calendar";
 
 //sets local time zone for calendar to use
 const locales = {
@@ -44,7 +44,16 @@ const events = [
 function CalendarComponent(props) {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState(events);
-  console.log("this is from calendar", props);
+  const [state, setState] = useState(props.calEvents);
+
+  useEffect(() => {
+    async function pleaseWork() {
+      await props.getEvents();
+    }
+    pleaseWork();
+  }, []);
+
+  console.log("this is the state", state);
 
   const handleAddEvent = () => {
     setAllEvents([...allEvents, newEvent]);
@@ -63,10 +72,11 @@ function CalendarComponent(props) {
   };
 
   const test = props.calEvents.map((ev) => formatEvent(ev));
+  setState(test);
   console.log("this is test", test);
+  console.log("this state", state);
 
   return (
-
     <div className="content-wrapper">
       <h1>Calendar</h1>
       <h2> Add New Event </h2>
@@ -100,7 +110,7 @@ function CalendarComponent(props) {
 
       <Calendar
         localizer={localizer}
-        events={test}
+        events={state}
         startAccessor="start"
         endAccessor="end"
         onSelectEvent={(ev) => {
@@ -108,7 +118,6 @@ function CalendarComponent(props) {
         }}
         style={{ height: 500, margin: "50px" }}
       />
-
     </div>
   );
 }
@@ -121,6 +130,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    getEvents: () => dispatch(getEvents()),
     addEvents: (event) => dispatch(addEvents(event)),
     deleteEvents: (event) => dispatch(deleteEvents(event)),
   };
