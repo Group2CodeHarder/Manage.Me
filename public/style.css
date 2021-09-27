@@ -7,12 +7,12 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-color: honeydew;
+  background-color: white;
 }
 
 .content-wrapper {
-  padding-top: 10px;
-}
+  padding: 10px;
+}  
 
 h1 {
   font-size: 4em;
@@ -21,6 +21,7 @@ h1 {
 h1,
 h2,
 h3,
+h4,
 p,
 a {
   padding: 0;
@@ -133,7 +134,7 @@ nav a {
   margin-left: 2rem;
   margin-right: 2rem;
   text-decoration: none;
-  color: honeydew;
+  color: white;
 }
 
 nav a:hover {
@@ -158,6 +159,8 @@ nav a:hover {
   border-radius: 15px;
   padding: 1rem;
   margin: 3rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
   height: 8rem;
 }
 

@@ -9,14 +9,16 @@ import Finance from "./components/Finance";
 import Projects from "./components/Projects";
 import Profile from "./components/Profile";
 
+import { getProjects } from './store/projects';
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
 
 class Routes extends Component {
   async componentDidMount() {
-    await this.props.getUser();
+   await this.props.getUser();
     if (this.props.auth.id) {
       this.props.getEvents();
+      this.props.getProjects(this.props.auth.id);
     }
   }
 
@@ -37,12 +39,13 @@ class Routes extends Component {
             <Route path="/profile" component={Profile} />
             <Route path="/projects" component={Projects} />
             <Route path="/finance" component={Finance} />
+              
             {/* Stripe routes below, work in progress */}
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/order" component={Order} />
             <Route exact path="/success" component={Success} />
             <Route exact path="/cancel" component={Cancel} />
-            {/* <Redirect to="/home" /> */}
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
@@ -68,6 +71,7 @@ const mapDispatch = (dispatch) => {
   return {
     getUser: () => dispatch(getUser()),
     getEvents: () => dispatch(getEvents()),
+    getProjects: (userId) => dispatch(getProjects(userId))
   };
 };
 
