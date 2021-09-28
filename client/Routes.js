@@ -7,6 +7,8 @@ import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
 import Finance from "./components/Finance";
 import Projects from "./components/Projects";
+import ProjectSingle from './components/ProjectSingle';
+import ProjectSingleClient from './components/ProjectSingleClient';
 import Profile from "./components/Profile";
 
 
@@ -26,18 +28,16 @@ class Routes extends Component {
 
   async componentDidUpdate(prevProps) {
     if (prevProps.auth.id !== this.props.auth.id) {
-
-    await this.props.getUser();
-    if (this.props.auth.id) {
-
-      this.props.getEvents();
-      this.props.getProjects(this.props.auth.id);
+      await this.props.getUser();
+      if (this.props.auth.id) {
+        this.props.getEvents();
+        this.props.getProjects(this.props.auth.id);
+      }
     }
   }
+
   render() {
     const { isLoggedIn } = this.props;
-    console.log(this.props.events);
-
     return (
       <div>
         {isLoggedIn ? (
@@ -50,7 +50,9 @@ class Routes extends Component {
               )}
             />
             <Route path="/profile" component={Profile} />
-            <Route path="/projects" component={Projects} />
+            <Route exact path="/projects" component={Projects} />
+            <Route path="/projects/:id" component={ProjectSingle} />
+            <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Route path="/finance" component={Finance} />
 
 
@@ -66,6 +68,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
+            <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Redirect to="/" />
           </Switch>
         )}

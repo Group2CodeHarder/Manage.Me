@@ -58,16 +58,18 @@ select {
 }
 button {
   border: 0;
-  background: 0;
+  background-color: steelblue;
+  color: white;
+  padding: 0.5rem;
   font-size: 1em;
   cursor: pointer;
   font-weight: normal;
-  box-shadow: 0;
+  box-shadow: 0 0 0 1px #0e2438;
 }
 button:hover {
-  background-color: #fff;
-  color: #222;
-  box-shadow: 0 0 0 1px darkblue;
+  background-color: #e7cbb0;
+  color: #0e2438;
+  box-shadow: 0 0 0 1px #0e2438;
 }
 
 /* .hyperlink {
@@ -106,17 +108,17 @@ button:hover {
 
 a {
   text-decoration: none;
-  color: darkblue;
+  color: #0e2438;
   cursor: pointer;
 }
 
 a:hover {
-  color: lightpink;
+  color: steelblue;
 }
 
 #header {
-  background-color: lightskyblue;
-  border-bottom: 1px solid darkblue;
+  background-color: #0e2438;
+  border-bottom: 1px solid steelblue;
 }
 nav {
   display: flex;
@@ -138,7 +140,7 @@ nav a {
 }
 
 nav a:hover {
-  color: darkblue;
+  color: #e7cbb0;
 }
 
 #site-title {
@@ -146,7 +148,7 @@ nav a:hover {
   padding: 0.5rem;
   margin-bottom: 1rem;
   color: white;
-  background-color: lightskyblue;
+  background-color: #0e2438;
 }
 
 #login-container {
@@ -155,7 +157,7 @@ nav a:hover {
   justify-content: space-around;
   align-items: center;
   background-color: white;
-  border: 1px solid darkblue;
+  border: 1px solid #0e2438;
   border-radius: 15px;
   padding: 1rem;
   margin: 3rem;
@@ -165,5 +167,26 @@ nav a:hover {
 }
 
 #google-signin:hover {
-  box-shadow: 0 0 0 1px darkblue;
+  box-shadow: 0 0 0 1px #0e2438;
+}
+
+#project-list-titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 0rem;
+  margin: 0.5rem;
+  margin-bottom: 0rem;
+}
+
+#project-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #0e2438;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 0.5rem;
 }
