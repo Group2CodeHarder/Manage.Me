@@ -1,8 +1,7 @@
-const { INTEGER, TEXT } = require("sequelize");
 const Sequelize = require("sequelize");
 const db = require("../db");
 const {
-  DataTypes: { STRING, UUID, UUIDV4, ENUM, DECIMAL },
+  DataTypes: { INTEGER, TEXT, STRING, UUID, UUIDV4, ENUM, DECIMAL, NUMBER },
 } = Sequelize;
 
 const Project = db.define("project", {
@@ -103,11 +102,11 @@ const Project = db.define("project", {
     },
   },
   revenue: {
-    type: DECIMAL(10, 2),
+    type: DECIMAL,
     defaultValue: 0,
   },
   expense: {
-    type: DECIMAL(10, 2),
+    type: DECIMAL,
     defaultValue: 0,
   },
 });

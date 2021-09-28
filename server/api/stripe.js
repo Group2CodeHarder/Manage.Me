@@ -53,3 +53,21 @@ router.post("/payment", cors(), async (req, res) => {
     });
   }
 });
+
+router.post("/create-checkout-session", async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        // TODO: replace this with the `price` of the product you want to sell
+        price: "price_1JeVYQGAp8Evh66uBy8kETFs",
+        quantity: 1,
+      },
+    ],
+    payment_method_types: ["card"],
+    mode: "payment",
+    success_url: `${YOUR_DOMAIN}?success=true`,
+    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+  });
+
+  res.redirect(303, session.url);
+});
