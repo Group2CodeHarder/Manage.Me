@@ -4,7 +4,7 @@ const {
   DataTypes: { TEXT, UUID, UUIDV4, INTEGER },
 } = Sequelize;
 
-const Card = db.define("Card", {
+const Card = db.define("card", {
   id: {
     type: UUID,
     defaultValue: UUIDV4,
