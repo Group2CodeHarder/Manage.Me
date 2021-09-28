@@ -17,9 +17,9 @@ const List = db.define("List", {
       notEmpty: true,
     },
   },
-  boardId: {
-    type: INTEGER,
-  },
+  // boardId: {
+  //   type: INTEGER,
+  // },
 });
 
 module.exports = List;

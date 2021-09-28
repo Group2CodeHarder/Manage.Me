@@ -17,9 +17,9 @@ const Card = db.define("Card", {
       notEmpty: true,
     },
   },
-  listId: {
-    type: INTEGER,
-  },
+  // listId: {
+  //   type: INTEGER,
+  // },
 });
 
 module.exports = Card;

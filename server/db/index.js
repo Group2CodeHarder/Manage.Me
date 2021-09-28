@@ -32,11 +32,11 @@ User.belongsToMany(Chat, {
 // Project.belongsTo(User);
 // User.hasMany(Project);
 
-Board.belongsTo(Project, { as: "projectId" });
+Project.hasOne(Board);
 Board.hasMany(List);
-List.belongsTo(Board, { as: "listId" });
+List.belongsTo(Board);
 List.hasMany(Card);
-Card.belongsTo(List, { as: "cardId" });
+Card.belongsTo(List);
 
 module.exports = {
   db,
