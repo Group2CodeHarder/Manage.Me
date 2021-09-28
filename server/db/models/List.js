@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const {
-  DataTypes: { STRING, UUID, UUIDV4 },
+  DataTypes: { STRING, UUID, UUIDV4, INTEGER },
 } = Sequelize;
 
 const List = db.define("List", {
@@ -16,7 +16,10 @@ const List = db.define("List", {
     validate: {
       notEmpty: true,
     },
-  }
+  },
+  boardId: {
+    type: INTEGER,
+  },
 });
 
 module.exports = List;
