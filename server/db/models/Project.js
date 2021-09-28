@@ -110,6 +110,20 @@ const Project = db.define("project", {
     type: DECIMAL(10, 2),
     defaultValue: 0,
   },
+  clientName: {
+    type: STRING,
+    allowNull: false,
+  },
+  clientPhone: {
+    type: STRING,
+  },
+  clientEmail: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+    }
+  }
 });
 
 module.exports = Project;

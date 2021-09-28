@@ -1,27 +1,22 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
 
-export const ProjectListItem = props => {
-
+const ProjectListItem = props => {
+  const { project } = props;
+ 
+  const deadline = `${project.deadlineMonth} ${project.deadlineDate}, ${project.deadlineYear}`;  
+  
   return (
-      <div>
-        
-      
-      
-      
-        
-
-      </div>
-
-
+      <Link to= {`/projects/${project.id}`}>
+      <div id= 'project-list-item'>
+        <h4>{project.name}</h4>
+        <p>{deadline}</p>
+        <p>{project.status}</p>
+        <p>{project.clientName}</p>
+        </div>
+      </Link>
   )
 }
 
 
-const mapState = state => {
-  return {
-    state
-  }
-}
-
-export default connect(mapState)(ProjectListItem);
+export default ProjectListItem;

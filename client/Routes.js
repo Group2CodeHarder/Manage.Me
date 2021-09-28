@@ -7,6 +7,8 @@ import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
 import Finance from "./components/Finance";
 import Projects from "./components/Projects";
+import ProjectSingle from './components/ProjectSingle';
+import ProjectSingleClient from './components/ProjectSingleClient';
 import Profile from "./components/Profile";
 
 import { getProjects } from "./store/projects";
@@ -31,10 +33,9 @@ class Routes extends Component {
       }
     }
   }
+
   render() {
     const { isLoggedIn } = this.props;
-    console.log(this.props.events);
-
     return (
       <div>
         {isLoggedIn ? (
@@ -45,7 +46,9 @@ class Routes extends Component {
               render={() => <BigCal calEvents={this.props.events.items} />}
             />
             <Route path="/profile" component={Profile} />
-            <Route path="/projects" component={Projects} />
+            <Route exact path="/projects" component={Projects} />
+            <Route path="/projects/:id" component={ProjectSingle} />
+            <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Route path="/finance" component={Finance} />
 
             {/* Stripe routes below, work in progress */}
@@ -60,6 +63,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
+            <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Redirect to="/" />
           </Switch>
         )}
