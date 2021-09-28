@@ -4,7 +4,7 @@ const {
   DataTypes: { STRING, UUID, UUIDV4, INTEGER },
 } = Sequelize;
 
-const List = db.define("List", {
+const List = db.define("list", {
   id: {
     type: UUID,
     defaultValue: UUIDV4,
