@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const {
-  DataTypes: { TEXT, UUID, UUIDV4 },
+  DataTypes: { TEXT, UUID, UUIDV4, INTEGER },
 } = Sequelize;
 
 const Card = db.define("Card", {
@@ -16,7 +16,10 @@ const Card = db.define("Card", {
     validate: {
       notEmpty: true,
     },
-  }
+  },
+  listId: {
+    type: INTEGER,
+  },
 });
 
 module.exports = Card;

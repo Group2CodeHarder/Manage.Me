@@ -34,9 +34,9 @@ User.belongsToMany(Chat, {
 
 Board.belongsTo(Project, { as: "projectId" });
 Board.hasMany(List);
-List.belongsTo(Board);
+List.belongsTo(Board, { as: "listId" });
 List.hasMany(Card);
-Card.belongsTo(List);
+Card.belongsTo(List, { as: "cardId" });
 
 module.exports = {
   db,
