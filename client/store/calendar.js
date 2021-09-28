@@ -56,23 +56,31 @@ export const addEvents = (event) => {
       },
       colorId: 1,
     };
-
-    console.log("this is calendar store event", event);
-    console.log("this is calendar store add", add);
-    const post = await axios.post("/api/calendar", add);
-    const res = await axios.get("/api/calendar");
-    const events = res.data;
-    dispatch(_getEvents(events));
+    try {
+      console.log("this is calendar store event", event);
+      console.log("this is calendar store add", add);
+      await axios.post("/api/calendar", add);
+      const res = await axios.get("/api/calendar");
+      const events = res.data;
+      console.log("console logging events", events);
+      dispatch(_getEvents(events));
+    } catch (err) {
+      console.error(err);
+    }
   };
 };
 
 export const deleteEvents = (event) => {
   return async (dispatch) => {
-    console.log(event);
-    const del = await axios.delete(`/api/calendar/${event.id}`, event);
-    //const res = await axios.get("/api/calendar");
-    //const events = res.data;
-    dispatch(_deleteEvents(event));
+    try {
+      console.log(event);
+      await axios.delete(`/api/calendar/${event.id}`, event);
+      const res = await axios.get("/api/calendar");
+      const events = res.data;
+      dispatch(_getEvents(events));
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 

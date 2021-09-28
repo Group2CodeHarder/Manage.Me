@@ -3,10 +3,10 @@ const { oauth2Client, scopes, google } = require("../auth/googleClient");
 
 const calendar = google.calendar("v3");
 
-router.post("/", (req, res) => {
+router.post("/", async (req, resp) => {
   try {
     const event = req.body;
-    calendar.freebusy.query(
+    await calendar.freebusy.query(
       {
         resource: {
           timeMin: event.start.dateTime,
@@ -15,12 +15,12 @@ router.post("/", (req, res) => {
           items: [{ id: "primary" }],
         },
       },
-      (err, res) => {
+      async (err, res) => {
         if (err) return console.error("free busy error", err);
         const eventsArr = res.data.calendars.primary.busy;
         //code to create a calendar event
         if (eventsArr.length === 0)
-          return calendar.events.insert(
+          await calendar.events.insert(
             {
               calendarId: "primary",
               resource: event,
@@ -28,13 +28,13 @@ router.post("/", (req, res) => {
             (err) => {
               if (err)
                 return console.error("calendar event creation error", err);
-              return console.log("calendar event created");
+              resp.sendStatus(201);
             }
           );
+
         console.log("sorry i`m busy");
       }
     );
-    res.status(201);
   } catch (err) {
     console.log(err);
   }
@@ -55,12 +55,17 @@ router.put("/", (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   console.log("event api", req.body);
-  const resp = await calendar.events.delete({
-    calendarId: "primary",
-    // Event identifier.
-    eventId: req.params.id,
-  });
-  console.log(res.data);
+  try {
+    const resp = await calendar.events.delete({
+      calendarId: "primary",
+      // Event identifier.
+      eventId: req.params.id,
+    });
+    res.sendStatus(201);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(400);
+  }
 });
 
 module.exports = router;
