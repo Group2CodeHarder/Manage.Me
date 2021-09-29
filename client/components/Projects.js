@@ -1,14 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProjectListItem from "./ProjectListItem";
+import { Link, useHistory } from 'react-router-dom';
 
-export const Projects = (props) => {
+
+const Projects = (props) => {
   const { projects } = props;
-  
+  const history = useHistory();
+  const handleClick = () => history.push('/projects/create');
   return (
     <div className="content-wrapper">
       <h3>Projects</h3>
-      <button> Create New Project</button>
+      <div id= 'project-create-button'>
+        <button onClick= {handleClick}> Create New Project</button>
+      </div>
       <div id= 'project-list-titles'>
         <h4>Project Name</h4>
         <h4>Deadline</h4>
