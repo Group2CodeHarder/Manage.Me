@@ -10,9 +10,9 @@ const Project = db.define("project", {
     defaultValue: UUIDV4,
     primaryKey: true,
   },
-  userId: {
-    type: INTEGER,
-  },
+  // userId: {
+  //   type: INTEGER,
+  // },
   name: {
     type: STRING,
     allowNull: false,
@@ -55,7 +55,7 @@ const Project = db.define("project", {
       "Jun",
       "Jul",
       "Aug",
-      "Sept",
+      "Sep",
       "Oct",
       "Nov",
       "Dec"
@@ -87,7 +87,7 @@ const Project = db.define("project", {
       "Jun",
       "Jul",
       "Aug",
-      "Sept",
+      "Sep",
       "Oct",
       "Nov",
       "Dec"
