@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import TaskBoard from "./TaskBoard";
+
 const ProjectSingle = (props) => {
 
 
@@ -10,7 +12,7 @@ const ProjectSingle = (props) => {
       <h3>This is a single project!</h3>
       <div>
       <div>
-
+      <TaskBoard />
       </div>
 
         

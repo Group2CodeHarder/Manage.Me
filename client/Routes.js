@@ -10,6 +10,7 @@ import Projects from "./components/Projects";
 import ProjectSingle from './components/ProjectSingle';
 import ProjectSingleClient from './components/ProjectSingleClient';
 import Profile from "./components/Profile";
+import TaskBoard from "./components/TaskBoard";
 
 import { getProjects } from "./store/projects";
 
@@ -48,6 +49,7 @@ class Routes extends Component {
             <Route path="/profile" component={Profile} />
             <Route exact path="/projects" component={Projects} />
             <Route path="/projects/:id" component={ProjectSingle} />
+            <Route exact path="/boards" component={TaskBoard} />
             <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Route path="/finance" component={Finance} />
 

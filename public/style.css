@@ -190,3 +190,13 @@ nav a:hover {
   padding: 1rem;
   margin: 0.5rem;
 }
+
+.tasklist-cont {
+  color: white;
+  background-color: #0e2438; 
+  border-radius: 5px; 
+  width: 300px; 
+  padding: 8px;
+  margin-right: 8px;
+  font-family: "Open Sans", "sans-serif";
+}
