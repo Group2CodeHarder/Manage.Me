@@ -24,10 +24,11 @@ export const getProjects = (userId) => {
     };
 };
 
-export const createProject = (project) => {
+export const createProject = (project, history) => {
     return async (dispatch) => {
         const { data: created } = await axios.post('/api/projects', project);
         dispatch(_createProject(created));
+        history.push('/projects');
     };
 };
 
@@ -52,9 +53,11 @@ export const updateProject = (project) => {
 
 export default function (state = {}, action) {
     switch (action.type) {
-      case GET_PROJECTS:
-        return action.projects;
-      default:
-        return state;
+        case GET_PROJECTS:
+            return action.projects;
+        case CREATE_PROJECT:
+            return [...state, action.project]
+        default:
+            return state;
     }
   }

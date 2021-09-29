@@ -7,8 +7,9 @@ import CalendarComponent from "./components/Calendar";
 import Home from "./components/Home";
 import Finance from "./components/Finance";
 import Projects from "./components/Projects";
-import ProjectSingle from "./components/ProjectSingle";
-import ProjectSingleClient from "./components/ProjectSingleClient";
+import ProjectSingle from './components/ProjectSingle';
+import ProjectCreate from './components/ProjectCreate';
+import ProjectSingleClient from './components/ProjectSingleClient';
 import Profile from "./components/Profile";
 import Stripe from "./components/StripeCheckout";
 
@@ -19,10 +20,8 @@ import { getUser } from "./store/auth";
 import BigCal from "./components/BigCal";
 
 class Routes extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getUser();
-    if (this.props.auth) {
-    }
   }
 
   async componentDidUpdate(prevProps) {
@@ -48,6 +47,7 @@ class Routes extends Component {
             />
             <Route path="/profile" component={Profile} />
             <Route exact path="/projects" component={Projects} />
+            <Route path="/projects/create" component={ProjectCreate} />
             <Route path="/projects/:id" component={ProjectSingle} />
             <Route
               path="/projects/:id/client"
