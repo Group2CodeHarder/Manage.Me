@@ -8,9 +8,11 @@ import Home from "./components/Home";
 import Finance from "./components/Finance";
 import Projects from "./components/Projects";
 import ProjectSingle from './components/ProjectSingle';
+import ProjectCreate from './components/ProjectCreate';
 import ProjectSingleClient from './components/ProjectSingleClient';
 import Profile from "./components/Profile";
 import TaskBoard from "./components/TaskBoard";
+import Stripe from "./components/StripeCheckout";
 
 import { getProjects } from "./store/projects";
 
@@ -19,10 +21,8 @@ import { getUser } from "./store/auth";
 import BigCal from "./components/BigCal";
 
 class Routes extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getUser();
-    if (this.props.auth) {
-    }
   }
 
   async componentDidUpdate(prevProps) {
@@ -48,24 +48,26 @@ class Routes extends Component {
             />
             <Route path="/profile" component={Profile} />
             <Route exact path="/projects" component={Projects} />
+            <Route path="/projects/create" component={ProjectCreate} />
             <Route path="/projects/:id" component={ProjectSingle} />
             <Route exact path="/boards" component={TaskBoard} />
             <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Route path="/finance" component={Finance} />
 
             {/* Stripe routes below, work in progress */}
-            <Route exact path="/checkout" component={Checkout} />
-            {/* <Route exact path="/order" component={Order} />
-            <Route exact path="/success" component={Success} />
-            <Route exact path="/cancel" component={Cancel} /> */}
-
+            {/* <Route exact path="/checkout" component={Checkout} /> */}
+            <Route exact path="/checkout" component={Stripe} />
             <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
-            <Route path="/projects/:id/client" component={ProjectSingleClient} />
+            <Route
+              path="/projects/:id/client"
+              component={ProjectSingleClient}
+            />
+            <Route exact path="/checkout" component={Stripe} />
             <Redirect to="/" />
           </Switch>
         )}
