@@ -13,7 +13,7 @@ console.log (project);
       <h3>{project.name}</h3>
       <div>
       <div>
-      <TaskBoard />
+      <TaskBoard project={ project }/>
       </div>
 
         

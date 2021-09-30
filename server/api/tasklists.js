@@ -4,9 +4,10 @@ const { models: { Board, List, Card } } = require("../db");
 //GET all boards
 router.get("/", async (req, res, next) => {
     try {
-        res.send(await Board.findAll({
-            // where: { projectId: req.query.projectId }
-        }));
+        const board = await Board.findAll({
+            where: { projectId: req.query.projectId }
+        });
+        res.send(board.data);
     }
     catch (err) {
         next(err);
@@ -16,9 +17,10 @@ router.get("/", async (req, res, next) => {
 //GET board by id
 router.get("/:id", async(req, res, next) => {
     try {
-        res.send(await Board.findByPk({
-            where: { boardId: req.query.boardId }
-        }));
+        const board = await Board.findOne({
+            where: { projectId: req.params.id }
+        });
+        res.send(board);
     }
     catch (err) {
         next(err)
@@ -28,9 +30,10 @@ router.get("/:id", async(req, res, next) => {
 //GET lists by boardId
 router.get("/:id/lists", async(req, res, next) => {
     try {
-        res.send(await List.findAll({
-            where: { boardId: req.query.boardId }
-        }));
+        const lists = await List.findAll({
+            where: { boardId: req.params.id }
+        });
+        res.send(lists);
     }
     catch (err) {
         next(err)
@@ -38,18 +41,24 @@ router.get("/:id/lists", async(req, res, next) => {
 })
 
 //POST list by boardId
-router.post("/:id", async (req, res, next) => {
+router.post("/lists", async (req, res, next) => {
     try {
-        res.send(await List.create({
-            where: { listId: req.body.list.id } 
-        }));
+        const board = await Board.findOne({
+            where: { projectId: req.body.projectId }
+        })
+        const newList = {
+            title: req.body.title,
+            boardId: board.id
+        };
+        const list = await List.create(newList);
+        res.send(list);
     }
     catch(err) {
         next(err);
     };
 });
 
-//POST card by listId
+// POST card by listId
 // router.post(`/:id/lists/${list.id}`, async (req, res, next) => {
 //     try {
 //         res.send(await Card.create({

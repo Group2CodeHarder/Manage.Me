@@ -29,19 +29,18 @@ export const getLists = (boardId, lists) => {
   };
 };
 
-// export const addCard = (listID, content) => {
-//   return {
-//     type: ADD_CARD,
-//     content, 
-//     list: listID
-//   };
-// };
+export const addCard = (listID, content) => {
+  return {
+    type: ADD_CARD,
+    content, 
+    list: listID
+  };
+};
 
-export const addList = (boardId, title) => {
+export const addList = (list) => {
   return {
     type: ADD_LIST,
-    title,
-    board: boardId
+    list
   };
 };
 
@@ -49,24 +48,31 @@ export const addList = (boardId, title) => {
 
 export const allBoards = (projectId) => {
   return async (dispatch) => {
-      const { data: boards } = await axios.get("/api/boards", { params: { projectId} });
+      const { data: boards } = await axios.get(`/api/boards/${project.id}`);
       dispatch(getBoards(boards));
   };
 };
 
 export const allLists = (boardId) => {
   return async (dispatch) => {
-      const { data: lists } = await axios.get(`/api/projects/${project.id}`, { params: { boardId} });
+      const { data: lists } = await axios.get('/api/boards/lists', { params: { boardId} });
       dispatch(getLists(lists));
   };
 };
 
-export const newList = (title) => {
+export const newList = (list) => {
   return async (dispatch) => {
-      const { data: created } = await axios.post(`/api/projects/:id/${boardId}`, title);
+      const { data: created } = await axios.post('/api/boards/lists', list);
       dispatch(addList(created));
   };
 };
+
+// export const newCard = (content) => {
+//   return async (dispatch) => {
+//       const { data: created } = await axios.post(`/api/boards/${project.id}/lists/${list.id}`, content);
+//       dispatch(newCard(created));
+//   };
+// };
 
 //Reducer
 
@@ -85,13 +91,7 @@ export const listsReducer = (state = initialState, action) => {
       case GET_LISTS:
       return action.lists;
     case ADD_LIST:
-      const newList = {
-        title: action.title,
-        cards: [],
-        id: listID
-      }
-      listID += 1;
-      return [...state, newList];
+      return [...state, action.list];
     // case ADD_CARD:
     //   const newCard = {
     //     id: cardID,
