@@ -18,8 +18,7 @@ const handleEdit = () => history.push(`/projects/edit/${project.id}`);
       </div>
 
       <div>
-
-      <TaskBoard />
+      <TaskBoard project={ project }/>
       </div>
 
         

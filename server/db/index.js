@@ -33,6 +33,7 @@ Project.belongsTo(User);
 User.hasMany(Project);
 
 Project.hasOne(Board);
+Board.belongsTo(Project);
 Board.hasMany(List);
 List.belongsTo(Board);
 List.hasMany(Card);

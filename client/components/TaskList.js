@@ -16,9 +16,10 @@ export const TaskList = ({ title, cards, listID }) => {
         <div>
         <div className="tasklist-cont" > 
             <h3>{title}</h3>
-                { cards.map(card => (
+                { cards.length ?
+                (cards.map(card => (
                 <TaskCard cardID={card.id} key={card.id} content={card.content} />
-                ))}
+                ))) : <div></div> }
             <div>
                 <TaskActionButton listID={listID} />
             </div>
@@ -30,7 +31,8 @@ export const TaskList = ({ title, cards, listID }) => {
 
 const mapState = (state) => {
     return {
-        lists: state.lists || {}
+        lists: state.lists || {},
+        cards: state.cards || []
     };
 };
 
