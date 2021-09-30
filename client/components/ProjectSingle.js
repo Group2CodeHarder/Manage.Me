@@ -25,7 +25,7 @@ const handleEdit = () => history.push(`/projects/edit/${project.id}`);
         
         
       </div>
-    </div>
+
   );
 };
 
