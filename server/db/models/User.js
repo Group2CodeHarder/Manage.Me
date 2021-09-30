@@ -6,14 +6,8 @@ const {
 } = Sequelize;
 
 const User = db.define("user", {
-  // id: {
-  // type: UUID,
-  // defaultValue: UUIDV4,
-  //   primaryKey: true,
-  // },
   googleId: {
     type: STRING,
-    // allowNull: false,
   },
   username: {
     type: STRING,
@@ -59,6 +53,26 @@ const User = db.define("user", {
   },
   id_token: {
     type: TEXT,
+  },
+  bio: {
+    type: TEXT,
+    defaultValue: "Add some bio to your profile!",
+  },
+  twitter: {
+    type: STRING,
+    defaultValue: "https://twitter.com/",
+  },
+  instagram: {
+    type: STRING,
+    defaultValue: "https://www.instagram.com/",
+  },
+  gitHub: {
+    type: STRING,
+    defaultValue: "https://github.com/",
+  },
+  personalSite: {
+    type: STRING,
+    defaultValue: "",
   },
 });
 
