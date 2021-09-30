@@ -32,6 +32,34 @@ const LineChart = (props) => {
     }
   };
 
+  // const unearnedRev = () => {
+  //   let data = {
+  //     Jan: 0.0,
+  //     Feb: 0.0,
+  //     Mar: 0.0,
+  //     Apr: 0.0,
+  //     May: 0.0,
+  //     Jun: 0.0,
+  //     Jul: 0.0,
+  //     Aug: 0.0,
+  //     Sept: 0.0,
+  //     Oct: 0.0,
+  //     Nov: 0.0,
+  //     Dec: 0.0,
+  //   };
+  //   const today = new Date();
+  //   const currYear = today.getFullYear();
+
+  //   if (projects.length && projects.deadlineYear === currYear) {
+  //     let unEarned = projects.filter((proj) => proj.status === "Scheduled");
+  //     for (let i = 0; i < unEarned.length; i++) {
+  //       let month = unEarned[i].deadlineMonth;
+  //       data[month] += Number(unEarned[i].revenue);
+  //     }
+  //     return Object.values(data);
+  //   }
+  // };
+
   const cost = () => {
     let data = {
       Jan: 0.0,
@@ -124,6 +152,13 @@ const LineChart = (props) => {
         backgroundColor: "rgb(54, 162, 235)",
         borderColor: "rgba(54, 162, 235, 0.2)",
       },
+      // {
+      //   label: "Total Projected Revenue",
+      //   data: unearnedRev(),
+      //   fill: false,
+      //   backgroundColor: "rgb(31, 36, 48)",
+      //   borderColor: "rgba(31, 36, 48, 0.2)",
+      // },
     ],
   };
 

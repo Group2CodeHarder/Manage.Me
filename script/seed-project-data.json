@@ -9,11 +9,12 @@
     "deadlineDate": "31",
     "deadlineMonth": "Jan",
     "deadlineYear": "2021",
-    "revenue": "5000",
-    "expense": "3000",
+    "revenue": "1000.00",
+    "expense": "100",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 2",
@@ -25,11 +26,12 @@
     "deadlineDate": "20",
     "deadlineMonth": "Feb",
     "deadlineYear": "2021",
-    "revenue": "500",
+    "revenue": "1000.00",
     "expense": "50",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 3",
@@ -41,11 +43,12 @@
     "deadlineDate": "10",
     "deadlineMonth": "Mar",
     "deadlineYear": "2021",
-    "revenue": "300",
+    "revenue": "1000.00",
     "expense": "30",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 4",
@@ -57,11 +60,12 @@
     "deadlineDate": "20",
     "deadlineMonth": "Jan",
     "deadlineYear": "2021",
-    "revenue": "700",
+    "revenue": "1000.00",
     "expense": "150",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 5",
@@ -73,11 +77,12 @@
     "deadlineDate": "15",
     "deadlineMonth": "Feb",
     "deadlineYear": "2021",
-    "revenue": "300",
+    "revenue": "1000.00",
     "expense": "30",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 6",
@@ -89,11 +94,12 @@
     "deadlineDate": "19",
     "deadlineMonth": "Apr",
     "deadlineYear": "2021",
-    "revenue": "1000",
+    "revenue": "1000.00",
     "expense": "300",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 7",
@@ -105,11 +111,12 @@
     "deadlineDate": "17",
     "deadlineMonth": "May",
     "deadlineYear": "2021",
-    "revenue": "100",
+    "revenue": "1000.00",
     "expense": "25",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 8",
@@ -121,11 +128,12 @@
     "deadlineDate": "15",
     "deadlineMonth": "May",
     "deadlineYear": "2021",
-    "revenue": "75",
+    "revenue": "1000.00",
     "expense": "40",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 9",
@@ -137,11 +145,12 @@
     "deadlineDate": "15",
     "deadlineMonth": "Jun",
     "deadlineYear": "2021",
-    "revenue": "100",
+    "revenue": "1000.00",
     "expense": "75",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 10",
@@ -153,10 +162,11 @@
     "deadlineDate": "20",
     "deadlineMonth": "Jul",
     "deadlineYear": "2021",
-    "revenue": "80",
+    "revenue": "1000.00",
     "expense": "45",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   }
 ]

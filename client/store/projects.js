@@ -33,30 +33,37 @@ export const createProject = (project, history) => {
 };
 
 
-export const deleteProject = (project) => {
+export const deleteProject = (project, history) => {
     return async (dispatch) => {
         await axios.delete(`/api/projects/${project.id}`);
         dispatch(_deleteProject(project));
+        history.push('/projects');
     };
 };
 
 
-export const updateProject = (project) => {
+export const updateProject = (project, history) => {
     return async (dispatch) => {
         const { data: updated } = await axios.put(`/api/projects/${project.id}`, project);
         dispatch(_updateProject(updated));
+        history.push('/projects')
     };
 };
 
 
 // REDUCER
 
-export default function (state = {}, action) {
+export default function (state = [], action) {
     switch (action.type) {
         case GET_PROJECTS:
             return action.projects;
         case CREATE_PROJECT:
-            return [...state, action.project]
+            return [...state, action.project];
+        case DELETE_PROJECT:
+            return state.filter((project) => project.id !== action.project.id);
+        case UPDATE_PROJECT:
+            return state.map((project) => project.id === action.project.id ? 
+            action.project : project);
         default:
             return state;
     }

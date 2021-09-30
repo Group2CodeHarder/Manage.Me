@@ -10,9 +10,6 @@ const Project = db.define("project", {
     defaultValue: UUIDV4,
     primaryKey: true,
   },
-  // userId: {
-  //   type: INTEGER,
-  // },
   name: {
     type: STRING,
     allowNull: false,
@@ -102,8 +99,22 @@ const Project = db.define("project", {
     },
   },
   revenue: {
-    type: DECIMAL,
-    defaultValue: 0,
+    type: ENUM(
+      "50.00",
+      "100.00",
+      "250.00",
+      "500.00",
+      "750.00",
+      "1000.00",
+      "1250.00",
+      "1500.00",
+      "1750.00",
+      "2000.00"
+    ),
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
   },
   expense: {
     type: DECIMAL,
@@ -121,8 +132,8 @@ const Project = db.define("project", {
     allowNull: false,
     validate: {
       isEmail: true,
-    }
-  }
+    },
+  },
 });
 
 module.exports = Project;
