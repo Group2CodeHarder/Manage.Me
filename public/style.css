@@ -14,6 +14,11 @@ body {
   padding: 10px;
 }
 
+h1,
+h3 {
+  text-align: center;
+}
+
 h1 {
   font-size: 4em;
   line-height: 1;
@@ -36,9 +41,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
-svg {
-  color: #b7926a;
-}
+/* svg {
+  color: #b7926a; */
+/* } */
 span,
 label {
   font-size: 0.85em;
@@ -46,6 +51,7 @@ label {
 input,
 select {
   padding: 1em 2em;
+  margin: 0.5rem;
   border-radius: 10px;
   border: 1px solid #e4e4e4;
 }
@@ -65,11 +71,21 @@ button {
   cursor: pointer;
   font-weight: normal;
   box-shadow: 0 0 0 1px #0e2438;
+  border-radius: 10px;
 }
 button:hover {
   background-color: #e7cbb0;
   color: #0e2438;
   box-shadow: 0 0 0 1px #0e2438;
+}
+
+button:active {
+  background-color: #ff945e;
+}
+
+.cancel-button {
+  background-color: white;
+  color: #0e2438;
 }
 
 /* .hyperlink {
@@ -191,6 +207,52 @@ nav a:hover {
   margin: 0.5rem;
 }
 
+
 .widget-flex {
   display: flex;
+
+.tasklist-cont {
+  color: white;
+  background-color: #0e2438; 
+  border-radius: 5px; 
+  width: 300px; 
+  padding: 8px;
+  margin-right: 8px;
+  font-family: "Open Sans", "sans-serif";
+}
+
+#project-create-button {
+  display: flex;
+  justify-content: right;
+}
+
+#project-form {
+  display: flex;
+}
+
+#project-form-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 1rem;
+}
+
+#project-form-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.date-selectors {
+  display: flex;
+}
+.avatar {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 70px;
+  height: 190px;
+  width: 190px;
+  border-radius: 25;
+
 }

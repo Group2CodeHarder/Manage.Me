@@ -50,9 +50,10 @@
     "react-datepicker": "^4.2.1",
     "sequelize": "^6.6.5",
     "server-destroy": "^1.0.1",
+
     "stripe": "^8.178.0"
+
   },
-  "proxy": "http://localhost:8080",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-react": "^7.12.10",

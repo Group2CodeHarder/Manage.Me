@@ -10,9 +10,6 @@ const Project = db.define("project", {
     defaultValue: UUIDV4,
     primaryKey: true,
   },
-  userId: {
-    type: INTEGER,
-  },
   name: {
     type: STRING,
     allowNull: false,
@@ -55,7 +52,7 @@ const Project = db.define("project", {
       "Jun",
       "Jul",
       "Aug",
-      "Sept",
+      "Sep",
       "Oct",
       "Nov",
       "Dec"
@@ -87,7 +84,7 @@ const Project = db.define("project", {
       "Jun",
       "Jul",
       "Aug",
-      "Sept",
+      "Sep",
       "Oct",
       "Nov",
       "Dec"
@@ -121,8 +118,8 @@ const Project = db.define("project", {
     allowNull: false,
     validate: {
       isEmail: true,
-    }
-  }
+    },
+  },
 });
 
 module.exports = Project;

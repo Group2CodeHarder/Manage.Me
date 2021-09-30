@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addList, addCard } from "../store/tasks";
+import { newList, addCard } from "../store/tasks";
 
 class TaskActionButton extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class TaskActionButton extends React.Component {
     const { text } = this.state;
 
     if (text) {
-      dispatch(addList(text));
+      dispatch(newList(text));
     }
     return;
   };
@@ -40,7 +40,7 @@ class TaskActionButton extends React.Component {
     // const { dispatch, listID } = this.props;
     // const { text } = this.state;
     // if(text) {
-    //     dispatch(addCard(listID, text))
+        // dispatch(addCard(listID, text))
     // }
     // return;
   };
@@ -71,13 +71,7 @@ class TaskActionButton extends React.Component {
     return (
       <div>
         <div
-          style={{
-            backgroundColor: "white",
-            margin: ".5rem",
-            marginBottom: "8px",
-            padding: "1rem",
-            fontFamily: "Open Sans" | "sans-serif",
-          }}
+          style={actionStyles}
         >
           <textarea
             placeholder={placeholder}
@@ -85,28 +79,16 @@ class TaskActionButton extends React.Component {
             onBlur={this.closeForm}
             value={this.state.text}
             onChange={this.handleChange}
-            style={{
-              marginLeft: "0",
-              resize: "none",
-              outline: "none",
-              border: "none",
-              overflow: "hidden",
-              minHeight: "85",
-              minWidth: "272",
-            }}
+            style={txtAreaStyles}
           />
           <div>
             <button
               onMouseDown={list ? this.handleAddList : this.handleAddCard}
-              style={{ color: "white", backgroundColor: "#87CEFA" }}
             >
               {buttonTitle}
             </button>
             <button
               style={{
-                outline: "none",
-                border: "none",
-                backgroundColor: "inherit",
                 marginLeft: "15px",
               }}
             >
@@ -116,9 +98,6 @@ class TaskActionButton extends React.Component {
         </div>
       </div>
     );
-    //     <div style={{backgroundColor: "white", margin: ".5rem", marginBottom: "8px", padding: "1rem", fontFamily: "Open Sans" | "sans-serif"}}>
-    //        placeholder={placeholder};
-    //   </div>;
   };
 
   render() {
@@ -127,3 +106,20 @@ class TaskActionButton extends React.Component {
 }
 
 export default connect()(TaskActionButton);
+
+const txtAreaStyles = {
+    marginLeft: "0",
+    resize: "none",
+    outline: "none",
+    border: "none",
+    overflow: "hidden",
+    minHeight: "85",
+    minWidth: "272"
+};
+
+const actionStyles = {
+    backgroundColor: "white",
+    margin: ".5rem",
+    marginBottom: "8px",
+    padding: "1rem",
+  };
