@@ -231,3 +231,11 @@ nav a:hover {
 .date-selectors {
   display: flex;
 }
+.avatar {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 70px;
+  height: 190px;
+  width: 190px;
+  border-radius: 25;
+}
