@@ -102,8 +102,22 @@ const Project = db.define("project", {
     },
   },
   revenue: {
-    type: DECIMAL,
-    defaultValue: 0,
+    type: ENUM(
+      "50.00",
+      "100.00",
+      "250.00",
+      "500.00",
+      "750.00",
+      "1000.00",
+      "1250.00",
+      "1500.00",
+      "1750.00",
+      "2000.00"
+    ),
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
   },
   expense: {
     type: DECIMAL,
