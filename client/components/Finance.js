@@ -7,7 +7,6 @@ import Profit from "./Profit";
 
 export const Finance = (props) => {
   const { projects } = props;
-
   return (
     <div className="content-wrapper">
       <div>

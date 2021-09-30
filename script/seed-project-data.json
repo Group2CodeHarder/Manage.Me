@@ -13,7 +13,8 @@
     "expense": "3000",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 2",
@@ -29,7 +30,8 @@
     "expense": "50",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 3",
@@ -45,7 +47,8 @@
     "expense": "30",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 4",
@@ -61,7 +64,8 @@
     "expense": "150",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 5",
@@ -77,7 +81,8 @@
     "expense": "30",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 6",
@@ -93,7 +98,8 @@
     "expense": "300",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 7",
@@ -109,7 +115,8 @@
     "expense": "25",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 8",
@@ -125,7 +132,8 @@
     "expense": "40",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 9",
@@ -141,7 +149,8 @@
     "expense": "75",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   },
   {
     "name": "Project 10",
@@ -157,6 +166,7 @@
     "expense": "45",
     "clientName": "Jay Doe",
     "clientPhone": "888-888-8888",
-    "clientEmail": "client@gmail.com"
+    "clientEmail": "client@gmail.com",
+    "stripeCode": "start"
   }
 ]
