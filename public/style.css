@@ -13,10 +13,12 @@ body {
 .content-wrapper {
   padding: 10px;
 }
+
 h1,
 h3 {
   text-align: center;
 }
+
 h1 {
   font-size: 4em;
   line-height: 1;
@@ -205,6 +207,10 @@ nav a:hover {
   margin: 0.5rem;
 }
 
+
+.widget-flex {
+  display: flex;
+
 .tasklist-cont {
   color: white;
   background-color: #0e2438; 
@@ -248,4 +254,5 @@ nav a:hover {
   height: 190px;
   width: 190px;
   border-radius: 25;
+
 }

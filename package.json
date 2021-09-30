@@ -50,7 +50,9 @@
     "react-datepicker": "^4.2.1",
     "sequelize": "^6.6.5",
     "server-destroy": "^1.0.1",
-    "stripe": "^8.177.0"
+
+    "stripe": "^8.178.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
