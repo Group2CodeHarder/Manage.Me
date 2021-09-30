@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
@@ -9,6 +8,7 @@ import startOfWeek from "date-fns/startOfWeek";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
 import { addEvents, deleteEvents, getEvents } from "../store/calendar";
+import moment from "moment";
 
 //sets local time zone for calendar to use
 const locales = {
@@ -36,12 +36,6 @@ class BigCal extends Component {
     }
   }
 
-  //   componentDidUpdate(prevProps) {
-  //     if (prevProps !== this.props) {
-  //       this.props.getEvents();
-  //     }
-  //   }
-
   onChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
   }
@@ -55,8 +49,8 @@ class BigCal extends Component {
   formatEvent = (ev) => {
     const res = {
       title: ev.summary,
-      start: ev.start.dateTime.slice(0, 10),
-      end: ev.end.dateTime.slice(0, 10),
+      start: moment(ev.start.dateTime).toDate(),
+      end: moment(ev.end.dateTime).toDate(),
       id: ev.id,
     };
 
@@ -65,9 +59,15 @@ class BigCal extends Component {
 
   render() {
     const { events } = this.props;
-    const test = events.items.map((ev) => this.formatEvent(ev));
-    let copy = test;
-    console.log("big cal events", events);
+    const test = events.items.map((ev) => {
+      ev["start"] = ev["start"];
+      ev["end"] = ev["end"];
+      ev["id"] = ev["id"];
+      ev["title"] = ev["summary"];
+      return ev;
+    });
+
+    console.log("big cal events", test);
     return (
       <div className="content-wrapper">
         <h1>Calendar</h1>
@@ -93,6 +93,8 @@ class BigCal extends Component {
               console.log(this.state);
             }}
             name="start"
+            showTimeSelect
+            timeFormat="HH:mm"
           />
           <DatePicker
             placeholderText="End Date"
@@ -102,6 +104,8 @@ class BigCal extends Component {
               console.log(this.state);
             }}
             name="end"
+            showTimeSelect
+            timeFormat="HH:mm"
           />
           <button style={{ marginTop: "10px" }} onClick={this.handleAddEvent}>
             {" "}
