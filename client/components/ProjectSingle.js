@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import TaskBoard from "./TaskBoard";
+
 const ProjectSingle = (props) => {
 const { project } = props;
 console.log (project);
@@ -11,7 +13,7 @@ console.log (project);
       <h3>{project.name}</h3>
       <div>
       <div>
-
+      <TaskBoard />
       </div>
 
         

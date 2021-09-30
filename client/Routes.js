@@ -11,6 +11,7 @@ import ProjectSingle from './components/ProjectSingle';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectSingleClient from './components/ProjectSingleClient';
 import Profile from "./components/Profile";
+import TaskBoard from "./components/TaskBoard";
 import Stripe from "./components/StripeCheckout";
 
 import { getProjects } from "./store/projects";
@@ -49,10 +50,8 @@ class Routes extends Component {
             <Route exact path="/projects" component={Projects} />
             <Route path="/projects/create" component={ProjectCreate} />
             <Route path="/projects/:id" component={ProjectSingle} />
-            <Route
-              path="/projects/:id/client"
-              component={ProjectSingleClient}
-            />
+            <Route exact path="/boards" component={TaskBoard} />
+            <Route path="/projects/:id/client" component={ProjectSingleClient} />
             <Route path="/finance" component={Finance} />
 
             {/* Stripe routes below, work in progress */}
