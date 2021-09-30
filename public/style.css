@@ -88,6 +88,11 @@ button:active {
   color: #0e2438;
 }
 
+.delete-button {
+  background-color: darkred;
+  color: white;
+}
+
 /* .hyperlink {
   text-decoration: underline;
 } */
@@ -136,6 +141,7 @@ a:hover {
   background-color: #0e2438;
   border-bottom: 1px solid steelblue;
 }
+
 nav {
   display: flex;
   flex-direction: row;
@@ -207,9 +213,9 @@ nav a:hover {
   margin: 0.5rem;
 }
 
-
 .widget-flex {
   display: flex;
+}
 
 .tasklist-cont {
   color: white;
@@ -221,23 +227,23 @@ nav a:hover {
   font-family: "Open Sans", "sans-serif";
 }
 
-#project-create-button {
+.project-button {
   display: flex;
   justify-content: right;
 }
 
-#project-form {
+.project-form {
   display: flex;
 }
 
-#project-form-left {
+.project-form-left {
   display: flex;
   flex-direction: column;
   flex-grow: 2;
   padding: 1rem;
 }
 
-#project-form-right {
+.project-form-right {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -247,6 +253,15 @@ nav a:hover {
 .date-selectors {
   display: flex;
 }
+
+.project-container {
+  display: flex;
+}
+
+.project-tasks-container {
+  display: flex;
+}
+
 .avatar {
   display: flex;
   margin-top: 20px;
@@ -254,5 +269,5 @@ nav a:hover {
   height: 190px;
   width: 190px;
   border-radius: 25;
-
 }
+

@@ -11,7 +11,7 @@ const Projects = (props) => {
   return (
     <div className="content-wrapper">
       <h3>Projects</h3>
-      <div id= 'project-create-button'>
+      <div className= 'project-button'>
         <button onClick= {handleClick}> Create New Project</button>
       </div>
       <div id= 'project-list-titles'>

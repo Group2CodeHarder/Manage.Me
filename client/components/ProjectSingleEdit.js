@@ -1,43 +1,45 @@
-import React from "react";
-import { createProject } from "../store/projects";
-import { connect } from "react-redux";
+import React from 'react';
+import { updateProject } from '../store/projects';
+import { deleteProject } from '../store/projects';
+import { connect } from 'react-redux';
 
-class ProjectCreate extends React.Component {
+class ProjectEdit extends React.Component {
     constructor(props) {
-        const date = new Date;
         super(props);
+        const { project } = this.props;
         this.state = {
-            name: '',
-            description: '',
-            clientName: '',
-            clientEmail: '',
-            clientPhone: '',
-            revenue: 0,
-            expense: 0.00,
-            status: 'Scheduled',
-            deadlineDate: 0,
-            deadlineMonth: 0,
-            deadlineYear: 2021,
-            startDate: date.getDate(),
-            startMonth: date.toLocaleString('default', { month: 'short' }),
-            startYear: date.getFullYear(),
-            userId: this.props.userId
+            id: project.id,
+            name: project.name,
+            description: project.description,
+            clientName: project.clientName,
+            clientEmail: project.clientEmail,
+            clientPhone: project.clientPhone,
+            revenue: project.revenue,
+            expense: project.expense,
+            status: project.status,
+            deadlineDate: project.deadlineDate,
+            deadlineMonth: project.deadlineMonth,
+            deadlineYear: project.deadlineYear,
+            startDate: project.startDate,
+            startMonth: project.startMonth,
+            startYear: project.startYear,
+            userId: project.userId
         };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-  handleChange(evt) {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-    });
-  }
+    handleChange(evt) {
+        this.setState({
+            [evt.target.name]: evt.target.value
+        });
+    }
 
-  handleSubmit(evt) {
-    evt.preventDefault();
-    this.props.createProject({ ...this.state });
-  }
+    handleSubmit(evt) {
+        evt.preventDefault();
+        this.props.updateProject({...this.state}, this.props.history);
+    }
 
     render() {
         const { name, 
@@ -52,11 +54,11 @@ class ProjectCreate extends React.Component {
                 deadlineMonth, 
                 deadlineYear } = this.state;
         const { handleChange, handleSubmit } = this;
-        const { history } = this.props;
+        const { history, project } = this.props;
         const handleCancel = () => history.push('/projects');
         return (
             <div className ='content-wrapper'>
-                <h3>New Project</h3>
+                <h3>Edit {project.name} Project</h3>
                 <hr />
                 <form className= 'project-form' onSubmit= {handleSubmit}>
                     <div className='project-form-left'>
@@ -179,58 +181,26 @@ class ProjectCreate extends React.Component {
                         <label htmlFor='clientPhone'>Client Phone Number</label>
                         <input name= 'clientPhone' type='tel' onChange= {handleChange} value= {clientPhone} />
                         <br />
-                        <button type= 'submit'>Create</button>
+                        <button type= 'submit'>Save</button>
                         <button className='cancel-button' type='button' onClick={handleCancel}>Cancel</button>
+                        <br />
+                        <button className='delete-button' type='button' onClick={()=> this.props.deleteProject(project, history)}>Delete Project</button>
                     </div>
                 </form>
-
             </div>
-          </div>
-          <div id="project-form-right">
-            <label htmlFor="clientName">Client Name</label>
-            <input
-              name="clientName"
-              onChange={handleChange}
-              value={clientName}
-            />
-            <label htmlFor="clientEmail">Client Email</label>
-            <input
-              name="clientEmail"
-              type="email"
-              onChange={handleChange}
-              value={clientEmail}
-            />
-            <label htmlFor="clientPhone">Client Phone Number</label>
-            <input
-              name="clientPhone"
-              type="tel"
-              onChange={handleChange}
-              value={clientPhone}
-            />
-            <br />
-            <button type="submit">Create</button>
-            <button
-              className="cancel-button"
-              type="button"
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+        )
+    }
 }
-const mapState = (state) => {
-    return({
-        userId: state.auth.id,
-    })
-}
-
+const mapState = (state, {match}) => {
+    const project = state.projects.find(proj => proj.id === match.params.id) || {};
+    return {
+        project: project,
+  };
+};
 
 const mapDispatch = (dispatch, { history }) => ({
-  createProject: (project) => dispatch(createProject(project, history)),
+    updateProject: (project) => dispatch(updateProject(project, history)),
+    deleteProject: (project) => dispatch(deleteProject(project, history)),
 });
 
-export default connect(mapState, mapDispatch)(ProjectCreate);
+export default connect(mapState, mapDispatch)(ProjectEdit);
