@@ -1,6 +1,6 @@
-import React from 'react';
-import { createProject } from '../store/projects';
-import { connect } from 'react-redux';
+import React from "react";
+import { createProject } from "../store/projects";
+import { connect } from "react-redux";
 
 class ProjectCreate extends React.Component {
     constructor(props) {
@@ -24,20 +24,20 @@ class ProjectCreate extends React.Component {
             userId: this.props.userId
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleChange(evt) {
-        this.setState({
-            [evt.target.name]: evt.target.value
-        });
-    }
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value,
+    });
+  }
 
-    handleSubmit(evt) {
-        evt.preventDefault();
-        this.props.createProject({...this.state});
-    }
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.props.createProject({ ...this.state });
+  }
 
     render() {
         const { name, 
@@ -183,9 +183,44 @@ class ProjectCreate extends React.Component {
                         <button className='cancel-button' type='button' onClick={handleCancel}>Cancel</button>
                     </div>
                 </form>
+
             </div>
-        )
-    }
+          </div>
+          <div id="project-form-right">
+            <label htmlFor="clientName">Client Name</label>
+            <input
+              name="clientName"
+              onChange={handleChange}
+              value={clientName}
+            />
+            <label htmlFor="clientEmail">Client Email</label>
+            <input
+              name="clientEmail"
+              type="email"
+              onChange={handleChange}
+              value={clientEmail}
+            />
+            <label htmlFor="clientPhone">Client Phone Number</label>
+            <input
+              name="clientPhone"
+              type="tel"
+              onChange={handleChange}
+              value={clientPhone}
+            />
+            <br />
+            <button type="submit">Create</button>
+            <button
+              className="cancel-button"
+              type="button"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 const mapState = (state) => {
     return({
@@ -193,8 +228,9 @@ const mapState = (state) => {
     })
 }
 
+
 const mapDispatch = (dispatch, { history }) => ({
-     createProject: (project) => dispatch(createProject(project, history))
+  createProject: (project) => dispatch(createProject(project, history)),
 });
 
 export default connect(mapState, mapDispatch)(ProjectCreate);

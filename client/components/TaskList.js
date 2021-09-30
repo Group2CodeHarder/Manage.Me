@@ -2,12 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import TaskCard from "./TaskCard";
 import TaskActionButton from "./TaskActionButton";
+// import { newList } from "../store/tasks";
+
+// class TaskList extends React.Component {
+
+   
 
 export const TaskList = ({ title, cards, listID }) => {
-
+    // state = {
+    //     lists: {}
+    // };
     return (
         <div>
-        <div style={{backgroundColor: "#ccc", borderRadius: "5px", width: "300px", padding: "8px", marginRight: "8px", fontFamily: "Open Sans" | "sans-serif"}}>
+        <div className="tasklist-cont" > 
             <h3>{title}</h3>
                 { cards.map(card => (
                 <TaskCard cardID={card.id} key={card.id} content={card.content} />
@@ -18,6 +25,13 @@ export const TaskList = ({ title, cards, listID }) => {
         </div>
         </div>
     )
-}
+// }
+};
 
-export default connect()(TaskList);
+const mapState = (state) => {
+    return {
+        lists: state.lists || {}
+    };
+};
+
+export default connect(mapState)(TaskList);

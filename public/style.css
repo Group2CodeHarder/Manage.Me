@@ -13,10 +13,12 @@ body {
 .content-wrapper {
   padding: 10px;
 }
+
 h1,
 h3 {
   text-align: center;
 }
+
 h1 {
   font-size: 4em;
   line-height: 1;
@@ -139,6 +141,7 @@ a:hover {
   background-color: #0e2438;
   border-bottom: 1px solid steelblue;
 }
+
 nav {
   display: flex;
   flex-direction: row;
@@ -210,6 +213,20 @@ nav a:hover {
   margin: 0.5rem;
 }
 
+.widget-flex {
+  display: flex;
+}
+
+.tasklist-cont {
+  color: white;
+  background-color: #0e2438; 
+  border-radius: 5px; 
+  width: 300px; 
+  padding: 8px;
+  margin-right: 8px;
+  font-family: "Open Sans", "sans-serif";
+}
+
 .project-button {
   display: flex;
   justify-content: right;
@@ -244,3 +261,13 @@ nav a:hover {
 .project-tasks-container {
   display: flex;
 }
+
+.avatar {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 70px;
+  height: 190px;
+  width: 190px;
+  border-radius: 25;
+}
+
