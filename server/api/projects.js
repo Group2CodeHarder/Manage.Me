@@ -14,16 +14,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//We might not need this route
-//Get single project
-// router.get('/:id', async (req, res, next) => {
-//     try {
-//         res.send(await Project.findByPk(req.params.id))
-//     }
-//     catch(err) {
-//         next(err);
-//     }
-// });
+//Get single project by projectId
+router.get('/:id', async (req, res, next) => {
+    try {
+        res.send(await Project.findByPk(req.params.id))
+    }
+    catch(err) {
+        next(err);
+    };
+});
 
 //Create project
 router.post('/', async (req, res, next) => {

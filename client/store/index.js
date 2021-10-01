@@ -6,9 +6,18 @@ import auth from "./auth";
 import projects from "./projects";
 import { calendarReducer } from "./calendar";
 import { boardsReducer, listsReducer, cardsReducer } from "./tasks";
-import profile from "./profile";
+import user from './user';
+// import profile from "./profile";
 
-const reducer = combineReducers({ auth, events: calendarReducer, boards: boardsReducer, lists: listsReducer, cards: cardsReducer, projects });
+const reducer = combineReducers({ 
+  auth, 
+  events: calendarReducer, 
+  boards: boardsReducer, 
+  lists: listsReducer, 
+  cards: cardsReducer, 
+  projects,
+  user
+  });
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
@@ -16,4 +25,4 @@ const middleware = composeWithDevTools(
 const store = createStore(reducer, middleware);
 
 export default store;
-// export * from './auth'
+

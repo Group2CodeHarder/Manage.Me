@@ -14,18 +14,17 @@ const DELETE_CARD = "DELETE_CARD";
 
 //Action creators
 
-export const getBoards = (boards) => {
+export const getBoards = (board) => {
   return {
     type: GET_BOARDS,
-    boards
+    board
   };
 };
 
-export const getLists = (boardId, lists) => {
+export const getLists = (lists) => {
   return {
     type: GET_LISTS,
-    lists,
-    board: boardId
+    lists
   };
 };
 
@@ -43,11 +42,10 @@ export const delList = (list) => {
   };
 };
 
-export const getCards = (listId, cards) => {
+export const getCards = (cards) => {
   return {
     type: GET_CARDS,
-    cards,
-    list: listId
+    cards
   };
 };
 
@@ -70,8 +68,24 @@ export const delCard = (card) => {
 
 export const allBoards = (projectId) => {
   return async (dispatch) => {
-      const { data: boards } = await axios.get(`/api/boards/${projectId}`);
-      dispatch(getBoards(boards));
+      const { data: board } = await axios.get(`/api/boards/${projectId}`);
+      const boardId = board.id;
+      const { data: lists } = await axios.get(`/api/boards/lists/${boardId}`);
+      
+      let cards = [];
+
+      for (let i = 0; i <= lists.length; i++) {
+        let list = lists[0];
+        let listId = list.id;
+        console.log(listId)
+        // const listCards = await axios.get(`/api/boards/lists/cards/${list.id}`);
+        // cards.push(listCards)
+      }
+      // console.log(cards)
+      
+      dispatch(getBoards(board));
+      dispatch(getLists(lists));
+      // dispatch(getCards(cards));
   };
 };
 
@@ -132,7 +146,7 @@ export const deleteCard = (card, history) => {
 export const boardsReducer = (state = [], action) => {
   switch (action.type) {
     case GET_BOARDS:
-      return action.boards;
+      return action.board;
     default:
       return state;
   }
@@ -156,7 +170,7 @@ export const cardsReducer = (state = [], action) => {
     case GET_CARDS:
       return action.cards;  
     case ADD_CARD:
-      return [...state, action.card];
+      return [...state, action.cards];
     case DELETE_CARD:
       return state.filter((card) => card.id !== action.card.id);
     default:

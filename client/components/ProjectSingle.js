@@ -10,15 +10,9 @@ class ProjectSingle extends React.Component {
 
 
   componentDidMount() {
-    const { project, boards, lists } = this.props;
+    const { project } = this.props;
     if (project.id) {
       this.props.allBoards(project.id);
-    }
-    if (boards.id) {
-      this.props.allLists(boards.id);
-    }
-    if (lists.length){
-      lists.forEach(list => this.props.allCards(list.id));
     }
   }
 

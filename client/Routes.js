@@ -15,6 +15,7 @@ import Profile from "./components/Profile";
 import TaskBoard from "./components/TaskBoard";
 import Stripe from "./components/StripeCheckout";
 import EditProfileBio from "./components/EditProfileBio";
+import ProfileClientView from "./components/ProfileClientView";
 import { getProjects } from "./store/projects";
 import { getEvents } from "./store/calendar";
 import { getUser } from "./store/auth";
@@ -46,15 +47,13 @@ class Routes extends Component {
               path="/calendar"
               render={() => <BigCal calEvents={this.props.events.items} />}
             />
-            <Route path="/profile" component={Profile} />
+            <Route exact path="/profile" component={Profile} />
             <Route path="/editBio" component={EditProfileBio} />
+            {/* <Route path="/profile/:id" component={ProfileClientView} /> */}
             <Route exact path="/projects" component={Projects} />
             <Route path="/projects/create" component={ProjectCreate} />
             <Route path="/projects/edit/:id" component={ProjectSingleEdit} />
-            <Route
-              path="/projects/client/:id"
-              component={ProjectSingleClient}
-            />
+            {/* <Route path="/projects/client/:id" component={ProjectSingleClient} /> */}
             <Route path="/projects/:id" component={ProjectSingle} />
             <Route exact path="/boards" component={TaskBoard} />
             <Route path="/finance" component={Finance} />
@@ -68,10 +67,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
-            <Route
-              path="/projects/:id/client"
-              component={ProjectSingleClient}
-            />
+            <Route path="/profile/:id" component={ProfileClientView} />
+            <Route path="/projects/client/:id" component={ProjectSingleClient} />
             <Route exact path="/checkout" component={Stripe} />
             <Redirect to="/" />
           </Switch>
