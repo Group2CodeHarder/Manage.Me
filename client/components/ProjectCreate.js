@@ -40,6 +40,7 @@ class ProjectCreate extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         const { name, 
                 description, 
                 clientName, 
@@ -194,7 +195,7 @@ const mapState = (state) => {
 }
 
 const mapDispatch = (dispatch, { history }) => ({
-     createProject: (project) => dispatch(createProject(project, history))
+    createProject: (project) => dispatch(createProject(project, history))
 });
 
 export default connect(mapState, mapDispatch)(ProjectCreate);
