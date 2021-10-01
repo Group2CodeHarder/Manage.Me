@@ -27,6 +27,7 @@ class EditProfileBio extends Component {
       instagram: user.instagram,
       gitHub: user.gitHub,
       personalSite: user.personalSite,
+      financialGoal: user.financialGoal,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,6 +61,7 @@ class EditProfileBio extends Component {
       jobTitle,
       personalSite,
       twitter,
+      financialGoal,
     } = this.state;
     const { handleChange, handleSubmit } = this;
     const { history } = this.props;
@@ -75,6 +77,12 @@ class EditProfileBio extends Component {
             <input name="company" onChange={handleChange} value={company} />
             <label>Bio: </label>
             <input name="bio" onChange={handleChange} value={bio} />
+            <label>Financial Goal: </label>
+            <input
+              name="financialGoal"
+              onChange={handleChange}
+              value={financialGoal}
+            />
           </div>
 
           <div className="profileContactInfo">

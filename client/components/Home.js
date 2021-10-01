@@ -9,6 +9,8 @@ import startOfWeek from "date-fns/startOfWeek";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/getDay";
 import { getEvents } from "../store/calendar";
+import Welcome from "./Welcome";
+import FinanceGoal from "./FinanceGoal";
 import moment from "moment";
 
 let allViews = Object.keys(Views)
@@ -16,7 +18,6 @@ let allViews = Object.keys(Views)
   .filter((k) => k === "agenda");
 const view = { views: { month: false, week: false, day: false, agenda: true } };
 
-console.log("views", Views);
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
 };
@@ -48,42 +49,44 @@ class Home extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { username, events } = this.props;
 
-    console.log(events);
-    console.log("views", allViews);
     return (
       <div className="content-wrapper">
-        <div>
-          <h3>Welcome, {username}</h3>
-
-          <Link to="/calendar">Calendar</Link>
+        <div className="welcome-module">
+          <h2>Welcome, {username}</h2>
+          <Welcome />
+          <FinanceGoal />
         </div>
 
-        {events.length && (
-          <div className="widget-flex">
-            <div className="agenda-widget">
-              <Calendar
-                localizer={localizer}
-                events={events.map((ev) => this.formatEvent(ev))}
-                startAccessor="start"
-                endAccessor="end"
-                style={{ height: 500, margin: "50px" }}
-                view={"agenda"}
-              />
+        <div className="productivity-module">
+          <Link to="/calendar">Calendar</Link>
+          {events.length && (
+            <div className="widget-flex">
+              <div className="agenda-widget">
+                <Calendar
+                  localizer={localizer}
+                  events={events.map((ev) => this.formatEvent(ev))}
+                  startAccessor="start"
+                  endAccessor="end"
+                  style={{ height: 500, margin: "50px" }}
+                  view={"agenda"}
+                />
+              </div>
+              <div className="week-widget">
+                <Calendar
+                  localizer={localizer}
+                  events={events.map((ev) => this.formatEvent(ev))}
+                  startAccessor="start"
+                  endAccessor="end"
+                  style={{ height: 500, margin: "50px" }}
+                  view={"week"}
+                />
+              </div>
             </div>
-            <div className="week-widget">
-              <Calendar
-                localizer={localizer}
-                events={events.map((ev) => this.formatEvent(ev))}
-                startAccessor="start"
-                endAccessor="end"
-                style={{ height: 500, margin: "50px" }}
-                view={"week"}
-              />
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }
