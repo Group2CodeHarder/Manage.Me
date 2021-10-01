@@ -19,12 +19,12 @@ const TaskBoard = (props) => {
         >
           {lists.map((list) => (
             <TaskList
-              listID={list.id}
+              listId={list.id}
               key={list.id}
               title={list.title}
               cards={list.cards}
             />
-          ))}
+))}
           <TaskActionButton list project={ project } />
         </div>
       </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 
 const GET_BOARDS = "GET_BOARDS";
 const GET_LISTS = "GET_LISTS";
+const GET_CARDS = "GET_CARDS";
 const ADD_LIST = "ADD_LIST";
 const EDIT_LIST_TITLE = "EDIT_LIST_TITLE";
 const DELETE_LIST = "DELETE_LIST";
@@ -29,20 +30,42 @@ export const getLists = (boardId, lists) => {
   };
 };
 
-export const addCard = (listID, content) => {
-  return {
-    type: ADD_CARD,
-    content, 
-    list: listID
-  };
-};
-
 export const addList = (list) => {
   return {
     type: ADD_LIST,
     list
   };
 };
+
+export const delList = (list) => {
+  return {
+    type: DELETE_LIST,
+    list
+  };
+};
+
+export const getCards = (listId, cards) => {
+  return {
+    type: GET_CARDS,
+    cards,
+    list: listId
+  };
+};
+
+export const addCard = (card) => {
+  return {
+    type: ADD_CARD,
+    card
+  };
+};
+
+export const delCard = (card) => {
+  return {
+    type: DELETE_CARD,
+    card
+  };
+};
+
 
 //Action thunks
 
@@ -67,49 +90,77 @@ export const newList = (list) => {
   };
 };
 
-// export const newCard = (content) => {
-//   return async (dispatch) => {
-//       const { data: created } = await axios.post(`/api/boards/${project.id}/lists/${list.id}`, content);
-//       dispatch(newCard(created));
-//   };
-// };
+export const deleteList = (list, history) => {
+  return async (dispatch) => {
+    await axios.delete(`/api/boards/lists/${list.id}`);
+    dispatch(delList(list));
+    history.push('/lists');
+  };
+};
+
+export const allCards = (listId) => {
+  return async (dispatch) => {
+      const { data: cards } = await axios.get('/api/boards/lists/cards', { params: { listId} });
+      dispatch(getLists(cards));
+  };
+};
+
+export const newCard = (card) => {
+  return async (dispatch) => {
+    console.log("CARD", card);
+      const { data: created } = await axios.post(`/api/boards/lists/${card.listId}`, card);
+      dispatch(addCard(created));
+  };
+};
+
+export const deleteCard = (card, history) => {
+  return async (dispatch) => {
+    await axios.delete(`/api/boards/lists/${card.id}`);
+    dispatch(delCard(card));
+    history.push('/lists');
+  };
+};
 
 //Reducer
 
-const initialState = [
-  {
-    title: "To-Do",
-    id: 0,
-    cards: []
-  }
-];
+// const initialState = [
+//   {
+//     title: "To-Do",
+//     id: list.id,
+//     cards: []
+//   }
+// ];
 
-export const listsReducer = (state = initialState, action) => {
+export const boardsReducer = (state = [], action) => {
   switch (action.type) {
     case GET_BOARDS:
       return action.boards;
-      case GET_LISTS:
-      return action.lists;
+    default:
+      return state;
+  }
+};
+
+export const listsReducer = (state = [], action) => {
+  switch (action.type) {
+    case GET_LISTS:
+      return action.lists; 
     case ADD_LIST:
       return [...state, action.list];
-    // case ADD_CARD:
-    //   const newCard = {
-    //     id: cardID,
-    //     content: action.content,
-    //     list: listID
-    //   }; 
-    //   cardID += 1;
-    //   const newState = [...state].map(list=> {
-    //     if(list.id === action.listID) {
-    //       return {
-    //         list, 
-    //         cards: [...list.cards, newCard]
-    //       };
-    //       } else {
-    //         return list;
-    //       }
-    //     });
-    //   return newState;
+    case DELETE_LIST:
+      return state.filter((list) => list.id !== action.list.id);
+    default:
+      return state;
+  }
+};
+
+export const cardsReducer = (state = [], action) => {
+  switch (action.type) {
+    case GET_CARDS:
+      return action.cards;  
+    case ADD_CARD:
+      return [...state, action.card];
+    case DELETE_CARD:
+      return state.filter((card) => card.id !== action.card.id);
     default:
       return state;
   }

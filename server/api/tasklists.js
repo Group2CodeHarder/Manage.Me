@@ -40,6 +40,19 @@ router.get("/:id/lists", async(req, res, next) => {
     }
 })
 
+//GET cards by listId
+router.get("/:id/cards", async(req, res, next) => {
+    try {
+        const cards = await Card.findAll({
+            where: { listId: req.params.id }
+        });
+        res.send(cards);
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
 //POST list by boardId
 router.post("/lists", async (req, res, next) => {
     try {
@@ -58,62 +71,69 @@ router.post("/lists", async (req, res, next) => {
     };
 });
 
-// POST card by listId
-// router.post(`/:id/lists/${list.id}`, async (req, res, next) => {
-//     try {
-//         res.send(await Card.create({
-//             where: { cardId: req.body.card.id } 
-//         }));
-//     }
-//     catch(err) {
-//         next(err);
-//     };
-// });
+//POST card by listId
+router.post("/lists/:id", async (req, res, next) => {
+    try {
+        // const list = await List.findByPk({
+        //     where: { id: req.params.id }
+        // });
+        // const newCard = {
+        //     content: req.body.content,
+        //     listId: list.id
+        // };
+        const event = req.body;
+        const card = await Card.create(event);
+        res.send(card);
+    }
+    catch(err) {
+        next(err);
+    };
+});
 
 //DELETE list
-// router.delete('/:id', async (req, res, next) => {
-//     try {
-//         const list = await List.findByPk(req.params.id);
-//         await list.destroy();
-//         res.sendStatus(202);
-//     }
-//     catch(err) {
-//         next(err);
-//     }
-// });
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const list = await List.findByPk(req.params.id);
+        await list.destroy();
+        res.sendStatus(202);
+    }
+    catch(err) {
+        next(err);
+    }
+});
 
 //DELETE card
-// router.delete('/:id', async (req, res, next) => {
-//     try {
-//         const card = await Card.findByPk(req.params.id);
-//         await card.destroy();
-//         res.sendStatus(202);
-//     }
-//     catch(err) {
-//         next(err);
-//     }
-// });
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const card = await Card.findByPk(req.params.id);
+        await card.destroy();
+        res.sendStatus(202);
+    }
+    catch(err) {
+        next(err);
+    }
+});
 
 //UPDATE list
-// router.put('/:id', async (req, res, next) => {
-//     try{
-//         const list = await List.findByPk(req.params.id);
-//         res.send(await list.update(req.body));
-//     }
-//     catch(err) {
-//         next(err);
-//     }
-// });
+router.put("/:id", async (req, res, next) => {
+    try{
+        const list = await List.findByPk(req.params.id);
+        res.send(await list.update(req.body));
+    }
+    catch(err) {
+        next(err);
+    }
+});
 
 //UPDATE card
-// router.put('/:id', async (req, res, next) => {
-//     try{
-//         const card = await Card.findByPk(req.params.id);
-//         res.send(await card.update(req.body));
-//     }
-//     catch(err) {
-//         next(err);
-//     }
-// });
+router.put("/:id", async (req, res, next) => {
+    try{
+        const card = await Card.findByPk(req.params.id);
+        res.send(await card.update(req.body));
+    }
+    catch(err) {
+        next(err);
+    }
+});
 
 module.exports = router;

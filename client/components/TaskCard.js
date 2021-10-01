@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-export const TaskCard= ({content}) => {
+const TaskCard= ({content}) => {
 
     return (
         <div>

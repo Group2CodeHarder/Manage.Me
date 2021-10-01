@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {models: { Project, Board } } = require("../db");
+const {models: { Project, Board, List } } = require("../db");
 
 //GET all projects by user
 router.get("/", async (req, res, next) => {
@@ -29,7 +29,8 @@ router.get("/", async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const project = await Project.create(req.body);
-        await Board.create({ projectId: project.id });
+        const board = await Board.create({ projectId: project.id });
+        await List.create({ title: "To-Do", boardId: board.id });
         res.status(201).send(project);
     }
     catch(err) {
