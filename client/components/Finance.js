@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 import LineChart from "./LineChart";
 import FinancialProjectList from "./FinancialProjectList";
 import Profit from "./Profit";
+import moment from "moment";
 
 export const Finance = (props) => {
   const { projects } = props;
+  const monthMinusOneName = moment()
+    .subtract(1, "month")
+    .startOf("month")
+    .format("MMMM");
+
   return (
     <div className="content-wrapper">
       <div>
@@ -19,10 +25,13 @@ export const Finance = (props) => {
           <LineChart project={projects} />
         </div>
         <div id="financialprojectlist">
+          <div>
+            Recently Completed Projects (as of end of {monthMinusOneName}):
+          </div>
           <div id="project-list-item">
             <h4>Project Name</h4>
-            <h4>Project Completion Month</h4>
-            <h4>Project Status</h4>
+            {/* <h4>Project Completion Month</h4> */}
+            {/* <h4>Project Status</h4> */}
             <h4>Project Revenue</h4>
             <h4>Project Expense</h4>
             <h4>Project Profit</h4>
