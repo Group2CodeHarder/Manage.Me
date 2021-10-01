@@ -107,7 +107,6 @@ export const allCards = (listId) => {
 
 export const newCard = (card) => {
   return async (dispatch) => {
-    console.log("CARD", card);
       const { data: created } = await axios.post(`/api/boards/lists/${card.listId}`, card);
       dispatch(addCard(created));
   };

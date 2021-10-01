@@ -104,6 +104,7 @@ class TaskActionButton extends React.Component {
             <div>
               <button
                 onMouseDown={list ? this.handleAddList : this.handleAddCard }
+                onMouseUp={this.closeForm}
               >
                 {buttonTitle}
               </button>
