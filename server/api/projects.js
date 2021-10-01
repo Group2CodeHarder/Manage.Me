@@ -1,7 +1,5 @@
-const router = require("express").Router();
-const {
-  models: { Project },
-} = require("../db");
+const router = require('express').Router();
+const {models: { Project, Board } } = require("../db");
 
 //GET all projects by user
 router.get("/", async (req, res, next) => {
@@ -28,12 +26,15 @@ router.get("/", async (req, res, next) => {
 // });
 
 //Create project
-router.post("/", async (req, res, next) => {
-  try {
-    res.status(201).send(await Project.create(req.body));
-  } catch (err) {
-    next(err);
-  }
+router.post('/', async (req, res, next) => {
+    try {
+        const project = await Project.create(req.body);
+        await Board.create({ projectId: project.id });
+        res.status(201).send(project);
+    }
+    catch(err) {
+        next(err);
+    };
 });
 
 //Delete project
