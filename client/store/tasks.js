@@ -14,11 +14,10 @@ const DELETE_CARD = "DELETE_CARD";
 
 //Action creators
 
-export const getBoards = (projectId, boards) => {
+export const getBoards = (boards) => {
   return {
     type: GET_BOARDS,
-    boards,
-    project: projectId
+    boards
   };
 };
 
@@ -71,7 +70,7 @@ export const delCard = (card) => {
 
 export const allBoards = (projectId) => {
   return async (dispatch) => {
-      const { data: boards } = await axios.get(`/api/boards/${project.id}`);
+      const { data: boards } = await axios.get(`/api/boards/${projectId}`);
       dispatch(getBoards(boards));
   };
 };
