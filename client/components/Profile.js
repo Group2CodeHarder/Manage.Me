@@ -33,6 +33,8 @@ export const Profile = (props) => {
       <Link
         to="#"
         onClick={(e) => {
+          window.location.href =
+            "mailto:username@example.com?subject=Subject&body=message%20goes%20here";
           window.location = mailto;
           e.preventDefault();
         }}
@@ -42,13 +44,14 @@ export const Profile = (props) => {
     );
   };
 
+  const message = "Cody's Link";
+
   return (
     <div className="content-wrapper">
       <div className="leftColumn">
         <div className="avatar">
           <img src={googleImage} />
         </div>
-        <div className="linkTree">LinkTree</div>
       </div>
       <div className="leftColumn">
         <div className="profileBasic">
@@ -69,7 +72,7 @@ export const Profile = (props) => {
       <h4>Connect with {firstName}</h4>
       <ButtonMailto
         label={`Write ${firstName} an e-mail`}
-        mailto={`mailto:${email}`}
+        mailto={`mailto:${email}?subject=Subject&body=${message}`}
       />
     </div>
   );

@@ -45,28 +45,65 @@ class EditProfileBio extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.updateProfile({ ...this.state });
+    this.props.updateProfile({ ...this.state }, this.props.history);
+    const { history } = this.props;
+    history.push("/profile");
   }
 
   render() {
-    const { jobTitle, bio, twitter, instagram, gitHub, personalSite } =
-      this.state;
+    const {
+      bio,
+      company,
+      email,
+      gitHub,
+      instagram,
+      jobTitle,
+      personalSite,
+      twitter,
+    } = this.state;
     const { handleChange, handleSubmit } = this;
-    const { user } = this.props;
+    const { history } = this.props;
+    const redirect = () => history.push("/profile");
+
     return (
       <div className="content-wrapper">
-        <div>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <div className="profileBasicInfo">
+            <label>Job Title: </label>
+            <input name="jobTitle" onChange={handleChange} value={jobTitle} />
+            <label>Company: </label>
+            <input name="company" onChange={handleChange} value={company} />
             <label>Bio: </label>
             <input name="bio" onChange={handleChange} value={bio} />
-            <br />
-            <button type="submit">Save</button>
-            <button className="cancel-button" type="button">
-              <Link to="/profile">Cancel</Link>
-            </button>
-            <br />
-          </form>
-        </div>
+          </div>
+
+          <div className="profileContactInfo">
+            <label>Email: </label>
+            <input name="email" onChange={handleChange} value={email} />
+          </div>
+
+          <div className="profileSocialMedia">
+            <label>Twitter: </label>
+            <input name="twitter" onChange={handleChange} value={twitter} />
+            <label>Instagram: </label>
+            <input name="instagram" onChange={handleChange} value={instagram} />
+            <label>Personal Website: </label>
+            <input
+              name="personalSite"
+              onChange={handleChange}
+              value={personalSite}
+            />{" "}
+            <label>GitHub: </label>
+            <input name="gitHub" onChange={handleChange} value={gitHub} />
+          </div>
+
+          <br />
+          <button type="submit">Save</button>
+          <button className="cancel-button" type="button" onClick={redirect}>
+            Cancel
+          </button>
+          <br />
+        </form>
       </div>
     );
   }
@@ -78,10 +115,9 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  updateProfile: (user) => dispatch(updateProfile(user)),
+const mapDispatchToProps = (dispatch, { history }) => ({
+  updateProfile: (user) => dispatch(updateProfile(user, history)),
   getUser: () => dispatch(getUser()),
 });
 
-// export default connect(mapState)(EditProfileBio);
 export default connect(mapState, mapDispatchToProps)(EditProfileBio);
