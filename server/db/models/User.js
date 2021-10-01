@@ -39,7 +39,9 @@ const User = db.define("user", {
   phoneNumber: {
     type: STRING,
   },
-
+  photo: {
+    type: STRING,
+  },
   userType: {
     type: ENUM("Freelancer", "Client"),
   },

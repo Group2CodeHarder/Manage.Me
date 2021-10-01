@@ -25,7 +25,7 @@ import ProfileBio from "./ProfileBio";
 }
 
 export const Profile = (props) => {
-  const { googleImage, firstName, email } = props.state.auth;
+  const { googleImage, firstName, email, photo } = props.state.auth;
   const { projects } = props;
 
   const ButtonMailto = ({ mailto, label }) => {
@@ -50,7 +50,7 @@ export const Profile = (props) => {
     <div className="content-wrapper">
       <div className="leftColumn">
         <div className="avatar">
-          <img src={googleImage} />
+          <img src={photo} />
         </div>
       </div>
       <div className="leftColumn">

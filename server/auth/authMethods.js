@@ -8,7 +8,7 @@ const people = google.people("v1");
 async function getProfile(id_token) {
   const res = await people.people.get({
     resourceName: "people/me",
-    personFields: "names,emailAddresses,coverPhotos",
+    personFields: "names,emailAddresses,coverPhotos,photos",
   });
   const profile = res.data;
   const newUser = {
@@ -17,6 +17,7 @@ async function getProfile(id_token) {
     firstName: profile.names[0].givenName,
     lastName: profile.names[0].familyName,
     email: profile.emailAddresses[0].value,
+    photo: profile.photos[0].url,
     googleImage: profile.coverPhotos[0].url,
     id_token: id_token,
   };
