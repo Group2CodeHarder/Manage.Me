@@ -49,7 +49,6 @@ class Home extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { username, events } = this.props;
 
     return (

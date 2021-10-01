@@ -74,6 +74,20 @@ const User = db.define("user", {
       isUrl: true,
     },
   },
+  facebook: {
+    type: STRING,
+    defaultValue: "https://www.facebook.com/",
+    validate: {
+      isUrl: true,
+    },
+  },
+  linkedIn: {
+    type: STRING,
+    defaultValue: "https://www.linkedin.com/",
+    validate: {
+      isUrl: true,
+    },
+  },
   gitHub: {
     type: STRING,
     defaultValue: "https://github.com/",

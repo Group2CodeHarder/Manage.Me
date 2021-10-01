@@ -22,7 +22,6 @@ const TaskBoard = (props) => {
               listId={list.id}
               key={list.id}
               title={list.title}
-              cards={list.cards}
             />
 ))}
           <TaskActionButton list project={ project } />
@@ -31,8 +30,8 @@ const TaskBoard = (props) => {
     );
   };
 
-const mapStateToProps = (state) => ({
+const mapState = (state) => ({
   lists: state.lists || [],
 });
 
-export default connect(mapStateToProps)(TaskBoard);
+export default connect(mapState)(TaskBoard);

@@ -209,28 +209,6 @@ nav a:hover {
   display: flex;
 }
 
-.tasklist-cont {
-  color: white;
-  background-color: #0e2438; 
-  border-radius: 5px; 
-  width: 300px; 
-  padding: 12px;
-  margin-right: 8px;
-  font-family: "Open Sans", "sans-serif";
-}
-
-.tasklist-cont > h3 {
-  color: white
-}
-
-.card-div > h4 {
-  color: #0e2438;
-}
-
-/* .tasklist-cont > h4 {
-  color: #0e2438;
-} */
-
 
 /* PROJECT VIEWS */
 #project-list-titles {
@@ -329,6 +307,40 @@ nav a:hover {
 }
 .project-info-container-buttons > button {
   margin-right: 1.5rem;
+}
+
+.tasklist-cont {
+  color: white;
+  background-color: #0e2438; 
+  border-radius: 5px; 
+  width: 300px; 
+  padding: 12px;
+  margin-right: 8px;
+  font-family: "Open Sans", "sans-serif";
+}
+
+.tasklist-cont > h3 {
+  color: white
+}
+
+.card-div {
+  cursor: move;
+}
+
+.card-div-btn-del {
+  position: absolute;
+  z-index: 2;
+  top: 1px;
+  display: none;
+  left: 10px;
+}
+
+.card-div:hover .card-div-btn-del {
+  display: block;
+}
+
+.card-div > h4 {
+  color: #0e2438;
 }
 
 /* PROFILE */

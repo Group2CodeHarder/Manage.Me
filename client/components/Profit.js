@@ -29,10 +29,10 @@ const Profit = (props) => {
   const fulldate = `${date} ${month}, ${currYear}`;
 
   const profit = () => {
-    if (!ytdProfit()) {
-      return 0;
+    if (projects.length != 0) {
+      return ytdProfit();
     } else {
-      ytdProfit();
+      return 0;
     }
   };
 
