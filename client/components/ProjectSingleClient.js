@@ -42,32 +42,32 @@ componentDidMount () {
               <h3 style= {pebbleColor}>{project.status}</h3>
             </div>
             <div className= 'project-info-container'>
-              <h4>Finances</h4>
+              <h4>Contact Information</h4>
               <hr/>
-              <p><strong>Expected Revenue</strong>   $ {project.revenue}</p>
-              <p><strong>Expenses</strong>   $ {project.expense}.00</p>
+              <p><strong>Name</strong>  {project.clientName}</p>
+              <p><strong>Email</strong>  {project.clientEmail}</p>
             </div>
-            <div className= 'project-info-container-buttons'>
-              <button>Generate Shareable Link</button>
-
+            <div className= 'project-info-container'>
+              <h4>Cost</h4>
+              <hr/>
+              <p><strong>Price</strong>   $ {project.revenue}</p>
+              <br />
+              <button>Pay Now</button>
             </div>
-
           </div>
           <div className='single-project-right'>
             <div className= 'project-info-container'>
               <h4>Important Dates</h4>
               <hr/>
-              <h3 style= {steelColor}>Deadline:</h3>
-              <p style= {right}>{deadline}</p>
               <h3 style= {steelColor}>Project Start Date:</h3>
               <p style= {right}>{startDate}</p>
+              <h3 style= {steelColor}>Completion Date:</h3>
+              <p style= {right}>{deadline}</p>
             </div>
             <div className= 'project-info-container'>
-              <h4>Client Information</h4>
+              <h4>Description</h4>
               <hr/>
-              <p><strong>Name</strong>  {project.clientName}</p>
-              <p><strong>Phone</strong>  {project.clientPhone}</p>
-              <p><strong>Email</strong>  {project.clientEmail}</p>
+              <p>{project.description}</p>
             </div>
           </div>
         </div>   
