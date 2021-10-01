@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
 
-const Profit = (props) => {
-  const { projects } = props;
+const FinanceGoal = (props) => {
+  const { allState, projects } = props;
 
   const ytdProfit = () => {
     if (projects.length) {
@@ -21,13 +20,6 @@ const Profit = (props) => {
       return ytdProfit;
     }
   };
-
-  const newDate = new Date();
-  const date = newDate.getDate();
-  const month = newDate.toLocaleString("default", { month: "long" });
-  const currYear = newDate.getFullYear();
-  const fulldate = `${date} ${month}, ${currYear}`;
-
   const profit = () => {
     if (!ytdProfit()) {
       return 0;
@@ -36,18 +28,29 @@ const Profit = (props) => {
     }
   };
 
+  const diff = () => {
+    if (!ytdProfit()) {
+      return allState.financialGoal - 0;
+    } else {
+      return allState.financialGoal - ytdProfit();
+    }
+  };
+
   return (
     <div>
-      <div className="ytdProfitTable">YTD Total Profit is ${profit()}</div>
-      <div className="ytdProfitDate">as of {fulldate}</div>
+      <div className="financialGoals">
+        You have earned ${profit()} this year, you are ${diff()} away from your
+        financial goal of ${allState.financialGoal} this year!
+      </div>
     </div>
   );
 };
 
 const mapState = (state) => {
   return {
+    allState: state.auth,
     projects: state.projects,
   };
 };
 
-export default connect(mapState)(Profit);
+export default connect(mapState)(FinanceGoal);

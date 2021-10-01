@@ -25,7 +25,7 @@ import ProfileBio from "./ProfileBio";
 }
 
 export const Profile = (props) => {
-  const { googleImage, firstName, email, photo } = props.state.auth;
+  const { firstName, email, photo } = props.state.auth;
   const { projects } = props;
 
   const ButtonMailto = ({ mailto, label }) => {

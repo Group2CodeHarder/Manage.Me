@@ -18,6 +18,7 @@ class ProfileBio extends React.Component {
       jobTitle,
       personalSite,
       twitter,
+      financialGoal,
     } = this.props;
 
     return (
@@ -26,19 +27,24 @@ class ProfileBio extends React.Component {
           <div>Job Title: {jobTitle}</div>
           <div>Company: {company}</div>
           <div>Bio: {bio}</div>
+          <div>Financial Goal: ${financialGoal}</div>
         </div>
+        <br />
         <div className="profileContactInfo">
           <div>Email: {email}</div>
         </div>
+        <br />
         <div className="profileSocialMedia">
           <div>Twitter: {twitter}</div>
           <div>Instagram: {instagram}</div>
           <div>Personal Website: {personalSite}</div>
           <div>GitHub: {gitHub}</div>
         </div>
+        <br />
         <button>
           <Link to="/editBio">Edit Profile</Link>
         </button>
+        <br />
       </div>
     );
   }

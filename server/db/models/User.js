@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 const axios = require("axios");
 const {
-  DataTypes: { STRING, UUID, UUIDV4, ENUM, TEXT },
+  DataTypes: { STRING, UUID, UUIDV4, ENUM, TEXT, DECIMAL },
 } = Sequelize;
 
 const User = db.define("user", {
@@ -63,18 +63,31 @@ const User = db.define("user", {
   twitter: {
     type: STRING,
     defaultValue: "https://twitter.com/",
+    validate: {
+      isUrl: true,
+    },
   },
   instagram: {
     type: STRING,
     defaultValue: "https://www.instagram.com/",
+    validate: {
+      isUrl: true,
+    },
   },
   gitHub: {
     type: STRING,
     defaultValue: "https://github.com/",
+    validate: {
+      isUrl: true,
+    },
   },
   personalSite: {
     type: STRING,
-    defaultValue: "",
+    defaultValue: "Add your personal website!",
+  },
+  financialGoal: {
+    type: DECIMAL,
+    defaultValue: 0,
   },
 });
 
