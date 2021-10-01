@@ -4,24 +4,22 @@ import TaskCard from "./TaskCard";
 import TaskActionButton from "./TaskActionButton";
 // import { newList } from "../store/tasks";
 
-// class TaskList extends React.Component {
-
    
-
-export const TaskList = ({ title, cards, listID }) => {
-    // state = {
-    //     lists: {}
-    // };
+const TaskList = (props) => {
+    const { title, cards, list } = props;
+    console.log("PROPS", props);
+    
     return (
         <div>
         <div className="tasklist-cont" > 
             <h3>{title}</h3>
                 { cards.length ?
                 (cards.map(card => (
-                <TaskCard cardID={card.id} key={card.id} content={card.content} />
-                ))) : <div></div> }
+                <TaskCard cardId={card.id} listId={props.listId} key={card.id} content={card.content} />
+                ))) : <div></div>
+                }
             <div>
-                <TaskActionButton listID={listID} />
+                <TaskActionButton listId={props.listId}/>
             </div>
         </div>
         </div>
@@ -31,7 +29,7 @@ export const TaskList = ({ title, cards, listID }) => {
 
 const mapState = (state) => {
     return {
-        lists: state.lists || {},
+        list: state.list || {},
         cards: state.cards || []
     };
 };

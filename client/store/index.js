@@ -5,9 +5,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import projects from './projects';
 import { calendarReducer } from "./calendar";
-import { listsReducer } from "./tasks";
+import { boardsReducer, listsReducer, cardsReducer } from "./tasks";
 
-const reducer = combineReducers({ auth, events: calendarReducer, lists: listsReducer, projects });
+const reducer = combineReducers({ auth, events: calendarReducer, boards: boardsReducer, lists: listsReducer, cards: cardsReducer, projects });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );

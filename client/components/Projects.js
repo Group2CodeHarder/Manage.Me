@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import ProjectListItem from "./ProjectListItem";
 import { Link, useHistory } from 'react-router-dom';
 
-
 const Projects = (props) => {
   const { projects } = props;
   const history = useHistory();

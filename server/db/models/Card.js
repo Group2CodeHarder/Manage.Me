@@ -16,10 +16,7 @@ const Card = db.define("card", {
     validate: {
       notEmpty: true,
     },
-  },
-  // listId: {
-  //   type: INTEGER,
-  // },
+  }
 });
 
 module.exports = Card;

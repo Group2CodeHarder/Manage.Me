@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { newList, addCard } from "../store/tasks";
+import { newList, newCard } from "../store/tasks";
 
 class TaskActionButton extends React.Component {
   constructor(props) {
@@ -49,17 +49,23 @@ class TaskActionButton extends React.Component {
     if (text) {
       this.props.newList(list);
     }
-    // return;
   };
 
-  // handleAddCard = () => {
-  //   const { listID } = this.props;
-  //   const { text } = this.state;
-  //   if(text) {
-  //   dispatch(addCard(listID, text))
-  //   }
-  //   return;
-  // };
+  handleAddCard = (ev) => {
+    ev.preventDefault();
+    const { listId } = this.props;
+    const { text } = this.state;
+
+    const card = {
+      content: text,
+      listId: this.props.listId
+    };
+
+    if(text) {
+    this.props.newCard(card);
+    }
+
+  };
 
   displayAddButton = () => {
     const { list } = this.props;
@@ -79,7 +85,6 @@ class TaskActionButton extends React.Component {
 
   displayForm = () => {
     const { list } = this.props;
-    console.log("THIS.PROPS", this.props)
 
     const placeholder = list ? "Enter list title..." : "Enter text here...";
 
@@ -98,7 +103,7 @@ class TaskActionButton extends React.Component {
               />
             <div>
               <button
-                onMouseDown={list ? this.handleAddList : this.handleAddCard}
+                onMouseDown={list ? this.handleAddList : this.handleAddCard }
               >
                 {buttonTitle}
               </button>
@@ -115,9 +120,7 @@ class TaskActionButton extends React.Component {
     );
   };
 
-  render() {
-    console.log("PROJECT", this.props.project);
-
+  render() {  
     return this.state.formOpen ? this.displayForm() : this.displayAddButton();
   }
 }
@@ -129,7 +132,8 @@ class TaskActionButton extends React.Component {
 // }
 
 const mapDispatch = (dispatch) => ({
-  newList: (list) => dispatch(newList(list))
+  newList: (list) => dispatch(newList(list)),
+  newCard: (card) => dispatch(newCard(card))
 });
 
 export default connect(null, mapDispatch)(TaskActionButton);
