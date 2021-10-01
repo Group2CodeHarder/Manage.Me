@@ -11,7 +11,6 @@ class TaskActionButton extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   openForm = () => {
@@ -32,11 +31,6 @@ class TaskActionButton extends React.Component {
     });
   };
 
-  // handleSubmit(ev) {
-  //   ev.preventDefault();
-  //   this.props.newList({ ...this.state });
-  // }
-
   handleAddList = (ev) => {
     ev.preventDefault();
     const { project } = this.props;
@@ -49,6 +43,7 @@ class TaskActionButton extends React.Component {
     if (text) {
       this.props.newList(list);
     }
+    this.closeForm();
   };
 
   handleAddCard = (ev) => {
@@ -64,6 +59,7 @@ class TaskActionButton extends React.Component {
     if(text) {
     this.props.newCard(card);
     }
+    this.closeForm();
 
   };
 
@@ -104,7 +100,6 @@ class TaskActionButton extends React.Component {
             <div>
               <button
                 onMouseDown={list ? this.handleAddList : this.handleAddCard }
-                onMouseUp={this.closeForm}
               >
                 {buttonTitle}
               </button>
@@ -113,7 +108,7 @@ class TaskActionButton extends React.Component {
                   marginLeft: "15px",
                 }}
               >
-                X
+                Cancel
               </button>
             </div>
           </div>
@@ -125,12 +120,6 @@ class TaskActionButton extends React.Component {
     return this.state.formOpen ? this.displayForm() : this.displayAddButton();
   }
 }
-
-// const mapState = (state) => {
-//   return ({
-
-//   })
-// }
 
 const mapDispatch = (dispatch) => ({
   newList: (list) => dispatch(newList(list)),

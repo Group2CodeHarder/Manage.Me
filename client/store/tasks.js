@@ -100,7 +100,7 @@ export const deleteList = (list, history) => {
 export const allCards = (listId) => {
   return async (dispatch) => {
       const { data: cards } = await axios.get('/api/boards/lists/cards', { params: { listId} });
-      dispatch(getLists(cards));
+      dispatch(getCards(cards));
   };
 };
 
