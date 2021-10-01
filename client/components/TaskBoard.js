@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import TaskList from "./TaskList";
 import TaskActionButton from "./TaskActionButton";
 
-class TaskBoard extends React.Component {
-  render() {
-    const { lists } = this.props;
+
+const TaskBoard = (props) => {
+    const { lists, project } = props;
 
     return (
       <div>
@@ -25,12 +25,11 @@ class TaskBoard extends React.Component {
               cards={list.cards}
             />
           ))}
-          <TaskActionButton list />
+          <TaskActionButton list project={ project } />
         </div>
       </div>
     );
-  }
-}
+  };
 
 const mapStateToProps = (state) => ({
   lists: state.lists || [],

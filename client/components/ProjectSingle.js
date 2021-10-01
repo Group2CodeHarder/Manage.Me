@@ -64,9 +64,11 @@ const startDate = `${project.startMonth} ${project.startDate}, ${project.startYe
 
       </div>
 
+
       <div className= 'project-tasks-container'>
 
-      <TaskBoard />
+      <TaskBoard project={ project }/>
+
       </div>
 
         

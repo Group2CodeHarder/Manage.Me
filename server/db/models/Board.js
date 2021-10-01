@@ -9,10 +9,7 @@ const Board = db.define("board", {
     type: UUID,
     defaultValue: UUIDV4,
     primaryKey: true,
-  },
-  // projectId: {
-  //   type: INTEGER,
-  // },
+  }
 });
 
 module.exports = Board;
