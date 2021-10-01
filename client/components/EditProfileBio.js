@@ -26,6 +26,8 @@ class EditProfileBio extends Component {
       twitter: user.twitter,
       instagram: user.instagram,
       gitHub: user.gitHub,
+      facebook: user.facebook,
+      linkedIn: user.linkedIn,
       personalSite: user.personalSite,
       financialGoal: user.financialGoal,
     };
@@ -61,6 +63,8 @@ class EditProfileBio extends Component {
       jobTitle,
       personalSite,
       twitter,
+      facebook,
+      linkedIn,
       financialGoal,
     } = this.state;
     const { handleChange, handleSubmit } = this;
@@ -95,6 +99,10 @@ class EditProfileBio extends Component {
             <input name="twitter" onChange={handleChange} value={twitter} />
             <label>Instagram: </label>
             <input name="instagram" onChange={handleChange} value={instagram} />
+            <label>Facebook: </label>
+            <input name="facebook" onChange={handleChange} value={facebook} />
+            <label>LinkedIn: </label>
+            <input name="linkedIn" onChange={handleChange} value={linkedIn} />
             <label>Personal Website: </label>
             <input
               name="personalSite"

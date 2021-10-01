@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const FinanceGoal = (props) => {
   const { allState, projects } = props;
@@ -20,11 +21,12 @@ const FinanceGoal = (props) => {
       return ytdProfit;
     }
   };
+
   const profit = () => {
-    if (!ytdProfit()) {
-      return 0;
+    if (projects.length != 0) {
+      return ytdProfit();
     } else {
-      ytdProfit();
+      return 0;
     }
   };
 
@@ -36,14 +38,34 @@ const FinanceGoal = (props) => {
     }
   };
 
-  return (
-    <div>
-      <div className="financialGoals">
-        You have earned ${profit()} this year, you are ${diff()} away from your
-        financial goal of ${allState.financialGoal} this year!
+  const message = () => {
+    if (Number(allState.financialGoal) === 0) {
+      return `Set your financial goal here!==>`;
+    } else if (profit() > allState.financialGoal) {
+      return `You have earned $${profit()} this year and you reached your annual profit goal of $${
+        allState.financialGoal
+      }! `;
+    } else {
+      return ` You have earned $${profit()} this year, you are $${diff()} away from your
+      annual profit goal of $${allState.financialGoal} this year!`;
+    }
+  };
+
+  if (Number(allState.financialGoal) === 0) {
+    return (
+      <div>
+        <div className="financialGoals">
+          {message()} <Link to="/editBio">Set up your bio</Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div className="financialGoals">{message()}</div>
+      </div>
+    );
+  }
 };
 
 const mapState = (state) => {
