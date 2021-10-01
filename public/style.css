@@ -214,10 +214,22 @@ nav a:hover {
   background-color: #0e2438; 
   border-radius: 5px; 
   width: 300px; 
-  padding: 8px;
+  padding: 12px;
   margin-right: 8px;
   font-family: "Open Sans", "sans-serif";
 }
+
+.tasklist-cont > h3 {
+  color: white
+}
+
+.card-div > h4 {
+  color: #0e2438;
+}
+
+/* .tasklist-cont > h4 {
+  color: #0e2438;
+} */
 
 
 /* PROJECT VIEWS */

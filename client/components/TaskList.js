@@ -8,15 +8,15 @@ import TaskActionButton from "./TaskActionButton";
 const TaskList = (props) => {
     const { title, cards, list } = props;
     console.log("PROPS", props);
-    
+    console.log("CARDS", cards);
     return (
         <div>
         <div className="tasklist-cont" > 
             <h3>{title}</h3>
                 { cards.length ?
                 (cards.map(card => (
-                <TaskCard cardId={card.id} listId={props.listId} key={card.id} content={card.content} />
-                ))) : <div></div>
+                <TaskCard listId={props.listId} key={card.id} content={card.content} />
+                ))) : <div></div> //cardId={card.id} inside TaskCard
                 }
             <div>
                 <TaskActionButton listId={props.listId}/>
