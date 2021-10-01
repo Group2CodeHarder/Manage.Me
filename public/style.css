@@ -309,6 +309,16 @@ nav a:hover {
   margin: 0.5rem;
 }
 
+.project-info-container-buttons {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.4rem;
+  margin: 0.5rem;
+}
+.project-info-container-buttons > button {
+  margin-right: 1.5rem;
+}
+
 /* PROFILE */
 .avatar {
   display: flex;

@@ -46,7 +46,7 @@ export const updateProject = (project, history) => {
     return async (dispatch) => {
         const { data: updated } = await axios.put(`/api/projects/${project.id}`, project);
         dispatch(_updateProject(updated));
-        history.push('/projects')
+        history.push(`/projects/${project.id}`)
     };
 };
 
