@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import ProjectListItem from "./ProjectListItem";
+import { Link } from "react-router-dom";
+import ProfileBio from "./ProfileBio";
 
 {
   /* <ul>
@@ -24,24 +25,42 @@ import ProjectListItem from "./ProjectListItem";
 }
 
 export const Profile = (props) => {
-  const { googleImage, firstName, username, jobTitle } = props.state.auth;
+  const { googleImage, firstName, email } = props.state.auth;
   const { projects } = props;
-  console.log(props.state.auth);
+
+  const ButtonMailto = ({ mailto, label }) => {
+    return (
+      <Link
+        to="#"
+        onClick={(e) => {
+          window.location.href =
+            "mailto:username@example.com?subject=Subject&body=message%20goes%20here";
+          window.location = mailto;
+          e.preventDefault();
+        }}
+      >
+        {label}
+      </Link>
+    );
+  };
+
+  const message = "Cody's Link";
+
   return (
     <div className="content-wrapper">
       <div className="leftColumn">
         <div className="avatar">
           <img src={googleImage} />
         </div>
-        <div className="linkTree">LinkTree</div>
       </div>
       <div className="leftColumn">
         <div className="profileBasic">
           <h2>{firstName}</h2>
-          <h4>{jobTitle}</h4>
         </div>
         <div className="profileBio">
-          <div>Bio</div>
+          <div className="profileBio-container">
+            <ProfileBio />
+          </div>
         </div>
         <div className="profileProject">
           <div>All of {firstName}'s projects</div>
@@ -51,6 +70,10 @@ export const Profile = (props) => {
         </div>
       </div>
       <h4>Connect with {firstName}</h4>
+      <ButtonMailto
+        label={`Write ${firstName} an e-mail`}
+        mailto={`mailto:${email}?subject=Subject&body=${message}`}
+      />
     </div>
   );
 };
