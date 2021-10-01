@@ -15,9 +15,10 @@ class ProjectSingle extends React.Component {
       this.props.allBoards(project.id);
     }
   }
+  
 
   render() {
-    const { project, history } = this.props;
+    const { project, boards, history } = this.props;
     const handleEdit = () => history.push(`/projects/edit/${project.id}`);
 
     const pebbleColor = {
@@ -75,7 +76,7 @@ class ProjectSingle extends React.Component {
           </div>
         </div>
         <div className= 'project-tasks-container'>
-          <TaskBoard project={ project }/>
+          <TaskBoard project={ project } boards = {boards}/>
         </div>     
       </div>
     );
@@ -87,16 +88,16 @@ const mapState = (state, {match}) => {
     return {
         project: project,
         boards: state.boards || [],
-        lists: state.lists || [],
-        cards: state.cards || []
+        // lists: state.lists || [],
+        // cards: state.cards || []
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     allBoards: (projectId) => dispatch(allBoards(projectId)),
-    allLists: (boardId) => dispatch(allLists(boardId)),
-    allCards: (listId) => dispatch(allCards(listId)),
+    // allLists: (boardId) => dispatch(allLists(boardId)),
+    // allCards: (listId) => dispatch(allCards(listId)),
   };
 };
 

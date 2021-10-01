@@ -5,7 +5,7 @@ import TaskActionButton from "./TaskActionButton";
 
 
 const TaskBoard = (props) => {
-    const { lists, project } = props;
+    const { boards, lists, project } = props;
 
     return (
       <div>
@@ -24,14 +24,15 @@ const TaskBoard = (props) => {
               title={list.title}
             />
 ))}
-          <TaskActionButton list project={ project } />
+          <TaskActionButton list project={ project } boards= {boards}/>
         </div>
       </div>
     );
   };
 
 const mapState = (state) => ({
-  lists: state.lists || [],
+  lists: state.boards.lists || [],
+  boards: state.boards || {}
 });
 
 export default connect(mapState)(TaskBoard);
