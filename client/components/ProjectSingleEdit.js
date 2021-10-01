@@ -57,7 +57,7 @@ class ProjectEdit extends React.Component {
     } = this.state;
     const { handleChange, handleSubmit } = this;
     const { history, project } = this.props;
-    const handleCancel = () => history.push("/projects");
+    const handleCancel = () => history.push(`/projects/${project.id}`);
     return (
       <div className="content-wrapper">
         <h3>Edit {project.name} Project</h3>
