@@ -1,20 +1,7 @@
 const router = require("express").Router();
 const { models: { Board, List, Card } } = require("../db");
 
-//GET all boards
-router.get("/", async (req, res, next) => {
-    try {
-        const board = await Board.findAll({
-            where: { projectId: req.query.projectId }
-        });
-        res.send(board.data);
-    }
-    catch (err) {
-        next(err);
-    }
-});
-
-//GET board by id
+//GET board by ProjectId
 router.get("/:id", async(req, res, next) => {
     try {
         const board = await Board.findOne({
@@ -28,11 +15,11 @@ router.get("/:id", async(req, res, next) => {
 })
 
 //GET lists by boardId
-router.get("/:id/lists", async(req, res, next) => {
+router.get("/lists/:id", async(req, res, next) => {
     try {
         const lists = await List.findAll({
             where: { boardId: req.params.id }
-        });
+            });
         res.send(lists);
     }
     catch (err) {
@@ -40,8 +27,10 @@ router.get("/:id/lists", async(req, res, next) => {
     }
 })
 
+
+
 //GET cards by listId
-router.get("/:id/cards", async(req, res, next) => {
+router.get("/lists/cards/:id", async (req, res, next) => {
     try {
         const cards = await Card.findAll({
             where: { listId: req.params.id }
@@ -51,7 +40,7 @@ router.get("/:id/cards", async(req, res, next) => {
     catch (err) {
         next(err)
     }
-})
+});
 
 //POST list by boardId
 router.post("/lists", async (req, res, next) => {

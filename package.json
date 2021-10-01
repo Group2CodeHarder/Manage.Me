@@ -45,6 +45,7 @@
     "open": "^8.2.1",
     "pg": "^8.7.1",
     "qrcode.react": "^1.0.1",
+    "qs": "^6.10.1",
     "react-big-calendar": "^0.35.0",
     "react-chartjs-2": "^3.0.5",
     "react-d3-library": "^1.1.8",

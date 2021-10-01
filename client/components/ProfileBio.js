@@ -8,7 +8,7 @@ class ProfileBio extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    
     const {
       bio,
       company,

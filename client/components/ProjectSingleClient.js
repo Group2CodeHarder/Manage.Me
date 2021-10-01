@@ -1,17 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getProjectById } from "../store/projects";
 
 class ProjectSingleClient extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
   };
 
-
+componentDidMount () {
+  const URL = window.location.pathname;
+  const projectId = URL.slice(17)
+  this.props.getProjectById(projectId);
+}
 
 
   render() {
+  
     const { project } = this.props;
-   
+    const deadline = `${project.deadlineMonth} ${project.deadlineDate}, ${project.deadlineYear}`;
+    const startDate = `${project.startMonth} ${project.startDate}, ${project.startYear}`;
+  
     const pebbleColor = {
       color: '#ff945e'
     };
@@ -22,9 +30,6 @@ class ProjectSingleClient extends React.Component {
     const right = {
       textAlign: 'right'
     };
-
-    const deadline = `${project.deadlineMonth} ${project.deadlineDate}, ${project.deadlineYear}`;
-    const startDate = `${project.startMonth} ${project.startDate}, ${project.startYear}`;
 
     return (
       <div className="content-wrapper">
@@ -44,7 +49,7 @@ class ProjectSingleClient extends React.Component {
             </div>
             <div className= 'project-info-container-buttons'>
               <button>Generate Shareable Link</button>
-              <button onClick= {handleEdit}>Edit Project</button>
+
             </div>
 
           </div>
@@ -72,13 +77,17 @@ class ProjectSingleClient extends React.Component {
   
 };
 
-const mapState = (state, {match}) => {
-  const project = state.projects.find(proj => proj.id === match.params.id) || {};
+const mapState = (state) => {
+
     return {
-        project: project,
+        project: state.projects || {},
   };
 };
 
-// const mapDispatch =
+const mapDispatch = (dispatch) => {
+  return {
+    getProjectById: (projectId) => dispatch(getProjectById(projectId)),
+  };
+};
 
-export default connect(mapState/*, mapDispatch*/)(ProjectSingleClient);
+export default connect(mapState, mapDispatch)(ProjectSingleClient);
