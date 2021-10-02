@@ -10,6 +10,7 @@ const Projects = (props) => {
   return (
     <div className="content-wrapper">
       <h2>Projects</h2>
+      <hr />
       <div className= 'project-button'>
         <button onClick= {handleClick}> Create New Project</button>
       </div>
