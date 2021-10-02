@@ -64,13 +64,6 @@ router.post("/lists", async (req, res, next) => {
 //POST card by listId
 router.post("/lists/:id", async (req, res, next) => {
     try {
-        // const list = await List.findByPk({
-        //     where: { id: req.params.id }
-        // });
-        // const newCard = {
-        //     content: req.body.content,
-        //     listId: list.id
-        // };
         const event = req.body;
         const card = await Card.create(event);
         res.send(card);

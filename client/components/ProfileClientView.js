@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import ProfileBio from "./ProfileBio";
 import { getUserById } from "../store/user";
 
 class ProfileClientView extends React.Component {
@@ -37,42 +38,82 @@ class ProfileClientView extends React.Component {
 
     return (
       <div className="content-wrapper">
-        <div className="leftColumn">
-          <div className="avatar">
-            <img src={user.photo} />
+        <div className="profile-container">
+          <div className="single-profile-left">
+            <div className="avatar">
+              <img src={user.photo} />
+            </div>
+            <div className="profileBasic">
+              <h2>{user.firstName}</h2>
+            </div>
+            <div className="profile-info-container">
+              <div className="profile-info-container-ctr">
+                <h4>Connect with {user.firstName}</h4>
+                <button className="profile-link-button">
+                  <ButtonMailto
+                    label={`Write ${user.firstName} an e-mail`}
+                    mailto={`mailto:${user.email}?subject=Subject&body=${message}`}
+                  />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="leftColumn">
-          <div className="profileBasic">
-            <h2>{user.firstName}</h2>
-          </div>
-          <div className="profileBio">
-            <div className="profileBio-container">
-              <div className="profileBasicInfo">
-                <div>Job Title: {user.jobTitle}</div>
-                <div>Company: {user.company}</div>
-                <div>Bio: {user.bio}</div>
+          <div className="single-profile-right">
+            <div className="profile-info-flex-div">
+              <div className="profile-info-container">
+                <div className="profileBasicInfo">
+                  <h4>Job Title: {user.jobTitle}</h4>
+                  <h4>Company: {user.company}</h4>
+                  <hr />
+                  <div>
+                    <strong>Email:</strong> {user.email}
+                  </div>
+                </div>
               </div>
               <br />
-              <div className="profileContactInfo">
-                <div>Email: {user.email}</div>
-              </div>
-              <br />
-              <div className="profileSocialMedia">
-                <div>Twitter: {user.twitter}</div>
-                <div>Instagram: {user.instagram}</div>
-                <div>Personal Website: {user.personalSite}</div>
-                <div>GitHub: {user.gitHub}</div>
+              <div className="profile-info-container">
+                <div className="profileSocialMedia">
+                  <div>
+                    <strong>Twitter:</strong> {user.twitter}
+                  </div>
+                  <div>
+                    <strong>Instagram:</strong> {user.instagram}
+                  </div>
+                  <div>
+                    <strong>Personal Website:</strong> {user.personalSite}
+                  </div>
+                  <div>
+                    <strong>GitHub:</strong> {user.gitHub}
+                  </div>
+                </div>
               </div>
               <br />
             </div>
+            <div className="profile-info-container">
+              <div className="profile-info-container-bio">
+                <div className="profileBioInfo">
+                  <div>
+                    <strong>Bio:</strong> Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Donec non leo et massa egestas
+                    scelerisque consectetur non magna. Mauris quam velit,
+                    sollicitudin nec elit eget, efficitur molestie nunc. Integer
+                    dignissim euismod sollicitudin. Proin lobortis porttitor
+                    efficitur. Nulla consectetur arcu sit amet neque mattis
+                    fringilla. Etiam aliquet tempus massa a blandit. Nullam eget
+                    augue tortor. Sed gravida facilisis ligula, id posuere
+                    tortor sodales quis. Quisque vehicula risus nec leo
+                    vestibulum, et tincidunt est pharetra. Etiam ut quam dolor.
+                    Suspendisse facilisis tellus at erat eleifend molestie.
+                    Proin a ullamcorper nisi. Nam luctus posuere odio, id
+                    vehicula metus varius vitae.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <br />
         </div>
-        <h4>Connect with {user.firstName}</h4>
-        <ButtonMailto
-          label={`Write ${user.firstName} an e-mail`}
-          mailto={`mailto:${user.email}?subject=Subject&body=${message}`}
-        />
+
       </div>
     );
   }

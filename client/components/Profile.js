@@ -25,7 +25,7 @@ import ProfileBio from "./ProfileBio";
 }
 
 export const Profile = (props) => {
-  const { firstName, email, photo, id } = props.state.auth;
+  const { firstName, lastName, email, photo, id } = props.state.auth;
   const { projects } = props;
 
   const ButtonMailto = ({ mailto, label }) => {
@@ -48,33 +48,29 @@ export const Profile = (props) => {
   const subjectLine = `${firstName}'s Portfolio`;
 
   return (
-    <div className="content-wrapper">
-      <div className="leftColumn">
+    <div className="profile-container" > 
+      <div className="single-profile-left"> 
         <div className="avatar">
           <img src={photo} />
         </div>
-      </div>
-      <div className="leftColumn">
         <div className="profileBasic">
-          <h2>{firstName}</h2>
+          <h2>{firstName} {lastName}</h2>
         </div>
-        <div className="profileBio">
-          <div className="profileBio-container">
-            <ProfileBio />
-          </div>
-        </div>
-        <div className="profileProject">
-          <div>All of {firstName}'s projects</div>
-          {projects.map((proj) => {
-            return <div key={proj.id}>{proj.name}</div>;
-          })}
-        </div>
-      </div>
-
-      <ButtonMailto
-        label={`Generate profile link to share with client`}
-        mailto={`mailto:${email}?subject=${subjectLine}&body=${message}`}
+        <div className="profile-info-container"> 
+        <div className="profile-info-container-ctr">
+      <h4 style={{marginLeft: "1.7rem"}}>Connect with {firstName}</h4>
+      <button className="profile-link-button" style={{marginLeft: "1.2rem", marginTop: "5px"}}>
+        <ButtonMailto
+        type="button" label={`Write ${firstName} an e-mail`}
+        mailto={`mailto:${email}?subject=Subject&body=${message}`}
       />
+      </button>
+      </div>
+      </div>
+      </div>
+      <div className="single-profile-right">
+          <ProfileBio />
+    </div>
     </div>
   );
 };
