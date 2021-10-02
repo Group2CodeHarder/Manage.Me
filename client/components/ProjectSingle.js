@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import TaskBoard from "./TaskBoard";
-import { allBoards, allLists, allCards } from "../store/tasks";
+import { allBoards } from "../store/tasks";
 
 class ProjectSingle extends React.Component {
   constructor(props) {
@@ -74,10 +74,12 @@ class ProjectSingle extends React.Component {
               </p>
             </div>
             <div className="project-info-container-buttons">
+              <button type='button'>
               <ButtonMailto
                 label={`Generate Shareable Link`}
                 mailto={`mailto:${client}?subject=${subjectLine}&body=${message}`}
               />
+              </button>
               {/* <button>Generate Shareable Link</button> */}
               <button onClick={handleEdit}>Edit Project</button>
             </div>

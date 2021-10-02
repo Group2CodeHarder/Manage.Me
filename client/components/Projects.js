@@ -9,7 +9,7 @@ const Projects = (props) => {
   const handleClick = () => history.push('/projects/create');
   return (
     <div className="content-wrapper">
-      <h3>Projects</h3>
+      <h2>Projects</h2>
       <div className= 'project-button'>
         <button onClick= {handleClick}> Create New Project</button>
       </div>
@@ -33,8 +33,9 @@ const Projects = (props) => {
 };
 
 const mapState = (state) => {
+  const projects = state.projects.filter(project => project.status !== 'Complete') || [];
   return {
-    projects: state.projects || [],
+    projects: projects,
   };
 };
 

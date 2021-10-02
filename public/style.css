@@ -142,6 +142,16 @@ a:hover {
   color: steelblue;
 }
 
+button > a {
+  text-decoration: none;
+  color: white;
+  line-height: 1;
+}
+
+button > a:hover {
+  color: #0e2438;
+}
+
 /* NAV BAR */
 #header {
   background-color: #0e2438;
@@ -200,6 +210,18 @@ nav a:hover {
 }
 
 /* HOME-DASHBOARD */
+.quote {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  
 .widget-flex {
   display: flex;
 }
@@ -423,4 +445,5 @@ nav a:hover {
   margin-left: 0.5rem;
   padding-right: 0.5rem;
   margin-right: 0.5rem;
+
 }
