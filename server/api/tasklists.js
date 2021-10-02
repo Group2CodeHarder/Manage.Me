@@ -5,7 +5,8 @@ const { models: { Board, List, Card } } = require("../db");
 router.get("/:id", async(req, res, next) => {
     try {
         const board = await Board.findOne({
-            where: { projectId: req.params.id }
+            where: { projectId: req.params.id },
+            include: [ { model: List, include:[Card] }]
         });
         res.send(board);
     }

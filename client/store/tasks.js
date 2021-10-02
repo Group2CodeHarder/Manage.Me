@@ -69,37 +69,24 @@ export const delCard = (card) => {
 export const allBoards = (projectId) => {
   return async (dispatch) => {
       const { data: board } = await axios.get(`/api/boards/${projectId}`);
-      const boardId = board.id;
-      const { data: lists } = await axios.get(`/api/boards/lists/${boardId}`);
-      
-      let cards = [];
-
-      for (let i = 0; i <= lists.length; i++) {
-        let list = lists[0];
-        let listId = list.id;
-        console.log(listId)
-        // const listCards = await axios.get(`/api/boards/lists/cards/${list.id}`);
-        // cards.push(listCards)
-      }
-      // console.log(cards)
-      
+      console.log('THIS IS THE BOARD WITH LISTS AND CARDS', board);    
       dispatch(getBoards(board));
-      dispatch(getLists(lists));
-      // dispatch(getCards(cards));
   };
 };
 
-export const allLists = (boardId) => {
-  return async (dispatch) => {
-      const { data: lists } = await axios.get('/api/boards/lists', { params: { boardId} });
-      dispatch(getLists(lists));
-  };
-};
+// export const allLists = (boardId) => {
+//   return async (dispatch) => {
+//       const { data: lists } = await axios.get('/api/boards/lists', { params: { boardId} });
+//       dispatch(getLists(lists));
+//   };
+// };
 
 export const newList = (list) => {
+  const projectId = list.projectId;
   return async (dispatch) => {
-      const { data: created } = await axios.post('/api/boards/lists', list);
-      dispatch(addList(created));
+    await axios.post('/api/boards/lists', list);
+    const { data: board } = await axios.get(`/api/boards/${projectId}`);
+    dispatch(getBoards(board));
   };
 };
 
@@ -111,17 +98,19 @@ export const deleteList = (list, history) => {
   };
 };
 
-export const allCards = (listId) => {
-  return async (dispatch) => {
-      const { data: cards } = await axios.get('/api/boards/lists/cards', { params: { listId} });
-      dispatch(getCards(cards));
-  };
-};
+// export const allCards = (listId) => {
+//   return async (dispatch) => {
+//       const { data: cards } = await axios.get('/api/boards/lists/cards', { params: { listId} });
+//       dispatch(getCards(cards));
+//   };
+// };
 
-export const newCard = (card) => {
+export const newCard = (card, projectId) => {
   return async (dispatch) => {
-      const { data: created } = await axios.post(`/api/boards/lists/${card.listId}`, card);
-      dispatch(addCard(created));
+      await axios.post(`/api/boards/lists/${card.listId}`, card);
+      const { data: board } = await axios.get(`/api/boards/${projectId}`);
+      dispatch(getBoards(board));
+      // dispatch(addCard(created));
   };
 };
 

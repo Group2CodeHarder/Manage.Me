@@ -33,6 +33,7 @@ class TaskActionButton extends React.Component {
 
   handleAddList = (ev) => {
     ev.preventDefault();
+    console.log('THIS IS PROPS INSIDE ADDLIST', this.props)
     const { project } = this.props;
     const { text } = this.state;
     const list = {
@@ -53,7 +54,7 @@ class TaskActionButton extends React.Component {
 
     const card = {
       content: text,
-      listId: this.props.listId
+      listId: listId,
     };
 
     if(text) {
@@ -80,7 +81,7 @@ class TaskActionButton extends React.Component {
   };
 
   displayForm = () => {
-    const { list } = this.props;
+    const { list, boards } = this.props;
 
     const placeholder = list ? "Enter list title..." : "Enter text here...";
 
