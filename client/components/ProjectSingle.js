@@ -70,7 +70,7 @@ class ProjectSingle extends React.Component {
                 <strong>Expected Revenue</strong> $ {project.revenue}
               </p>
               <p>
-                <strong>Expenses</strong> $ {project.expense}.00
+                <strong>Expenses</strong> $ {project.expense}
               </p>
             </div>
             <div className="project-info-container-buttons">
