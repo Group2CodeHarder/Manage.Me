@@ -36,7 +36,7 @@ class ProjectSingleClient extends React.Component {
       <div className="content-wrapper">
         <h2>{project.name}</h2>
         <div className="single-project-container">
-          <div className="single-project-left">
+          <div className="client-project-left">
             <div className="project-info-container">
               <h4>Current Status</h4>
               <hr />
@@ -64,7 +64,7 @@ class ProjectSingleClient extends React.Component {
               </form>
             </div>
           </div>
-          <div className="single-project-right">
+          <div className="client-project-right">
             <div className="project-info-container">
               <h4>Important Dates</h4>
               <hr />

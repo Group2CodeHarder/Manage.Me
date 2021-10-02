@@ -428,6 +428,19 @@ nav a:hover {
   flex-grow: 1;
 }
 
+.client-project-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.client-project-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 35rem;
+}
+
 .project-info-container {
   background-color: white;
   border-radius: 10px;
@@ -699,6 +712,26 @@ nav a:hover {
 .profile-link-button:active {
   background-color: #ff945e;
 }
+
+
+.edit-profile {
+  display: flex;
+}
+
+.edit-profile-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 1rem;
+}
+
+.edit-profile-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
 .finance-project-list-item {
   display: flex;
   justify-content: space-between;
