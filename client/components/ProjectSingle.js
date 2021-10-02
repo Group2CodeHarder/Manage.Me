@@ -15,7 +15,6 @@ class ProjectSingle extends React.Component {
       this.props.allBoards(project.id);
     }
   }
-  
 
   render() {
     const { project, boards, history } = this.props;
@@ -52,7 +51,7 @@ class ProjectSingle extends React.Component {
 
     const client = `${project.clientEmail}`;
     const subjectLine = `Here is the link to your project!`;
-    const message = `http://localhost:8080/projects/client/${project.id}`;
+    const message = `https://manage-m3.herokuapp.com/projects/client/${project.id}`;
 
     return (
       <div className="content-wrapper">
@@ -107,21 +106,22 @@ class ProjectSingle extends React.Component {
             </div>
           </div>
         </div>
-        <div className= 'project-tasks-container'>
-          <TaskBoard project={ project } boards = {boards}/>
-        </div>     
+        <div className="project-tasks-container">
+          <TaskBoard project={project} boards={boards} />
+        </div>
       </div>
     );
   }
 }
 
-const mapState = (state, {match}) => {
-  const project = state.projects.find(proj => proj.id === match.params.id) || {};
-    return {
-        project: project,
-        boards: state.boards || [],
-        // lists: state.lists || [],
-        // cards: state.cards || []
+const mapState = (state, { match }) => {
+  const project =
+    state.projects.find((proj) => proj.id === match.params.id) || {};
+  return {
+    project: project,
+    boards: state.boards || [],
+    // lists: state.lists || [],
+    // cards: state.cards || []
   };
 };
 

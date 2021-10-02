@@ -44,7 +44,7 @@ export const Profile = (props) => {
     );
   };
 
-  const message = `http://localhost:8080/profile/${id}`;
+  const message = `https://manage-m3.herokuapp.com/profile/${id}`;
   const subjectLine = `${firstName}'s Portfolio`;
 
   return (
