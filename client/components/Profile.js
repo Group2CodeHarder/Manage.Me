@@ -34,7 +34,7 @@ export const Profile = (props) => {
         to="#"
         onClick={(e) => {
           window.location.href =
-            "mailto:username@example.com?subject=Subject&body=message%20goes%20here";
+          `mailto:client@client.com?subject=${subjectLine}&body=${message}`;
           window.location = mailto;
           e.preventDefault();
         }}
@@ -66,9 +66,8 @@ export const Profile = (props) => {
               style={{ marginLeft: "1.2rem", marginTop: "5px" }}
             >
               <ButtonMailto
-                type="button"
-                label={`Write ${firstName} an e-mail`}
-                mailto={`mailto:${email}?subject=Subject&body=${message}`}
+                label={`Generate profile link to share with client`}
+                mailto={`mailto:${email}?subject=${subjectLine}&body=${message}`}
               />
             </button>
           </div>

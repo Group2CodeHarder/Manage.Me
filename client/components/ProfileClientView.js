@@ -24,7 +24,7 @@ class ProfileClientView extends React.Component {
           to="#"
           onClick={(e) => {
             window.location.href =
-              "mailto:username@example.com?subject=Subject&body=message%20goes%20here";
+            `mailto:${user.email}?subject=Subject&body=${message}`;
             window.location = mailto;
             e.preventDefault();
           }}
