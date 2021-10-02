@@ -363,6 +363,15 @@ nav a:hover {
 }
 .project-info-container-buttons > button {
   margin-right: 1.5rem;
+  border: 0;
+  background-color: steelblue;
+  color: white;
+  padding: 0.5rem;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: normal;
+  box-shadow: 0 0 0 1px #0e2438;
+  border-radius: 10px;
 }
 
 .tasklist-cont {
@@ -402,6 +411,31 @@ nav a:hover {
 /* PROFILE */
 .avatar {
   display: flex;
+  margin-top: .5rem;
+  margin-left: 20px;
+  height: 250px;
+  width: 250px;
+  /* border-radius: 25; */
+}
+
+.avatar > img {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0e2438;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 4rem;
+  margin-top: 50px;
+}
+
+.single-profile-left {
   margin-top: 20px;
   margin-left: 70px;
   height: 190px;
@@ -425,11 +459,49 @@ nav a:hover {
   flex-direction: column;
   flex-grow: 1;
 }
+
+.profileBasic > h2 {
+  color: white;
+  padding: 1rem;
+}
+
+/* .single-profile-left:first-child {
+  z-index: 1;
+} */
+
+.single-profile-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 2rem;
+}
+
+.profile-info-flex-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profileInfoPara {
+  color: #ff945e;
+  font-size: .75rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
 .finance-dashboard-right {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
+
 .profit-table {
   display: flex;
   flex-direction: column;
@@ -441,6 +513,7 @@ nav a:hover {
   padding: 1rem;
   margin: 0.5rem;
 }
+
 .profit-table > h3,
 .ytdProfitTable > h3,
 .ytdProfitDate > h4,
@@ -465,6 +538,45 @@ nav a:hover {
   border-radius: 10px;
   padding: 1rem;
   margin: 0.5rem;
+}
+
+.profile-info-container > .profile-info-container-ctr {
+  justify-content: center;
+  align-items: center;
+  /* padding: .5rem; */
+}
+
+.profile-info-container-buttons {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.4rem;
+  margin: 0.5rem;
+}
+
+.profile-link-button {
+  margin-right: 1.5rem;
+  border: 0;
+  background-color: #e7cbb0;
+  color: #0e2438;
+  padding: 0.5rem;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: normal;
+  box-shadow: 0 0 0 1px #0e2438;
+  border-radius: 10px;
+}
+
+.profile-link-button:hover {
+  background-color: steelblue;
+  color: white;
+}
+
+.profile-link-button:hover  > a {
+  color: white;
+}
+
+.profile-link-button:active {
+  background-color: #ff945e;
 }
 .finance-project-list-item {
   display: flex;
