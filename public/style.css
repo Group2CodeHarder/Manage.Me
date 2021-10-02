@@ -346,3 +346,16 @@ nav a:hover {
   width: 190px;
   border-radius: 25;
 }
+
+.quote {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
