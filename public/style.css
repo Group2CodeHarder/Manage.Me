@@ -221,7 +221,8 @@ nav a:hover {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  
+}
+
 .widget-flex {
   display: flex;
 }
@@ -445,5 +446,4 @@ nav a:hover {
   margin-left: 0.5rem;
   padding-right: 0.5rem;
   margin-right: 0.5rem;
-
 }
