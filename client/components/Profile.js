@@ -25,7 +25,7 @@ import ProfileBio from "./ProfileBio";
 }
 
 export const Profile = (props) => {
-  const { firstName, email, photo } = props.state.auth;
+  const { firstName, email, photo, id } = props.state.auth;
   const { projects } = props;
 
   const ButtonMailto = ({ mailto, label }) => {
@@ -44,7 +44,8 @@ export const Profile = (props) => {
     );
   };
 
-  const message = "Cody's Link";
+  const message = `http://localhost:8080/profile/${id}`;
+  const subjectLine = `${firstName}'s Portfolio`;
 
   return (
     <div className="content-wrapper">
@@ -69,10 +70,10 @@ export const Profile = (props) => {
           })}
         </div>
       </div>
-      <h4>Connect with {firstName}</h4>
+
       <ButtonMailto
-        label={`Write ${firstName} an e-mail`}
-        mailto={`mailto:${email}?subject=Subject&body=${message}`}
+        label={`Generate profile link to share with client`}
+        mailto={`mailto:${email}?subject=${subjectLine}&body=${message}`}
       />
     </div>
   );

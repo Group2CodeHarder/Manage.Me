@@ -13,7 +13,7 @@ import ProjectSingleClient from "./components/ProjectSingleClient";
 import ProjectSingleEdit from "./components/ProjectSingleEdit";
 import Profile from "./components/Profile";
 import TaskBoard from "./components/TaskBoard";
-import Stripe from "./components/StripeCheckout";
+import StripeCheckout from "./components/StripeCheckout";
 import EditProfileBio from "./components/EditProfileBio";
 import ProfileClientView from "./components/ProfileClientView";
 import { getProjects } from "./store/projects";
@@ -57,10 +57,6 @@ class Routes extends Component {
             <Route path="/projects/:id" component={ProjectSingle} />
             <Route exact path="/boards" component={TaskBoard} />
             <Route path="/finance" component={Finance} />
-
-            {/* Stripe routes below, work in progress */}
-            {/* <Route exact path="/checkout" component={Checkout} /> */}
-            <Route exact path="/checkout" component={Stripe} />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -68,8 +64,12 @@ class Routes extends Component {
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/profile/:id" component={ProfileClientView} />
-            <Route path="/projects/client/:id" component={ProjectSingleClient} />
-            <Route exact path="/checkout" component={Stripe} />
+            <Route
+              path="/projects/client/:id"
+              component={ProjectSingleClient}
+            />
+            <Route path="/checkout/success=true" component={StripeCheckout} />
+            <Route path="/checkout/canceled=true" component={StripeCheckout} />
             <Redirect to="/" />
           </Switch>
         )}
