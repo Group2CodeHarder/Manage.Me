@@ -73,8 +73,9 @@ class EditProfileBio extends Component {
 
     return (
       <div className="content-wrapper">
-        <form onSubmit={handleSubmit}>
-          <div className="profileBasicInfo">
+        <form className= 'edit-profile' onSubmit={handleSubmit}>
+          
+          <div className="edit-profile-left">
             <label>Job Title: </label>
             <input name="jobTitle" onChange={handleChange} value={jobTitle} />
             <label>Company: </label>
@@ -87,14 +88,12 @@ class EditProfileBio extends Component {
               onChange={handleChange}
               value={financialGoal}
             />
-          </div>
-
-          <div className="profileContactInfo">
             <label>Email: </label>
             <input name="email" onChange={handleChange} value={email} />
           </div>
-
-          <div className="profileSocialMedia">
+          
+          <div className="edit-profile-right">
+            
             <label>Twitter: </label>
             <input name="twitter" onChange={handleChange} value={twitter} />
             <label>Instagram: </label>
@@ -111,16 +110,15 @@ class EditProfileBio extends Component {
             />{" "}
             <label>GitHub: </label>
             <input name="gitHub" onChange={handleChange} value={gitHub} />
+            <br />
+            <button type="submit">Save</button>
+            <button className="cancel-button" type="button" onClick={redirect}>
+              Cancel
+            </button>
           </div>
-
-          <br />
-          <button type="submit">Save</button>
-          <button className="cancel-button" type="button" onClick={redirect}>
-            Cancel
-          </button>
           <br />
         </form>
-      </div>
+        </div>
     );
   }
 }

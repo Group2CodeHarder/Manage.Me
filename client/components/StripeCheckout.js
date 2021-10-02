@@ -5,16 +5,18 @@ const StripeCheckout = () => {
 
   const url = window.location.pathname;
 
+
+
   if (url === "/checkout/success=true") {
-    message = "Order placed! You will receive an email confirmation.";
+    message = "Thank you for your business! You will receive an email confirmation.";
   } else {
     message =
-      "Order canceled -- continue to shop around and checkout when you're ready.";
+      "Payment canceled -- please let me know if you have a problem with your bill.";
   }
 
   return (
     <div className="content-wrapper">
-      <p>{message}</p>
+      <h3>{message}</h3>
     </div>
   );
 };
