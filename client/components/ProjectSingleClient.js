@@ -42,7 +42,7 @@ class ProjectSingleClient extends React.Component {
               <hr />
               <h3 style={pebbleColor}>{project.status}</h3>
             </div>
-            <div className="project-info-container">
+            {/* <div className="project-info-container">
               <h4>Contact Information</h4>
               <hr />
               <p>
@@ -51,7 +51,7 @@ class ProjectSingleClient extends React.Component {
               <p>
                 <strong>Email</strong> {project.clientEmail}
               </p>
-            </div>
+            </div> */}
             <div className="project-info-container">
               <h4>Cost</h4>
               <hr />

@@ -33,7 +33,7 @@ class ProfileClientView extends React.Component {
       );
     };
 
-    const message = "Cody's Link";
+    const message = "Write something to Cody!";
 
     return (
       <div className="content-wrapper">
