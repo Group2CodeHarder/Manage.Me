@@ -110,7 +110,6 @@ export const newCard = (card, projectId) => {
       await axios.post(`/api/boards/lists/${card.listId}`, card);
       const { data: board } = await axios.get(`/api/boards/${projectId}`);
       dispatch(getBoards(board));
-      // dispatch(addCard(created));
   };
 };
 
@@ -159,7 +158,7 @@ export const cardsReducer = (state = [], action) => {
     case GET_CARDS:
       return action.cards;  
     case ADD_CARD:
-      return [...state, action.cards];
+      return [...state, action.card];
     case DELETE_CARD:
       return state.filter((card) => card.id !== action.card.id);
     default:

@@ -33,7 +33,6 @@ class TaskActionButton extends React.Component {
 
   handleAddList = (ev) => {
     ev.preventDefault();
-    console.log('THIS IS PROPS INSIDE ADDLIST', this.props)
     const { project } = this.props;
     const { text } = this.state;
     const list = {
@@ -49,7 +48,7 @@ class TaskActionButton extends React.Component {
 
   handleAddCard = (ev) => {
     ev.preventDefault();
-    const { listId } = this.props;
+    const { listId, boards } = this.props; 
     const { text } = this.state;
 
     const card = {
@@ -58,7 +57,7 @@ class TaskActionButton extends React.Component {
     };
 
     if(text) {
-    this.props.newCard(card);
+    this.props.newCard(card, boards.projectId);
     }
     this.closeForm();
 
@@ -82,11 +81,11 @@ class TaskActionButton extends React.Component {
 
   displayForm = () => {
     const { list, boards } = this.props;
+    console.log("BOARDS", boards);
 
     const placeholder = list ? "Enter list title..." : "Enter text here...";
 
     const buttonTitle = list ? "Add a list" : "Add a card";
-
     return (
       <div>
           <div style={actionStyles}>
@@ -117,14 +116,14 @@ class TaskActionButton extends React.Component {
     );
   };
 
-  render() {  
+  render() { 
     return this.state.formOpen ? this.displayForm() : this.displayAddButton();
   }
 }
 
 const mapDispatch = (dispatch) => ({
   newList: (list) => dispatch(newList(list)),
-  newCard: (card) => dispatch(newCard(card))
+  newCard: (card, projectId) => dispatch(newCard(card, projectId))
 });
 
 export default connect(null, mapDispatch)(TaskActionButton);
