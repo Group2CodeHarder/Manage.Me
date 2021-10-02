@@ -18,7 +18,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   text-align: center;
   font-family: "Montserrat", sans-serif;
   color: #0e2438;
@@ -28,6 +29,22 @@ h1 {
   font-size: 4em;
   line-height: 1;
 }
+#login-container > h1 {
+  color: #e7cbb0;
+  font-size: 2.5em;
+  line-height: 1;
+}
+#login-container > h3 {
+  color: #e7cbb0;
+  font-size: 1.5em;
+  line-height: 1;
+}
+#login-container > h4 {
+  color: #0e2438;
+  font-size: 1em;
+  line-height: 1;
+}
+
 h1,
 h2,
 h3,
@@ -155,7 +172,7 @@ button > a:hover {
 /* NAV BAR */
 #header {
   background-color: #0e2438;
-  border-bottom: 1px solid steelblue;
+  border-bottom: 1px solid #0e2438;
 }
 
 nav {
@@ -190,23 +207,45 @@ nav a:hover {
 }
 
 /* LOGIN */
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.login-wrapper {
+  padding: 10px;
+  min-height: 82vh;
+  background-image: url(https://images.unsplash.com/photo-1593062096033-9a26b09da705?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80);
+}
+
+#content-wrap {
+  padding-bottom: 3rem; /* Footer height */
+}
+
 #login-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
-  border: 1px solid #0e2438;
+  /* background-color: white; */
+  /* border: 1px solid #0e2438; */
   border-radius: 10px;
   padding: 1rem;
   margin: 3rem;
   margin-left: 10rem;
   margin-right: 10rem;
   height: 8rem;
+  position: relative;
+  bottom: 50%;
 }
 
 #google-signin:hover {
   box-shadow: 0 0 0 1px #0e2438;
+}
+
+.resize {
+  width: 200px;
+  height: auto;
 }
 
 /* HOME-DASHBOARD */
@@ -459,16 +498,14 @@ nav a:hover {
   height: 3rem; /* Footer height */
 }
 #footer div {
-  width: calc(100% - 4em);
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  /* width: auto; */
+  margin: auto;
+  width: calc(100% - 2em);
   /* padding: 0.5rem; */
   text-align: center;
   letter-spacing: 0.03em;
-}
-#page-container {
-  position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 3rem; /* Footer height */
 }
