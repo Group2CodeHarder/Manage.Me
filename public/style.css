@@ -346,3 +346,81 @@ nav a:hover {
   width: 190px;
   border-radius: 25;
 }
+
+/* FINANCE */
+
+.finance-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.finance-dashboard-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.finance-dashboard-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.profit-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #0e2438;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.profit-table > h3,
+.ytdProfitTable > h3,
+.ytdProfitDate > h4,
+.finance-project-title > h3 {
+  color: white;
+}
+.finance-dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.finance-dashboard-bottom-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.finance-project-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.finance-project-title,
+.finance-dashboard-bottom {
+  background: #0e2438;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+}

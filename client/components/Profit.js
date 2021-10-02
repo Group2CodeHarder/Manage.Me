@@ -37,9 +37,13 @@ const Profit = (props) => {
   };
 
   return (
-    <div>
-      <div className="ytdProfitTable">YTD Total Profit is ${profit()}</div>
-      <div className="ytdProfitDate">as of {fulldate}</div>
+    <div className="profit-table">
+      <div className="ytdProfitTable">
+        <h3>YTD Total Profit is ${profit()}</h3>
+      </div>
+      <div className="ytdProfitDate">
+        <h4>as of {fulldate}</h4>
+      </div>
     </div>
   );
 };
