@@ -317,6 +317,35 @@ nav a:hover {
   margin: 0.5rem;
 }
 
+/* CALENDAR */
+
+.calendar-background {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #0e2438;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.add-event {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.calendar {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
 /* PROJECT VIEWS */
 #project-list-titles {
   display: flex;

@@ -67,16 +67,23 @@ class BigCal extends Component {
       return ev;
     });
 
+    const left = {
+      textAlign: "left",
+    };
+
     console.log("big cal events", test);
     return (
       <div className="content-wrapper">
-        <h1>Calendar</h1>
-        <h2> Add New Event </h2>
-        <div>
+        <h2>Calendar</h2>
+
+        <div className= 'calendar-background'>
+        <div className='add-event'>
+        <h3> Add New Event </h3>
+        {/* <div> */}
           <input
             type="text"
             placeholder="Add Title"
-            style={{ width: "20%", marginRight: "10px" }}
+            style={{ marginRight: "10px" }}
             value={this.state.title}
             onChange={(e) => {
               this.onChange(e);
@@ -111,7 +118,9 @@ class BigCal extends Component {
             {" "}
             Add Event
           </button>
+        {/* </div> */}
         </div>
+        <div className='calendar'>
         <Calendar
           localizer={localizer}
           events={events.items.map((ev) => this.formatEvent(ev))}
@@ -122,6 +131,8 @@ class BigCal extends Component {
           }}
           style={{ height: 500, margin: "50px" }}
         />
+        </div>
+        </div>
       </div>
     );
   }
