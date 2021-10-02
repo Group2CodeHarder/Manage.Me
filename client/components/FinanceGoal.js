@@ -40,7 +40,7 @@ const FinanceGoal = (props) => {
 
   const message = () => {
     if (Number(allState.financialGoal) === 0) {
-      return `Set your financial goal here!==>`;
+      return `Set yourself a financial goal!  ==>  `;
     } else if (profit() > allState.financialGoal) {
       return `You have earned $${profit()} this year and you reached your annual profit goal of $${
         allState.financialGoal
@@ -55,7 +55,7 @@ const FinanceGoal = (props) => {
     return (
       <div>
         <div className="financialGoals">
-          {message()} <Link to="/editBio">Set up your bio</Link>
+          {message()} <Link to="/editBio">Edit in your bio</Link>
         </div>
       </div>
     );

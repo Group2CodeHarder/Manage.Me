@@ -12,6 +12,7 @@ import { getEvents } from "../store/calendar";
 import Welcome from "./Welcome";
 import FinanceGoal from "./FinanceGoal";
 import moment from "moment";
+import SiteClock from "./SiteClock";
 
 let allViews = Object.keys(Views)
   .map((k) => Views[k])
@@ -48,22 +49,82 @@ class Home extends Component {
     return res;
   };
 
+
   render() {
-    const { username, events } = this.props;
+    const { username, events, currentProjects } = this.props;
+
+    const pebbleColor = {
+      color: "#ff945e",
+      textAlign: "left"
+    };
+    const center = {
+      textAlign: "center",
+    };
+    const right = {
+      textAlign: "right",
+    };
 
     return (
       <div className="content-wrapper">
         <div className="welcome-module">
-          <h2>Welcome, {username}</h2>
-          <Welcome />
-          <FinanceGoal />
+          <h2>Welcome, {username}!</h2>
+          <hr />
+          <br />
         </div>
+        <div className= 'home-top'>
+        <div className='home-top-left'>
+          <div className='home-top-left-container'>
+            <div className='home-info-container'>
+              <h3>Here's your day at a glance</h3>
+              <hr />
+              <p><i>It's time to get to work.</i></p>
+              <SiteClock />
+              <br />
+              <h4>Upcoming Deadlines</h4>
+              <hr />
+              <div>
+              {currentProjects.map(project => {
+                return (
+                  <div key={project.id}>
+                    <h3 style={pebbleColor}>{project.name}</h3>
+                    <p style= {right}>{project.deadlineMonth} {project.deadlineDate}, {project.deadlineYear}</p>
+                  </div>
+                )
+              })}
+              </div>
+            </div>
+          </div>
+          </div>
+        <div className='home-top-right'>
+          <div className='home-top-right-container'>
+            <div className='home-info-container'>
+                <Welcome />
+            </div>
+            <div className='home-info-container'>
+                <h4>Financial Goals</h4>
+                <hr />
+                <FinanceGoal />
+            </div>
+          </div>
+        </div>
+        </div>
+        <div className='home-bottom-outer'>
+        <div className='home-bottom'>
+          <div>
+            <h2>Calendars</h2>
+            <br />
+            <h4 style= {center}><Link to="/calendar">View your Full Google Calendar Here</Link></h4>
+            <hr />
+            
+          </div>
 
+        
         <div className="productivity-module">
-          <Link to="/calendar">Calendar</Link>
+          
           {events.length && (
             <div className="widget-flex">
               <div className="agenda-widget">
+                <h3>Upcoming Agenda</h3>
                 <Calendar
                   localizer={localizer}
                   events={events.map((ev) => this.formatEvent(ev))}
@@ -73,7 +134,9 @@ class Home extends Component {
                   view={"agenda"}
                 />
               </div>
+              <hr />
               <div className="week-widget">
+                <h3>Your Week</h3>
                 <Calendar
                   localizer={localizer}
                   events={events.map((ev) => this.formatEvent(ev))}
@@ -87,15 +150,22 @@ class Home extends Component {
           )}
         </div>
       </div>
+      </div>
+      </div>
+
+
+
     );
   }
 }
 
 const mapState = (state) => {
+  const currentProjects = state.projects.filter(project => project.status !== 'Complete') || [];
   return {
     username: state.auth.username,
     isLoggedIn: !!state.auth.id,
     events: state.events.items || [],
+    currentProjects: currentProjects,
   };
 };
 

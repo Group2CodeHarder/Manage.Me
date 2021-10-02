@@ -160,13 +160,12 @@ a:hover {
 }
 
 button > a {
-  text-decoration: none;
-  color: white;
   line-height: 1;
+  color: inherit;
 }
 
 button > a:hover {
-  color: #0e2438;
+  color: inherit;
 }
 
 /* NAV BAR */
@@ -264,6 +263,58 @@ nav a:hover {
 
 .widget-flex {
   display: flex;
+}
+
+.home-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-top-left, .home-top-right {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  max-width: 45%;
+  background-color: #0e2438;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.home-bottom {
+
+  background-color: white;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.home-bottom-outer {
+  background-color: #0e2438;
+  border: 1px solid #0e2438;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.home-top-left-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.home-top-right-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.home-info-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
 }
 
 /* PROJECT VIEWS */
@@ -443,6 +494,7 @@ nav a:hover {
   border-radius: 25;
 }
 
+
 /* FINANCE */
 
 .finance-dashboard-container {
@@ -621,3 +673,4 @@ nav a:hover {
   text-align: center;
   letter-spacing: 0.03em;
 }
+
