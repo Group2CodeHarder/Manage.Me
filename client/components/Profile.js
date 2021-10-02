@@ -48,29 +48,35 @@ export const Profile = (props) => {
   const subjectLine = `${firstName}'s Portfolio`;
 
   return (
-    <div className="profile-container" > 
-      <div className="single-profile-left"> 
+    <div className="profile-container">
+      <div className="single-profile-left">
         <div className="avatar">
           <img src={photo} />
         </div>
         <div className="profileBasic">
-          <h2>{firstName} {lastName}</h2>
+          <h2>
+            {firstName} {lastName}
+          </h2>
         </div>
-        <div className="profile-info-container"> 
-        <div className="profile-info-container-ctr">
-      <h4 style={{marginLeft: "1.7rem"}}>Connect with {firstName}</h4>
-      <button className="profile-link-button" style={{marginLeft: "1.2rem", marginTop: "5px"}}>
-        <ButtonMailto
-        type="button" label={`Write ${firstName} an e-mail`}
-        mailto={`mailto:${email}?subject=Subject&body=${message}`}
-      />
-      </button>
-      </div>
-      </div>
+        <div className="profile-info-container">
+          <div className="profile-info-container-ctr">
+            <h4 style={{ marginLeft: "1.7rem" }}>Connect with {firstName}</h4>
+            <button
+              className="profile-link-button"
+              style={{ marginLeft: "1.2rem", marginTop: "5px" }}
+            >
+              <ButtonMailto
+                type="button"
+                label={`Write ${firstName} an e-mail`}
+                mailto={`mailto:${email}?subject=Subject&body=${message}`}
+              />
+            </button>
+          </div>
+        </div>
       </div>
       <div className="single-profile-right">
-          <ProfileBio />
-    </div>
+        <ProfileBio />
+      </div>
     </div>
   );
 };
