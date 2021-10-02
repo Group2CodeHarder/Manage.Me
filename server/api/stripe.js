@@ -10,11 +10,11 @@ const YOUR_DOMAIN = process.env.STRIPE_DOMAIN;
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.post("/create-checkout-session", async (req, res) => {
-  const price = "2000.00";
+router.post("/create-checkout-session/:id", async (req, res) => {
+  const price = req.params.id;
 
-  const getproductCode = (p) => {
-    switch (p) {
+  const getproductCode = (id) => {
+    switch (id) {
       case "50.00":
         return process.env.FIFTY;
       case "100.00":
@@ -48,8 +48,8 @@ router.post("/create-checkout-session", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `${YOUR_DOMAIN}?success=true`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+    success_url: `${YOUR_DOMAIN}/success=true`,
+    cancel_url: `${YOUR_DOMAIN}/canceled=true`,
   });
 
   res.redirect(303, session.url);

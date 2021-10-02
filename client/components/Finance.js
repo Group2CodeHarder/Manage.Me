@@ -17,7 +17,6 @@ export const Finance = (props) => {
     <div className="content-wrapper">
       <div>
         <h3>Finance Dashboard</h3>
-        <Link to="/checkout">Payment Link</Link>
         <div className="profit-table">
           <Profit project={projects} />
         </div>

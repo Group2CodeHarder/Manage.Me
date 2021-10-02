@@ -1,24 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import ProfileBio from "./ProfileBio";
-import { getUserById } from '../store/user'
-
+import { getUserById } from "../store/user";
 
 class ProfileClientView extends React.Component {
-  constructor(){
+  constructor() {
     super();
-  };
+  }
 
-componentDidMount () {
-  const URL = window.location.pathname;
-  const userId = URL.slice(9)*1
-  this.props.getUserById(userId);
-}
+  componentDidMount() {
+    const URL = window.location.pathname;
+    const userId = URL.slice(9) * 1;
+    this.props.getUserById(userId);
+  }
 
   render() {
     const { user } = this.props;
-    
+
     const ButtonMailto = ({ mailto, label }) => {
       return (
         <Link
@@ -34,9 +32,8 @@ componentDidMount () {
         </Link>
       );
     };
-  
-    const message = "Cody's Link";
 
+    const message = "Cody's Link";
 
     return (
       <div className="content-wrapper">
@@ -51,40 +48,35 @@ componentDidMount () {
           </div>
           <div className="profileBio">
             <div className="profileBio-container">
-            <div className="profileBasicInfo">
-          <div>Job Title: {user.jobTitle}</div>
-          <div>Company: {user.company}</div>
-          <div>Bio: {user.bio}</div>
-        </div>
-        <br />
-        <div className="profileContactInfo">
-          <div>Email: {user.email}</div>
-        </div>
-        <br />
-        <div className="profileSocialMedia">
-          <div>Twitter: {user.twitter}</div>
-          <div>Instagram: {user.instagram}</div>
-          <div>Personal Website: {user.personalSite}</div>
-          <div>GitHub: {user.gitHub}</div>
-        </div>
-        <br />
+              <div className="profileBasicInfo">
+                <div>Job Title: {user.jobTitle}</div>
+                <div>Company: {user.company}</div>
+                <div>Bio: {user.bio}</div>
+              </div>
+              <br />
+              <div className="profileContactInfo">
+                <div>Email: {user.email}</div>
+              </div>
+              <br />
+              <div className="profileSocialMedia">
+                <div>Twitter: {user.twitter}</div>
+                <div>Instagram: {user.instagram}</div>
+                <div>Personal Website: {user.personalSite}</div>
+                <div>GitHub: {user.gitHub}</div>
+              </div>
+              <br />
             </div>
           </div>
- 
         </div>
         <h4>Connect with {user.firstName}</h4>
         <ButtonMailto
           label={`Write ${user.firstName} an e-mail`}
           mailto={`mailto:${user.email}?subject=Subject&body=${message}`}
         />
-
-
-
-
       </div>
-      );
-  };
-};
+    );
+  }
+}
 
 const mapState = (state) => {
   return {
