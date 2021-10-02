@@ -108,22 +108,22 @@ const LineChart = (props) => {
         label: "Total Revenue",
         data: revenue(),
         fill: false,
-        backgroundColor: "rgb(1, 58, 29)",
-        borderColor: "rgba(1, 58, 29, 0.2)",
+        backgroundColor: "rgb(14, 36, 56)",
+        borderColor: "rgba(14, 36, 56, 0.2)",
       },
       {
         label: "Total Cost",
         data: cost(),
         fill: false,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132, 0.2)",
+        backgroundColor: "rgb(255, 148, 94)",
+        borderColor: "rgba(255, 148, 94, 0.2)",
       },
       {
         label: "Total Profit",
         data: profit(),
         fill: false,
-        backgroundColor: "rgb(54, 162, 235)",
-        borderColor: "rgba(54, 162, 235, 0.2)",
+        backgroundColor: "rgb(161, 177, 184)",
+        borderColor: "rgba(161, 177, 184, 0.2)",
       },
     ],
   };
@@ -131,7 +131,7 @@ const LineChart = (props) => {
   return (
     <div>
       <div className="graphHeader">
-        <h2>Sales and Profit</h2>
+        <h2>Revenue and Profit</h2>
         <div className="links"></div>
       </div>
       <Line data={data} />

@@ -25,7 +25,7 @@ import ProfileBio from "./ProfileBio";
 }
 
 export const Profile = (props) => {
-  const { firstName, lastName, email, photo } = props.state.auth;
+  const { firstName, lastName, email, photo, id } = props.state.auth;
   const { projects } = props;
 
   const ButtonMailto = ({ mailto, label }) => {
@@ -44,7 +44,8 @@ export const Profile = (props) => {
     );
   };
 
-  const message = "Cody's Link";
+  const message = `https://manage-m3.herokuapp.com/profile/${id}`;
+  const subjectLine = `${firstName}'s Portfolio`;
 
   return (
     <div className="profile-container" > 

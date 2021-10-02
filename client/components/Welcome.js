@@ -8,14 +8,18 @@ export const Welcome = () => {
 
   return (
     <div className="content-wrapper">
-      <h1>Quote of the day: </h1>
-      <h2>{quote}</h2>
+      <div className="quote">
+        <h2>Quote of the day: </h2>
+        <h3>{quote}</h3>
+      </div>
 
-      <ReactFitText compressor={0.8}>
-        <h4>
-          <Clock format="HH:mm:ss" interval={1000} ticking={true} />
-        </h4>
-      </ReactFitText>
+      <div className="clock">
+        <ReactFitText compressor={4.0}>
+          <h4>
+            <Clock format="HH:mm:ss" interval={1000} ticking={true} />
+          </h4>
+        </ReactFitText>
+      </div>
     </div>
   );
 };
