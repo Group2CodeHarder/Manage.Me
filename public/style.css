@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
-
 /* GENERAL CSS */
 body {
   font-family: "Open Sans", sans-serif;
@@ -10,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;
+  background-image: url("istockphoto-1157329161-612x612.jpeg");
 }
 
 .content-wrapper {
@@ -22,7 +22,6 @@ h3 {
   text-align: center;
   font-family: "Montserrat", sans-serif;
   color: #0e2438;
-
 }
 
 h1 {
@@ -143,8 +142,6 @@ a:hover {
   color: steelblue;
 }
 
-
-
 /* NAV BAR */
 #header {
   background-color: #0e2438;
@@ -182,7 +179,6 @@ nav a:hover {
   background-color: #0e2438;
 }
 
-
 /* LOGIN */
 #login-container {
   display: flex;
@@ -203,12 +199,10 @@ nav a:hover {
   box-shadow: 0 0 0 1px #0e2438;
 }
 
-
 /* HOME-DASHBOARD */
 .widget-flex {
   display: flex;
 }
-
 
 /* PROJECT VIEWS */
 #project-list-titles {
@@ -311,16 +305,16 @@ nav a:hover {
 
 .tasklist-cont {
   color: white;
-  background-color: #0e2438; 
-  border-radius: 5px; 
-  width: 300px; 
+  background-color: #0e2438;
+  border-radius: 5px;
+  width: 300px;
   padding: 12px;
   margin-right: 8px;
   font-family: "Open Sans", "sans-serif";
 }
 
 .tasklist-cont > h3 {
-  color: white
+  color: white;
 }
 
 .card-div {
